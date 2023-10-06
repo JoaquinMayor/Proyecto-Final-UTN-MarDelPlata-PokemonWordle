@@ -1,0 +1,113 @@
+$background-color_1: gray;
+$background-color_2: red;
+$background-color_3: green;
+$background-color_4: orange;
+
+.mainWordle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalRegiones {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-image: radial-gradient(circle, white 0%, white 45%, black 45%, black 55%, red 55%);
+    width: 25rem;
+    height: 25rem;
+    border-radius: 5%;
+
+    select {
+        padding: 0.3rem;
+    }
+
+    button {
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.containerWorleFacil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: fit-content;
+    height: 30rem;
+
+    .subContainer {
+        text-align: center;
+
+        input {
+            padding: 0.5rem;
+            width: 12.5rem;
+        }
+    }
+
+    .contenedorPalabraCompleta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        list-style: none;
+
+        .contenedorLetra {
+            background-color: $background-color_1;
+            display: flex;
+            margin: 1rem;
+            width: 2rem;
+            height: 3rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%;
+            border: 0.125rem solid black;
+        }
+
+        .contenedorLetra.rojo {
+            background-color: $background-color_2;
+        }
+
+        .contenedorLetra.verde {
+            background-color: $background-color_3;
+        }
+
+        .contenedorLetra.naranja {
+            background-color: $background-color_4;
+        }
+    }
+
+    .contenedorAyudas {
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-align: center;
+
+        .contenedorLetra {
+            background-color: $background-color_1;
+            display: flex;
+            margin: 1rem;
+            width: 5rem;
+            height: 3rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20%;
+            border: 0.125rem solid black;
+        }
+
+        .contenedorLetra.rojo {
+            background-color: $background-color_2;
+        }
+
+        .contenedorLetra.verde {
+            background-color: $background-color_3;
+        }
+
+        .contenedorLetra.naranja {
+            background-color: $background-color_4;
+        }
+    }
+}

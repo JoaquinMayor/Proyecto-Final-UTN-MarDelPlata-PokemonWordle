@@ -1,3 +1,9 @@
+$color_1: #f2f2f2;
+$color_2: black;
+$background-color_1: #f2f2f2;
+$background-color_2: rgba(255, 0, 0, 0.644);
+$background-color_3: rgba(2, 2, 2, 0.521);
+$background-color_4: rgba(255, 255, 255, 0.836);
 
 .nav {
     position: relative;
@@ -5,18 +11,20 @@
     justify-content: space-between;
     align-items: center;
     height: 3.75rem;
-    background-color: #f2f2f2;
+    background-color: $background-color_1;
     padding: 0 1.25rem;
-    /* color-scheme: dark; */
 
     h1 {
         flex-grow: 1;
         text-align: center;
+        margin-left: 10rem;
     }
 
-    &bar__menu {
+    .bar__menu {
         position: relative;
+    }
 
+    .navbar__menu {
         .menuVistaUsuario {
             display: flex;
             flex-direction: row;
@@ -35,8 +43,8 @@
         .menu-dropdown {
             position: absolute;
             top: 100%;
-            right: 0;
-            background-color: #f2f2f2;
+            right: 0.325rem;
+            background-color: $background-color_1;
             list-style-type: none;
             padding: 1rem;
             border-radius: 10%;
@@ -46,25 +54,39 @@
                 margin-bottom: 5px;
                 transition: all ease 0.8s;
                 padding: 0.3rem;
+                cursor: pointer;
 
-                &:hover{
-                    background-color: rgba(255, 0, 0, 0.644);
+                &:hover {
+                    background-color: $background-color_2;
                 }
-                &:nth-child(2):hover{
-                    background-color: rgb(255, 255, 255);
+
+                &:nth-child(2) {
+                    &:hover {
+                        background-color: $background-color_3;
+                    }
+
+                    a {
+                        &:hover {
+                            color: $color_1;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+                    &:hover {
+                        background-color: $background-color_4;
+                    }
                 }
             }
 
             a {
-                color: black;
+                color: $color_2;
                 text-decoration: none;
             }
         }
     }
 
-    #dropdown {
-        &.active {
-            display: block;
-        }
+    #dropdown.active {
+        display: block;
     }
 }

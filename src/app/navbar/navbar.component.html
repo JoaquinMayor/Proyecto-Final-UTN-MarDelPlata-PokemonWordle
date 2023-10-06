@@ -1,17 +1,19 @@
-<nav class="nav">
-    <h1>PokeWordle</h1>
-    <div class="navbar__menu">
-        <div class="menuVistaUsuario">
-            <p>Nombre Usuario</p>
-            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" alt="Imagen de Usuario">
+<header>
+    <nav class="nav">
+        <a href="index.html">Volver</a>
+        <h1>PokeWordle</h1>
+        <div class="navbar__menu">
+            <div class="menuVistaUsuario">
+                <p>Nombre Usuario</p>
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+                    alt="Imagen de Usuario">
+            </div>
+
+            <ul class="menu-dropdown" id="dropdown">
+                <li><a routerLink="/scores">Puntajes</a></li>
+                <li><a routerLink="/settings">Configuración</a></li>
+                <li><a routerLink="/logout">Cerrar sesión</a></li>
+            </ul>
         </div>
-
-        <ul class="menu-dropdown" id="dropdown">
-            <li><a routerLink="/user">Usuario</a></li>
-            <li><a routerLink="/settings">Configuración</a></li>
-            <li><a routerLink="/logout">Cerrar sesión</a></li>
-        </ul>
-
-        
-    </div>
-</nav>
+    </nav>
+</header>
