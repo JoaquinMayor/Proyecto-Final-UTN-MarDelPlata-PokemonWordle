@@ -13,6 +13,7 @@ import { PokedexComponent } from './pokedex/pokedex.component';
 import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.component';
 import { UserSystemComponent } from './user-system/user-system.component';
 import { HomeComponent } from './home/home.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     PokedexComponent,
     UniquePokemonComponent,
     UserSystemComponent,
-    HomeComponent
+    HomeComponent,
+    UserCreateComponent,
   ],
   imports: [
     BrowserModule,

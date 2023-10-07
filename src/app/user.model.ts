@@ -1,3 +1,6 @@
+
+
+
 export class Usuario{
     private id:number
     private name:string;
