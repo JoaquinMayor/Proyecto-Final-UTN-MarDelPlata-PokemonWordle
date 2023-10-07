@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./app.component.scss">
   <title>PokeWordle</title>
 </head>
 
@@ -13,17 +14,10 @@
   </header>
 
   <main>
-    <section class="containerPrincipalIndex">
-      <a routerLink="/">Wordle Dificil</a>
-      <a routerLink="/wordleFacil">Wordle Facil</a>
-      <a routerLink="/">Wordle Imagenes</a>
-      <a routerLink="/pokedex">Pokedex</a>
-    </section>
+    <router-outlet></router-outlet>
   </main>
-
   <app-footer></app-footer>
+
 </body>
 
 </html>
-
-<router-outlet></router-outlet>

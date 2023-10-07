@@ -7,6 +7,7 @@ $background-color_4: orange;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .modalRegiones {
@@ -38,26 +39,48 @@ $background-color_4: orange;
     width: 100%;
     max-width: fit-content;
     height: 30rem;
+    background-color: #00eeff;
+    padding: 4rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
 
     .subContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
 
         input {
             padding: 0.5rem;
-            width: 12.5rem;
+            width: 13.1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #fff;
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+            color: #333;
+            font-size: 1rem;
+
+            &::placeholder {
+                color: #999;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+            }
         }
     }
 
     .contenedorPalabraCompleta {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
         list-style: none;
+        padding: 0;
 
         .contenedorLetra {
             background-color: $background-color_1;
             display: flex;
-            margin: 1rem;
+            margin: 0.8rem;
             width: 2rem;
             height: 3rem;
             align-items: center;

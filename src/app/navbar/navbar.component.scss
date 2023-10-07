@@ -78,12 +78,12 @@ $background-color_4: rgba(255, 255, 255, 0.836);
                     }
                 }
             }
-
-            a {
-                color: $color_2;
-                text-decoration: none;
-            }
         }
+    }
+
+    a {
+        color: $color_2;
+        text-decoration: none;
     }
 
     #dropdown.active {

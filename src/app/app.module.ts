@@ -12,6 +12,7 @@ import { ImageWordleComponent } from './image-wordle/image-wordle.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.component';
 import { UserSystemComponent } from './user-system/user-system.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserSystemComponent } from './user-system/user-system.component';
     ImageWordleComponent,
     PokedexComponent,
     UniquePokemonComponent,
-    UserSystemComponent
+    UserSystemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
