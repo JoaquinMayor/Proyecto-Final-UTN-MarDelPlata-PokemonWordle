@@ -1,5 +1,17 @@
+@font-face {
+	font-family: 'Pokemon Hollow';
+	src: url('/assets/fonts/Pokemon Hollow.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Pokemon Solid';
+	src: url('/assets/fonts/Pokemon Solid.ttf') format('truetype');
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+	font-size: large;
 }
