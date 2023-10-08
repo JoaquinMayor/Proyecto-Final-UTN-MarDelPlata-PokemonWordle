@@ -1,1 +1,42 @@
-<p>user-system works!</p>
+
+
+
+
+<h2>Nombre: {{user.getName}}</h2>
+<button (click)="showName()"></button>
+
+<div *ngIf="showName">
+<input type="text" [(ngModel)] = "name" placeholder="Nuevo Nombre">
+<button (click)="changeName()">Cambiar</button>
+</div>
+
+<h2>Contraseña: {{user.getPassword}}</h2>
+<button (click)="showPassword()"></button>
+
+<div *ngIf="showPassword">
+    <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
+</div>
+
+<img [src]="user.getPhoto" alt="Foto de Perfil">
+<button (click)="showPhoto()">Opciones</button>
+<div *ngIf="viewPhoto == true" >
+    <div *ngFor = "let photo of photos">
+        <img [src]= "photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)">
+    </div>
+</div>
+
+<div *ngIf="user.getPhoto ">
+<h4>Foto Seleccionada:</h4>
+<img [src]="user.getPhoto" alt="Foto Seleccionada">
+
+</div>
+
+<h2>Punción Imagenes: {{user.getImageScore}}</h2>
+
+<h2>Punción Wordle Difícil: {{user.getHardScore}}</h2>
+
+<h2>Punción Wordle Fácil: {{user.getEasyScore}}</h2>
+
+
+
+

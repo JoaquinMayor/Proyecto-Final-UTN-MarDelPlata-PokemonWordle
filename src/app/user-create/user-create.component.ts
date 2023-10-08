@@ -36,7 +36,7 @@ export class UserCreateComponent{
     console.log(this.name + "hola");
     if(this.userService.validateName(this.name) === false){
 
-      if(this.userService.validatePassword(this.password)===true){
+      if(this.userService.validatePassword(this.password)===false){
         
         let user = new Usuario(this.userService.users.length+1, this.name,this.password,this.selectedPhoto);
         this.userService.chargeUsuario(user);

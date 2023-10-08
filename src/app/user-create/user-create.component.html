@@ -1,6 +1,6 @@
 
     
-    <form class="item" >
+    
         <fieldset>
             <legend>Creación de Usuario</legend>
 
@@ -11,11 +11,12 @@
             <label for="photo">Elija una Foto</label>
             
             <div>
+                
                 <h3>Seleccione una foto de Perfil:</h3>
                 <button (click)="show()">Opciones</button>
                 <div *ngIf="view == true" >
                     <div *ngFor = "let photo of photos">
-                        <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)">
+                        <img [src]= "photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)">
                     </div>
                 </div>
             </div>
@@ -29,5 +30,4 @@
 
         </fieldset>
 
-    </form>
 
