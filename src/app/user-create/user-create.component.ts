@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ImageService } from '../image.service';
-import { UsuariosServices } from '../users.service';
-import { Usuario } from '../user.model';
-
+import { ImageService } from '../services/image.service';
+import { UsuariosServices } from '../services/users.service';
+import { Usuario } from '../models/user.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-create',
@@ -33,7 +33,6 @@ export class UserCreateComponent{
 
 
   addUser(){
-    console.log(this.name + "hola");
     if(this.userService.validateName(this.name) === false){
 
       if(this.userService.validatePassword(this.password)===false){
@@ -49,7 +48,6 @@ export class UserCreateComponent{
       alert("Nombre de Usuario Existente");
     }
     console.log(this.userService.users);
-    
   }
 
 }

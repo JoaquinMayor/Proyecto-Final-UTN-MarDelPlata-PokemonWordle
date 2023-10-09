@@ -5,13 +5,12 @@
             <legend>Creación de Usuario</legend>
 
             <label for="name">Nombre:</label>
-            <input type="text" id="name" placeholder="Ingrese su Nombre de Usuario" [(ngModel)]="name" required>
+            <input type="text" id="name" name="name" placeholder="Ingrese su Nombre de Usuario" [(ngModel)]="name" required>
             <label for="password">Contraseña</label>
             <input type="password" id="password" placeholder="Ingrese su Contraseña" [(ngModel)]="password" required>
             <label for="photo">Elija una Foto</label>
             
-            <div>
-                
+            <div>  
                 <h3>Seleccione una foto de Perfil:</h3>
                 <button (click)="show()">Opciones</button>
                 <div *ngIf="view == true" >

@@ -3,5 +3,12 @@
         <label for="nombre">Buscar Pokémon:</label>
         <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" (keyup)="filterPokemons(nombreInput.value)">
     </form>
-    <ul id="lista"></ul>
+    <ul id="lista" class="lista">
+        <a href="./pokemon.html" (click)="viewPokemon(pokemon.id)" *ngFor="let pokemon of pokemonList">
+            <li class="pokemon">
+              Nombre: {{ pokemon.name }}
+              <img [src]= "pokemon.sprites.front_default" alt="Pokemon" />
+            </li>
+          </a>
+    </ul>
 </section>

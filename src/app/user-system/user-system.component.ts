@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UsuariosServices } from '../users.service';
-import { ImageService } from '../image.service';
-import { Usuario } from '../user.model';
+import { UsuariosServices } from '../services/users.service';
+import { ImageService } from '../services/image.service';
+import { Usuario } from '../models/user.model';
 
 @Component({
   selector: 'app-user-system',

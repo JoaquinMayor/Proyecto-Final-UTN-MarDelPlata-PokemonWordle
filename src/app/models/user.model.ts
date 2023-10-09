@@ -1,10 +1,8 @@
 
-
-
 export class Usuario{
     private id:number
     private name:string;
-     private password:string;
+    private password:string;
     private imagenScore:number;
     private hardScrore:number;
     private easyScore:number;

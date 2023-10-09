@@ -14,8 +14,8 @@ import { UserSystemComponent } from './user-system/user-system.component';
 import { HomeComponent } from './home/home.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
-import { ImageService } from './image.service';
-import { UsuariosServices } from './users.service';
+import { ImageService } from './services/image.service';
+import { UsuariosServices } from './services/users.service';
 
 @NgModule({
   declarations: [
