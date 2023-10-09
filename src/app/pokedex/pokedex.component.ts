@@ -7,19 +7,19 @@ import { Pokemon } from '../models/pokemon.model';
     styleUrls: ['./pokedex.component.scss']
 })
 export class PokedexComponent {
-    min:number = 1;
+    /* min:number = 1;
     max:number = 5;
     pokemonList: Pokemon[] = [];
     
 
-    /* ngOnInit() {
+    ngOnInit() {
         const storedData = localStorage.getItem("data");
         if (storedData) {
             this.data = JSON.parse(storedData);
         }
 
         this.renderTable();
-    } */
+    }
 
     
 
@@ -74,9 +74,5 @@ export class PokedexComponent {
         }
       }
       
-
-    /* viewPokemon(id: any) {
-        this.data = this.pokemonList.find(pokemon => pokemon.id === id);
-        localStorage.setItem("data", JSON.stringify(this.data));
-    } */
+ */
 }

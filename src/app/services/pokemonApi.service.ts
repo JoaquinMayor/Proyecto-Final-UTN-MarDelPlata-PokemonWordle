@@ -30,13 +30,15 @@ export class pokemonApiServices{
                     let urlPokemon = pokemon.url;
                     let resultPokemon = await fetch(urlPokemon);
                     let jsonPokemon = resultPokemon.json(); //primera pagina pokemon https://pokeapi.co/api/v2/pokemon-species/786/
-                    let id = jsonPokemon.id;
-                    let otherUrlPokemon = `https://pokeapi.co/api/v2/pokemon/${jsonPokemon.capture_rate}`;
+                    /* let id = jsonPokemon.id;
+                    let otherUrlPokemon = `https://pokeapi.co/api/v2/pokemon/${jsonPokemon.capture_rate}`; */
                 }
             } else {
                 alert("No se encontró la generacion");
             }
+        }catch(e){
+            console.log(e);
         }
-    }
+        }
     
 }

@@ -1,0 +1,174 @@
+.containerCreacionUsuario {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        border: 0.125rem solid rgba(116, 52, 52, 0.644);
+        border-radius: 5%;
+        background-color: rgba(189, 0, 0, 0.774);
+        font-size: 1.5rem;
+        text-align: center;
+        width: 30rem;
+        margin: 2rem;
+
+        legend {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0.5rem;
+            border: 0.125rem solid rgba(116, 52, 52, 0.644);
+            border-radius: 5%;
+            background-color: rgba(189, 0, 0, 0.774);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            width: 15rem;
+            font-family: 'Times New Roman', Times, serif;
+
+            &:focus {
+                outline: none;
+                border: 0.125rem solid rgba(255, 0, 0, 0.644);
+                background-color: rgba(255, 255, 255, 0.644);
+                color: black;
+            }
+        }
+
+        .desplegable {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 15rem;
+
+            .galeriaFotos {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                background-color: rgba(255, 255, 255, 0.644);
+                border: 0.125rem solid rgba(255, 0, 0, 0.644);
+                border-radius: 5%;
+                padding: 0.5rem;
+
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    border: 0.125rem solid rgba(255, 0, 0, 0.644);
+                    background-color: rgba(255, 255, 255, 0.644);
+                    transition: all ease 0.5s;
+
+                    &:hover {
+                        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.63);
+                        border: 0.125rem solid rgba(0, 0, 0, 0.63);
+                        transform: scale(1.05);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn {
+        padding: 0.5rem;
+        cursor: pointer;
+        border: 0.125rem solid rgba(255, 0, 0, 0.644);
+        background-color: rgba(255, 255, 255, 0.644);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all ease 0.5s;
+
+        &:hover {
+            background-color: rgba(199, 190, 190, 0.644);
+            color: black;
+        }
+    }
+
+    .fotoSeleccionada {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        border: 0.125rem solid rgba(255, 0, 0, 0.644);
+        background-color: rgba(255, 255, 255, 0.644);
+        transition: all ease 0.5s;
+
+        &:hover {
+            box-shadow: 0 0 2rem rgba(255, 230, 0, 0.63);
+            border: 0.125rem solid rgba(255, 230, 0, 0.63);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    }
+
+    h3,
+    h4 {
+        font-weight: 100;
+    }
+
+    .border-animation {
+        animation: border-color 5s infinite;
+    }
+
+    @keyframes border-color {
+        0% {
+            border-color: #93b954;
+            /* Color tipo Planta */
+        }
+
+        25% {
+            border-color: #C22E28;
+            /* Color tipo Fuego */
+        }
+
+        50% {
+            border-color: #4E6794;
+            /* Color tipo Agua */
+        }
+
+        75% {
+            border-color: #A33EA1;
+            /* Color tipo Veneno */
+        }
+
+        100% {
+            border-color: #F7D02C;
+            /* Color tipo Eléctrico */
+        }
+    }
+
+    .progress-bar {
+        width: 0;
+        height: 100%;
+        background-color: #F7D02C; /* Color de la barra */
+        animation: progress-animation 5s linear infinite;
+    }
+
+    @keyframes progress-animation {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+}

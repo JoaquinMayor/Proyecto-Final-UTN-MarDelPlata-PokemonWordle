@@ -1,32 +1,26 @@
+<section class="containerCreacionUsuario">
+    <fieldset>
+        <legend>Creación de Usuario</legend>
 
-    
-    
-        <fieldset>
-            <legend>Creación de Usuario</legend>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" placeholder="Ingrese su Nombre de Usuario" [(ngModel)]="name" required>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Ingrese su Contraseña" [(ngModel)]="password" required>
 
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" placeholder="Ingrese su Nombre de Usuario" [(ngModel)]="name" required>
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" placeholder="Ingrese su Contraseña" [(ngModel)]="password" required>
-            <label for="photo">Elija una Foto</label>
-            
-            <div>  
-                <h3>Seleccione una foto de Perfil:</h3>
-                <button (click)="show()">Opciones</button>
-                <div *ngIf="view == true" >
-                    <div *ngFor = "let photo of photos">
-                        <img [src]= "photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)">
-                    </div>
+        <div class="desplegable">
+            <h3>Seleccione una foto de Perfil:</h3>
+            <button (click)="show()" class="btn">Opciones</button>
+            <div *ngIf="view == true" class="galeriaFotos">
+                <div *ngFor="let photo of photos">
+                    <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
                 </div>
             </div>
-            <div *ngIf="selectedPhoto!='' ">
-                <h4>Foto Seleccionada:</h4>
-                <img [src]="selectedPhoto" alt="Foto Seleccionada">
+        </div>
+        <div *ngIf="selectedPhoto!='' ">
+            <h4>Foto Seleccionada:</h4>
+            <img [src]="selectedPhoto" alt="Foto Seleccionada" class="fotoSeleccionada">
+        </div>
 
-            </div>
-            
-            <input value="Registrarse" type="submit" (click)="addUser()" >
-
-        </fieldset>
-
-
+        <input value="Registrarse" type="submit" (click)="addUser()" class="btn">
+    </fieldset>
+</section>

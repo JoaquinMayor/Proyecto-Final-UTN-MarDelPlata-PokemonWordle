@@ -19,7 +19,7 @@ export class ImageService {
     ];
 
     getImageUrl(imageName: string): string {
-        return '../../assets/photos/${imageName}';
+        return `../../assets/photos/${imageName}`;
     }
 
     getAllImageUrls(): string[] {
