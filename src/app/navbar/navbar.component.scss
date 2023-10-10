@@ -49,10 +49,14 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             padding: 1rem;
             border-radius: 10%;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            max-height: 0;
+            visibility: hidden;
+            overflow: hidden;
+            transition: max-height 1.3s ease, visibility 1s ease;
 
             li {
                 margin-bottom: 5px;
-                transition: all ease 0.8s;
+                transition: background-color 0.3s ease;
                 padding: 0.3rem;
                 cursor: pointer;
 
@@ -86,7 +90,8 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         text-decoration: none;
     }
 
-    #dropdown.active {
-        display: block;
+    .active {
+        max-height: 1000px !important;
+        visibility: visible !important;
     }
 }

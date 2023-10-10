@@ -21,6 +21,8 @@
         margin: 2rem;
 
         legend {
+            position: relative;
+            display: inline-block;
             font-size: 1.5rem;
             text-align: center;
             padding: 0.5rem;
@@ -30,6 +32,43 @@
             width: 100%;
             margin: 0;
             padding: 0;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background-color: #F7D02C;
+                /* Color de la línea */
+                animation: line-animation 5s linear infinite;
+            }
+
+            @keyframes line-animation {
+                0% {
+                    width: 0;
+                    left: 50%;
+                    background-color: #ff0000;
+                }
+
+                40% {
+                    width: 100%;
+                    background-color: #F7D02C;
+                }
+
+                75% {
+                    width: 0;
+                    left: 50%;
+                    background-color: #2d70ff;
+                }
+
+                100% {
+                    width: 0;
+                    left: 50%;
+                }
+            }
         }
 
         input {
@@ -152,23 +191,6 @@
         100% {
             border-color: #F7D02C;
             /* Color tipo Eléctrico */
-        }
-    }
-
-    .progress-bar {
-        width: 0;
-        height: 100%;
-        background-color: #F7D02C; /* Color de la barra */
-        animation: progress-animation 5s linear infinite;
-    }
-
-    @keyframes progress-animation {
-        0% {
-            width: 0;
-        }
-
-        100% {
-            width: 100%;
         }
     }
 }
