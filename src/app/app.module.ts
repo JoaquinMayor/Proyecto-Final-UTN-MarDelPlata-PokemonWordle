@@ -16,6 +16,8 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { ImageService } from './services/image.service';
 import { UsuariosServices } from './services/users.service';
+import { PokemonApiServices } from './services/pokemonApi.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { UsuariosServices } from './services/users.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [ImageService, UsuariosServices],
+  providers: [ImageService, UsuariosServices,PokemonApiServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

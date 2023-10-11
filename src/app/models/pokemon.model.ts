@@ -7,7 +7,6 @@ export class Pokemon{
     private frontSprite:string;
     private backSprite:string;
     private eggGroup:string;
-    private regionPhoto:string;
     private description:string;
     private type1:string;
     private type2:string;
@@ -22,14 +21,13 @@ export class Pokemon{
     
 
     
-    constructor(id:number, name:string, generation:string, frontSprite:string, backSprite:string, eggGroup:string, regionPhoto:string, description:string, type1:string, type2:string, atk:number, specialAtk:number,speed:number, defense:number, specialDef:number, hp:number, heigth:number, weigth:number){
+    constructor(id:number, name:string, generation:string, frontSprite:string, backSprite:string, eggGroup:string, description:string, type1:string, type2:string, atk:number, specialAtk:number,speed:number, defense:number, specialDef:number, hp:number, heigth:number, weigth:number){
         this.id = id;
         this.name = name;
         this.generation = generation;
         this.frontSprite = frontSprite;
         this.backSprite = backSprite;
         this.eggGroup = eggGroup;
-        this.regionPhoto = regionPhoto;
         this.description = description;
         this.type1 = type1;
         this.type2 = type2;
@@ -99,9 +97,6 @@ export class Pokemon{
         return this.eggGroup;
     }
 
-    get getRegionPhoto(){
-        return this.regionPhoto;
-    }
 
     get getDescription(){
         return this.description;

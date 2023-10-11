@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ImageService } from '../services/image.service';
 import { UsuariosServices } from '../services/users.service';
 import { Usuario } from '../models/user.model';
+import { PokemonApiServices } from '../services/pokemonApi.service';
 
 
 @Component({
@@ -9,18 +10,20 @@ import { Usuario } from '../models/user.model';
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.scss']
 })
-export class UserCreateComponent {
+export class UserCreateComponent{
   name: string = "";
   password: string = "";
   image: string = "";
   photos: string[] = [];
+  
 
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService:ImageService, private userService:UsuariosServices) {
+  constructor(private photoService:ImageService, private userService:UsuariosServices, private jsonpokemon:PokemonApiServices) {
     this.photos = this.photoService.getAllImageUrls();
   }
+ 
 
   show() {
     this.view = !this.view;
@@ -31,8 +34,8 @@ export class UserCreateComponent {
   }
 
   addUser() {
-    console.log(this.name + " hola");
-    if (!this.userService.validateName(this.name)) {
+    
+    if (this.userService.validateName(this.name) == false) {
       if (!this.userService.validatePassword(this.password)) {
         let user = new Usuario(this.userService.users.length + 1, this.name, this.password, this.selectedPhoto);
         this.userService.chargeUsuario(user);
@@ -43,5 +46,10 @@ export class UserCreateComponent {
       alert("Nombre de usuario existente");
     }
     console.log(this.userService.users);
+  }
+
+  mostrarJson(){
+    this.jsonpokemon.listaSpeciesPokemon("3");
+    
   }
 }

@@ -45,15 +45,17 @@ export class UsuariosServices {
 
     validateName(name: string) {
         let flag = false;
-        if (this.users.length < 1) {
+        
+        if (this.users.length > 0) {
+            
             for (let user of this.users) {
-                if (user.getName === name || name === "") {
+                
+                if (name == user.getName || name == "") {
+                    
                     flag = true;
                 }
             }
         }
-
-
         return flag;
     }
 
