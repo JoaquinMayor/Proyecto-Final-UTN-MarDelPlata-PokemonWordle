@@ -70,18 +70,23 @@ export class PokemonApiServices{
             this.jsonSinglePokemon(pokemon.url).subscribe(
                 res => {
                     jsonPokemon = res;
+                    this.datesJsonPoke(jsonPokemon);
                     
-                    this.singlePokemonApi(jsonPokemon.id).subscribe(
-                        res =>{
-                            jsonPoke = res;
-                             this.createArrayPokemon(jsonPokemon,jsonPoke);
-                        }
-                    )
                 }
             );
      }
       console.log(this.pokemonArray);      
           
+    }
+
+    datesJsonPoke(jsonPokemon:any){
+        let jsonPoke:any;
+        this.singlePokemonApi(jsonPokemon.id).subscribe(
+            res =>{
+                jsonPoke = res;
+                 this.createArrayPokemon(jsonPokemon,jsonPoke);
+            }
+        )
     }
 
     createArrayPokemon(jsonPokemon:any, jsonPoke:any){
