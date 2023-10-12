@@ -1,18 +1,26 @@
 <header>
     <nav class="nav">
-        <a href="index.html">Volver</a>
+        <button class="back">Volver</button>
         <h1>PokeWordle</h1>
-        <div class="navbar__menu">
-            <div class="menuVistaUsuario" (click)="toggleDropdown()">
-                <p>Nombre Usuario</p>
-                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" alt="Imagen de Usuario">
-            </div>
-
-            <ul class="menu-dropdown" [class.active]="dropdownActive">
-                <li><a routerLink="/scores">Puntajes</a></li>
-                <li><a routerLink="/settings">Configuración</a></li>
-                <li><a routerLink="/logout">Cerrar sesión</a></li>
-            </ul>
-        </div>
+        <section class="navbar_menu" *ngIf="user.getId===0; else log">
+            <a (click)="logging()">Loguearse</a>
+        </section>
+        <ng-template  #log>
+            <section class="navbar__menu">
+                <div class="menuVistaUsuario" (click)="toggleDropdown()">
+                
+                    <p>{{user.getName}}</p>
+                    <img [src]="user.getPhoto" alt="Imagen de Usuario">
+                </div>
+    
+                <ul class="menu-dropdown" [class.active]="dropdownActive">
+                    <li><a routerLink="/scores">Puntajes</a></li>
+                    <li><a routerLink="/settings">Configuración</a></li>
+                    <li><button (click)="logOut()">Desconectar</button></li>
+                </ul>
+            </section>
+            
+        </ng-template>
     </nav>
+    <button (click)="prueba()">Prueba</button>
 </header>

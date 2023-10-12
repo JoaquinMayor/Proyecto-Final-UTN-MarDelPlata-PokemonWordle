@@ -12,7 +12,7 @@ export class UserSystemComponent {
 
   name: string = "";
   password: string = "";
-  user: Usuario = this.usersService.client;
+  user: Usuario = this.usersService.user;
   viewPhoto: boolean = false;
   viewName: boolean = false;
   viewPassword: boolean = false;
@@ -34,7 +34,7 @@ export class UserSystemComponent {
   validate() {
     let flag = false;
 
-    if (this.usersService.client.getName != "") {
+    if (this.usersService.user.getName != "") {
       flag = true;
     }
 

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsuariosServices } from '../services/users.service';
+import { Usuario } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,8 +10,35 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   dropdownActive: boolean = false;
+  name:string ="";
+  password:string ="";
+ 
+
+  constructor(private userService:UsuariosServices, private router:Router){}
+  
+  get user(): Usuario {
+    return this.userService.user;
+  }
 
   toggleDropdown() {
     this.dropdownActive = !this.dropdownActive;
+    
   }
+
+  prueba(){
+    this.router.navigate(["/logging"])
+  }
+
+  logging(){
+    this.router.navigate(["/logging"])
+  }
+
+  logOut(){
+    this.userService.logout();
+    this.router.navigate(["/home"])
+  }
+
+  
+
+  
 }

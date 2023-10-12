@@ -3,7 +3,7 @@ import { Usuario } from "../models/user.model";
 
 @Injectable({ providedIn: 'root' })
 export class UsuariosServices {
-    client: Usuario = new Usuario(0, "", "", "");
+    user: Usuario = new Usuario(0, "", "", "");
     users: Usuario[] = [];
 
     chargeUsuario(user: Usuario) {
@@ -75,13 +75,19 @@ export class UsuariosServices {
         for (let user of this.users) {
             if (user.getName === name) {
                 if (user.getPassword === password) {
-                    this.client = user;
+                    this.user = user;
                 } else {
-                    alert("Contrasela Incorrecta")
+                    alert("Contrasela Incorrecta");
+                    flag =  false;
                 }
             } else {
                 alert("Nombre de usuario incorrecto");
+                flag = false
             }
         }
+    }
+
+    logout(){
+        this.user = new Usuario(0, "", "", "");
     }
 }

@@ -5,6 +5,7 @@ import { PokedexComponent } from './pokedex/pokedex.component';
 import { HomeComponent } from './home/home.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.component';
+import { LogginUserComponent } from './loggin-user/loggin-user.component';
 
 const routes: Routes = [
   /* { path: '', component: WordleDificilComponent }, */
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'pokedex', component: PokedexComponent },
   { path: 'pokemon', component: UniquePokemonComponent },
   { path: 'create', component:  HomeComponent },
+  {path: 'logging', component: LogginUserComponent},
   {
     path:'**',
     redirectTo:'home'

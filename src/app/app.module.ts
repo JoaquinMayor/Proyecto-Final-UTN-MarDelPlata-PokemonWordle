@@ -18,6 +18,7 @@ import { ImageService } from './services/image.service';
 import { UsuariosServices } from './services/users.service';
 import { PokemonApiServices } from './services/pokemonApi.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LogginUserComponent } from './loggin-user/loggin-user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     UserSystemComponent,
     HomeComponent,
     UserCreateComponent,
+    LogginUserComponent,
   ],
   imports: [
     BrowserModule,
