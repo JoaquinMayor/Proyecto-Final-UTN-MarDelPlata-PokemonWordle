@@ -31,21 +31,31 @@ export class PokemonApiServices{
         return this.httpClient.get(url);     
     }
 
-    obtenerListaPokemonApi(generation:string){ //obtiene el dato de la generacion en formato json
-
-        this.generationPokemonApi(generation).subscribe(
-            res=>{
-                this.pokemonSpecies = res;    
-            }
-        )
-    }
-
-    listaSpeciesPokemon(generation:string){ //Guarda la lista de especies de pokemon de esa generacion
-        this.obtenerListaPokemonApi(generation);
-        for (let pokemon of this.pokemonSpecies.pokemon_species) {
-            this.pokemonSpeciesURLList.push(pokemon);
+    obtenerListaPokemonApi(generation:string):Promise<any>{ //obtiene el dato de la generacion en formato json
+        return new Promise<any>((resolve, reject) => {
+            this.generationPokemonApi(generation).subscribe(
+              res => {
+                this.pokemonSpecies = res;
+                resolve(undefined); // Resolvemos la promesa sin ningún valor adicional
+              },
+              error => {
+                reject(error); // Rechazamos la promesa con el error recibido
+              }
+            );
+          });
         }
-        this.datesSinglePokemons();
+
+    async listaSpeciesPokemon(generation:string){ //Guarda la lista de especies de pokemon de esa generacion
+        try{
+            await this.obtenerListaPokemonApi(generation);
+            for (let pokemon of this.pokemonSpecies.pokemon_species) {
+                this.pokemonSpeciesURLList.push(pokemon);
+            }
+            this.datesSinglePokemons();
+        }catch(e){
+            console.error(e);
+        }
+       
     }
 
     datesSinglePokemons(){
