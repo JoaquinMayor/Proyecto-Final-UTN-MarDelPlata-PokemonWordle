@@ -1,0 +1,91 @@
+// Define los colores de la paleta de Pokémon
+$colorFondoPrincipal: #F0FFF0;
+$colorContenedor: #FFFAF0;
+$colorSubContenedor: #F0FFFF;
+
+.mainUniquePokemon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: $colorFondoPrincipal;
+
+    #cuerpo {
+        display: flex;
+        flex-direction: column;
+        min-width: 60vw;
+        max-width: 70vw;
+
+        .subContainer {
+            display: flex;
+            align-items: center;
+
+            #cabecera-datos {
+                display: flex;
+                flex-direction: column;
+                margin: 1.5rem;
+                background-color: $colorContenedor;
+                border-radius: 5%;
+
+                h3 {
+                    border-bottom: 2px solid #ff0e0e;
+                    width: 100%;
+                    max-width: 30vw;
+                    margin-left: 1rem;
+                }
+
+                p {
+                    border-radius: 5%;
+                    margin: 0.5rem;
+                    padding: 0.5rem;
+                    max-width: 50vw;
+                }
+            }
+
+            .containerRegion-Huevo {
+                display: flex;
+                flex-direction: column;
+                width: fit-content;
+                background-color: $colorContenedor;
+                min-width: 10vw;
+                padding: 0.5rem;
+                border-radius: 5%;
+                gap: 1rem;
+                list-style: none;
+            }
+        }
+
+        .containerStats {
+            margin-left: 2rem;
+            background-color: $colorContenedor;
+            padding: 2rem;
+            border-radius: 5%;
+
+            #stats {
+                list-style: none;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+
+    .sectionImgUniquePokemon {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+
+        #imagen-tipo {
+            #foto {
+                border: 2px solid $colorSubContenedor;
+                border-radius: 30%;
+            }
+
+            #lista-tipo {
+                display: flex;
+                gap: 2rem;
+                justify-content: space-around;
+                list-style: none;
+            }
+        }
+    }
+}

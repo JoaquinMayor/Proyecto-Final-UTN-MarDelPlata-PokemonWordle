@@ -1,27 +1,23 @@
+export class Pokemon {
+    private id: number;
+    private name: string;
+    private generation: string;
+    private frontSprite: string;
+    private backSprite: string;
+    private eggGroup: string;
+    private description: string;
+    private type1: string;
+    private type2: string;
+    private atk: number;
+    private specialAtk: number;
+    private speed: number;
+    private defense: number;
+    private specialDef: number;
+    private hp: number
+    private heigth: number;
+    private weight: number;
 
-
-export class Pokemon{
-    private id:number;
-    private name:string;
-    private generation:string;
-    private frontSprite:string;
-    private backSprite:string;
-    private eggGroup:string;
-    private description:string;
-    private type1:string;
-    private type2:string;
-    private atk:number;
-    private specialAtk:number;
-    private speed:number;
-    private defense:number;
-    private specialDef:number;
-    private hp:number
-    private heigth:number;
-    private weight:number;
-    
-
-    
-    constructor(id:number, name:string, generation:string, frontSprite:string, backSprite:string, eggGroup:string, description:string, type1:string, type2:string, atk:number, specialAtk:number,speed:number, defense:number, specialDef:number, hp:number, heigth:number, weigth:number){
+    constructor(id: number, name: string, generation: string, frontSprite: string, backSprite: string, eggGroup: string, description: string, type1: string, type2: string, atk: number, specialAtk: number, speed: number, defense: number, specialDef: number, hp: number, heigth: number, weigth: number) {
         this.id = id;
         this.name = name;
         this.generation = generation;
@@ -41,72 +37,72 @@ export class Pokemon{
         this.weight = weigth
     }
 
-    get getId(){
+    get getId() {
         return this.id;
     }
 
-    get getName(){
+    get getName() {
         return this.name;
     }
 
-    get getGeneration(){
+    get getGeneration() {
         return this.generation;
     }
 
-    get getAtk(){
+    get getAtk() {
         return this.atk;
     }
 
-    get getSpecialAtl(){
+    get getSpecialAtl() {
         return this.specialAtk;
     }
 
-    get getSpeed(){
+    get getSpeed() {
         return this.speed;
     }
 
-    get getDefense(){
+    get getDefense() {
         return this.defense
     }
 
-    get getSpecialDef(){
+    get getSpecialDef() {
         return this.specialDef;
     }
 
-    get getHp(){
+    get getHp() {
         return this.hp;
     }
 
-    get getHeigth(){
+    get getHeigth() {
         return this.heigth;
     }
 
-    get getWeigth(){
+    get getWeigth() {
         return this.weight
     }
 
-    get getFrontSprite(){
+    get getFrontSprite() {
         return this.frontSprite;
     }
 
-    get getBackSprite(){
+    get getBackSprite() {
         return this.backSprite;
     }
 
-    get getEggGroup(){
+    get getEggGroup() {
         return this.eggGroup;
     }
 
 
-    get getDescription(){
+    get getDescription() {
         return this.description;
     }
 
-    get getType1(){
+    get getType1() {
         return this.type1;
     }
 
-    get getType2(){
+    get getType2() {
         return this.type2;
     }
 

@@ -1,6 +1,6 @@
 <section class="mainWordle">
-    <!--         <section class="modalRegiones containerPrincipal">
-        <select name="" id="" aria-placeholder="Generacion a seleccionar">
+    <section class="modalRegiones containerPrincipal" *ngIf="show === false; else game">
+        <select name="" id="" aria-placeholder="Generacion a seleccionar" [(ngModel)]="generation" (change)="choiceGeneration($event)">
             <option value="">Generacion a seleccionar</option>
             <option value="1">1° Generación</option>
             <option value="2">2° Generación</option>
@@ -13,9 +13,10 @@
             <option value="9">9° Generación</option>
         </select>
 
-        <button>Aceptar</button>
-    </section> -->
+        <button (click)="showGame()">Aceptar</button>
+    </section>
 
+    <ng-template #game>
     <section class="containerWorleFacil">
         <section class="subContainer">
             <input type="text" placeholder="Escribir nombre del Pokemon">
@@ -45,4 +46,5 @@
             </li>
         </ul>
     </section>
+</ng-template>
 </section>
