@@ -10,15 +10,15 @@ import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
 import { ImageWordleComponent } from './image-wordle/image-wordle.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.component';
-import { UserSystemComponent } from './user-system/user-system.component';
+import { UserSystemComponent } from './user/user-system/user-system.component';
 import { HomeComponent } from './home/home.component';
-import { UserCreateComponent } from './user-create/user-create.component';
+import { UserCreateComponent } from './user/user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { ImageService } from './services/image.service';
 import { UsuariosServices } from './services/users.service';
 import { PokemonApiServices } from './services/pokemonApi.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { LogginUserComponent } from './loggin-user/loggin-user.component';
+import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
 
 @NgModule({
   declarations: [

@@ -26,11 +26,7 @@ export class NavbarComponent {
   }
 
   prueba(){
-    this.router.navigate(["/logging"])
-  }
-
-  logging(){
-    this.router.navigate(["/logging"])
+    this.router.navigate(["user/logging"])
   }
 
   logOut(){
@@ -38,7 +34,8 @@ export class NavbarComponent {
     this.router.navigate(["/home"])
   }
 
-  
-
+  goBack(){
+    this.router.navigate(["/home"]);
+  }
   
 }

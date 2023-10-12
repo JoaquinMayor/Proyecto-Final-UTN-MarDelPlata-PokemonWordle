@@ -1,7 +1,7 @@
 <h2>Nombre: {{user.getName}}</h2>
 <button (click)="showName()"></button>
 
-<div *ngIf="showName">
+<div *ngIf="viewName">
     <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
     <button (click)="changeName()">Cambiar</button>
 </div>
@@ -9,7 +9,7 @@
 <h2>Contraseña: {{user.getPassword}}</h2>
 <button (click)="showPassword()"></button>
 
-<div *ngIf="showPassword">
+<div *ngIf="viewPassword">
     <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
 </div>
 

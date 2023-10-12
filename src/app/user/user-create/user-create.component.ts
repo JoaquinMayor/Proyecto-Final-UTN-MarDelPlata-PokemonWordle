@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ImageService } from '../services/image.service';
-import { UsuariosServices } from '../services/users.service';
-import { Usuario } from '../models/user.model';
-import { PokemonApiServices } from '../services/pokemonApi.service';
+import { ImageService } from '../../services/image.service';
+import { UsuariosServices } from '../../services/users.service';
+import { Usuario } from '../../models/user.model';
+import { PokemonApiServices } from '../../services/pokemonApi.service';
 
 
 @Component({

@@ -1,9 +1,9 @@
 <header>
     <nav class="nav">
-        <button class="back">Volver</button>
+        <a class="back" [routerLink]="['/home']">Volver</a>
         <h1>PokeWordle</h1>
         <section class="navbar_menu" *ngIf="user.getId===0; else log">
-            <a (click)="logging()">Loguearse</a>
+            <a [routerLink]="['user/logging']">Loguearse</a>
         </section>
         <ng-template  #log>
             <section class="navbar__menu">
@@ -14,8 +14,8 @@
                 </div>
     
                 <ul class="menu-dropdown" [class.active]="dropdownActive">
-                    <li><a routerLink="/scores">Puntajes</a></li>
-                    <li><a routerLink="/settings">Configuración</a></li>
+                    <li><a [routerLink]="['user/modify', user.getId]">Puntajes</a></li>
+                    <li><a [routerLink]="">Configuración</a></li>
                     <li><button (click)="logOut()">Desconectar</button></li>
                 </ul>
             </section>

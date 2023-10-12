@@ -31,8 +31,21 @@ export class UsuariosServices {
         return userExist;
     }
 
+    findUser(name:string){
+        let flag:boolean = false;
+       
+        for (const user of this.users) {
+            if(name === user.getName){
+                flag = true;
+                break;
+            }
+        }
+
+        return flag;
+    }
+
     editUser(user: Usuario) {
-        let flag = false;
+        let flag:boolean = false;
         if (user && this.users.length != 0) {
             for (let i = 0; i < this.users.length && flag == false; i++) {
                 if (user.getId == this.users[i].getId) {
