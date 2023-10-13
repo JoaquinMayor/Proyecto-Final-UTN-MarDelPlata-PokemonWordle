@@ -1,34 +1,43 @@
-<h2>Nombre: {{user.getName}}</h2>
-<button (click)="showName()"></button>
+<section class="containerModifyUser">
+    <section class="containerModifyUserNamexPassword">
+        <h2>Nombre: {{user.getName}}</h2>
+        <button (click)="showName()"></button>
+    </section>
 
-<div *ngIf="viewName">
-    <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
-    <button (click)="changeName()">Cambiar</button>
-</div>
-
-<h2>Contraseña: {{user.getPassword}}</h2>
-<button (click)="showPassword()"></button>
-
-<div *ngIf="viewPassword">
-    <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
-</div>
-
-<img [src]="user.getPhoto" alt="Foto de Perfil">
-<button (click)="showPhoto()">Opciones</button>
-<div *ngIf="viewPhoto == true">
-    <div *ngFor="let photo of photos">
-        <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)">
+    <div *ngIf="viewName" class="containerNamexpassword">
+        <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
+        <button (click)="changeName()">Cambiar</button>
     </div>
-</div>
 
-<div *ngIf="user.getPhoto ">
-    <h4>Foto Seleccionada:</h4>
-    <img [src]="user.getPhoto" alt="Foto Seleccionada">
+    <section class="containerModifyUserNamexPassword">
+        <h2>Contraseña: {{user.getPassword}}</h2>
+        <button (click)="showPassword()"></button>
+    </section>
 
-</div>
+    <div *ngIf="viewPassword" class="containerNamexpassword">
+        <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
+    </div>
 
-<h2>Punción Imagenes: {{user.getImageScore}}</h2>
+    <div class="desplegable">
+        <img [src]="user.getPhoto" alt="Foto de Perfil">
+        <button (click)="showPhoto()" class="btn">Opciones</button>
+        <div *ngIf="viewPhoto == true" class="galeriaFotos">
+            <div *ngFor="let photo of photos">
+                <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+            </div>
+        </div>
+    </div>
 
-<h2>Punción Wordle Difícil: {{user.getHardScore}}</h2>
+    <div *ngIf="user.getPhoto " class="containerPhotoSelected">
+        <h4>Foto Seleccionada:</h4>
+        <img [src]="user.getPhoto" alt="Foto Seleccionada" class="fotoSeleccionada">
+    </div>
 
-<h2>Punción Wordle Fácil: {{user.getEasyScore}}</h2>
+    <section class="containerScore">
+        <h2>Puntuación Imagenes: {{user.getImageScore}}</h2>
+
+        <h2>Puntuación Wordle Difícil: {{user.getHardScore}}</h2>
+
+        <h2>Puntuación Wordle Fácil: {{user.getEasyScore}}</h2>
+    </section>
+</section>

@@ -1,0 +1,199 @@
+.containerModifyUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border: 0.125rem solid rgba(116, 52, 52, 0.644);
+    border-radius: 5%;
+    background-color: rgba(189, 0, 0, 0.774);
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 2rem;
+    min-height: 100vh;
+
+    .containerModifyUserNamexPassword {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        border: 0.125rem solid rgba(116, 52, 52, 0.644);
+        border-radius: 5%;
+        background-color: rgba(189, 0, 0, 0.774);
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 2rem;
+
+        button {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 0.125rem solid rgba(255, 0, 0, 0.644);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all ease 0.5s;
+
+            &:hover {
+                background-color: rgba(199, 190, 190, 0.644);
+                color: black;
+            }
+        }
+    }
+
+    .containerNamexpassword {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        border: 0.125rem solid rgba(116, 52, 52, 0.644);
+        border-radius: 5%;
+        background-color: rgba(189, 0, 0, 0.774);
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 2rem;
+
+        input {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 0.125rem solid rgba(255, 0, 0, 0.644);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all ease 0.5s;
+        }
+
+        button {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 0.125rem solid rgba(255, 0, 0, 0.644);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all ease 0.5s;
+
+            &:hover {
+                background-color: rgba(199, 190, 190, 0.644);
+                color: black;
+            }
+        }
+    }
+
+    .desplegable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 15rem;
+
+        .galeriaFotos {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.644);
+            border: 0.125rem solid rgba(255, 0, 0, 0.644);
+            border-radius: 5%;
+            padding: 0.5rem;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 0.125rem solid rgba(255, 0, 0, 0.644);
+                background-color: rgba(255, 255, 255, 0.644);
+                transition: all ease 0.5s;
+
+                &:hover {
+                    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.63);
+                    border: 0.125rem solid rgba(0, 0, 0, 0.63);
+                    transform: scale(1.05);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .border-animation {
+        animation: border-color 5s infinite;
+    }
+
+    @keyframes border-color {
+        0% {
+            border-color: #93b954;
+            /* Color tipo Planta */
+        }
+
+        25% {
+            border-color: #C22E28;
+            /* Color tipo Fuego */
+        }
+
+        50% {
+            border-color: #4E6794;
+            /* Color tipo Agua */
+        }
+
+        75% {
+            border-color: #A33EA1;
+            /* Color tipo Veneno */
+        }
+
+        100% {
+            border-color: #F7D02C;
+            /* Color tipo Eléctrico */
+        }
+    }
+
+    .fotoSeleccionada {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        border: 0.125rem solid rgba(255, 0, 0, 0.644);
+        background-color: rgba(255, 255, 255, 0.644);
+        transition: all ease 0.5s;
+
+        &:hover {
+            box-shadow: 0 0 2rem rgba(255, 230, 0, 0.63);
+            border: 0.125rem solid rgba(255, 230, 0, 0.63);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    }
+
+    .btn {
+        padding: 0.5rem;
+        cursor: pointer;
+        border: 0.125rem solid rgba(255, 0, 0, 0.644);
+        background-color: rgba(255, 255, 255, 0.644);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all ease 0.5s;
+
+        &:hover {
+            background-color: rgba(199, 190, 190, 0.644);
+            color: black;
+        }
+    }
+
+    .containerScore{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        border: 0.125rem solid rgba(116, 52, 52, 0.644);
+        border-radius: 5%;
+        background-color: rgba(189, 0, 0, 0.774);
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 2rem;
+        width: 50rem;
+    }
+}
