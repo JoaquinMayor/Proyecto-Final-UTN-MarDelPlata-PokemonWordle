@@ -12,6 +12,25 @@
     text-align: center;
     margin: 2rem;
     min-height: 100vh;
+    color: black;
+    h2{
+        font-weight: 100;
+    }
+
+    .containerPrincipal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        color: black;
+    }
+
+    .containerPrincipalModifyUserNamePassword {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     .containerModifyUserNamexPassword {
         display: flex;
@@ -19,13 +38,14 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        padding: 2rem;
+        padding: 1rem;
         border: 0.125rem solid rgba(116, 52, 52, 0.644);
         border-radius: 5%;
-        background-color: rgba(189, 0, 0, 0.774);
+        background-color: #dbe0e5e3;
         font-size: 1.5rem;
         text-align: center;
-        margin: 2rem;
+        margin: 1rem;
+        width: 15rem;
 
         button {
             padding: 0.5rem;
@@ -48,16 +68,16 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        padding: 2rem;
+        padding: 1rem;
         border: 0.125rem solid rgba(116, 52, 52, 0.644);
         border-radius: 5%;
         background-color: rgba(189, 0, 0, 0.774);
         font-size: 1.5rem;
         text-align: center;
-        margin: 2rem;
+        margin: 1rem;
 
         input {
-            padding: 0.5rem;
+            padding: 0.3rem;
             cursor: pointer;
             border: 0.125rem solid rgba(255, 0, 0, 0.644);
             border-radius: 0.5rem;
@@ -66,7 +86,7 @@
         }
 
         button {
-            padding: 0.5rem;
+            padding: 0.3rem;
             cursor: pointer;
             border: 0.125rem solid rgba(255, 0, 0, 0.644);
             border-radius: 0.5rem;
@@ -181,7 +201,7 @@
         }
     }
 
-    .containerScore{
+    .containerScore {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -190,7 +210,7 @@
         padding: 2rem;
         border: 0.125rem solid rgba(116, 52, 52, 0.644);
         border-radius: 5%;
-        background-color: rgba(189, 0, 0, 0.774);
+        background-color: #dbe0e5e3;
         font-size: 1.5rem;
         text-align: center;
         margin: 2rem;

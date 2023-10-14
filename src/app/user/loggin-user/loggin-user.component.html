@@ -3,14 +3,15 @@
 
 <section class="containerLogin">
    <form #f="ngForm" (ngSubmit)="f.form.valid && logging(f)">
-        <fieldset class="containerLogin">
-        <legend>Logging</legend>
-        <label for="name">Nombre:</label>
-        <input type="text" name="name" class="name" id="name" placeholder="Ingrese su nombre de usuario" required ngModel>
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" class="password" id="password" placeholder="Ingrese su contraseña" required ngModel>
-        <input type="submit" class="btn" id="btn" value="Loguearse">
-        </fieldset>
+      <fieldset>
+         <legend>Logging</legend>
+         <label for="name">Nombre:</label>
+         <input type="text" name="name" class="name" id="name" placeholder="Ingrese su nombre de usuario" required
+            ngModel>
+         <label for="password">Contraseña:</label>
+         <input type="password" name="password" class="password" id="password" placeholder="Ingrese su contraseña"
+            required ngModel>
+         <input type="submit" class="btn" id="btn" value="Loguearse">
+      </fieldset>
    </form>
-    
 </section>

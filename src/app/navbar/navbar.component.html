@@ -2,25 +2,21 @@
     <nav class="nav">
         <a class="back" [routerLink]="['/home']">Volver</a>
         <h1>PokeWordle</h1>
-        <section class="navbar_menu" *ngIf="user.getId===0; else log">
+        <section class="navbar_menuSinLog" *ngIf="user.getId===0; else log">
             <a [routerLink]="['user/create']">Crear Cuenta</a>
             <a [routerLink]="['user/logging']">Loguearse</a>
         </section>
-        <ng-template  #log>
+        <ng-template #log>
             <section class="navbar__menu">
                 <div class="menuVistaUsuario" (click)="toggleDropdown()">
-                
                     <p>{{user.getName}}</p>
                     <img [src]="user.getPhoto" alt="Imagen de Usuario">
                 </div>
-    
                 <ul class="menu-dropdown" [class.active]="dropdownActive">
-                    <li><a [routerLink]="['user/modify', user.getId]">Puntajes</a></li>
-                    <li><a [routerLink]="">Configuración</a></li>
+                    <li><a [routerLink]="['user/modify', user.getId]">Configuracion</a></li>
                     <li><button (click)="logOut()">Desconectar</button></li>
                 </ul>
             </section>
-            
         </ng-template>
     </nav>
     <button (click)="prueba()">Prueba</button>

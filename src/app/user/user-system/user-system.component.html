@@ -1,35 +1,37 @@
 <section class="containerModifyUser">
-    <section class="containerModifyUserNamexPassword">
-        <h2>Nombre: {{user.getName}}</h2>
-        <button (click)="showName()"></button>
+    <section class="containerPrincipal">
+    <section class="containerPrincipalModifyUserNamePassword">
+        <section class="containerModifyUserNamexPassword">
+            <h2>Nombre: {{user.getName}}</h2>
+            <button (click)="showName()"></button>
+        </section>
+
+        <section *ngIf="viewName" class="containerNamexpassword">
+            <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
+            <button (click)="changeName()">Cambiar</button>
+        </section>
+
+        <section class="containerModifyUserNamexPassword">
+            <h2>Contraseña: {{user.getPassword}}</h2>
+            <button (click)="showPassword()"></button>
+        </section>
+
+        <section *ngIf="viewPassword" class="containerNamexpassword">
+            <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
+            <button (click)="changePassword()">Cambiar</button>
+        </section>
     </section>
 
-    <div *ngIf="viewName" class="containerNamexpassword">
-        <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
-        <button (click)="changeName()">Cambiar</button>
-    </div>
-
-    <section class="containerModifyUserNamexPassword">
-        <h2>Contraseña: {{user.getPassword}}</h2>
-        <button (click)="showPassword()"></button>
-    </section>
-
-    <div *ngIf="viewPassword" class="containerNamexpassword">
-        <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
-        <button (click)="changePassword()">Cambiar</button>
-    </div>
-
-    <div class="desplegable">
-        <img [src]="user.getPhoto" alt="Foto de Perfil">
+    <section class="desplegable">
+        <img [src]="user.getPhoto" alt="Foto de Perfil" class="fotoSeleccionada">
         <button (click)="showPhoto()" class="btn">Opciones</button>
         <div *ngIf="viewPhoto == true" class="galeriaFotos">
             <div *ngFor="let photo of photos">
                 <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
             </div>
         </div>
-    </div>
-
-    
+    </section>
+</section>
 
     <section class="containerScore">
         <h2>Puntuación Imagenes: {{user.getImageScore}}</h2>

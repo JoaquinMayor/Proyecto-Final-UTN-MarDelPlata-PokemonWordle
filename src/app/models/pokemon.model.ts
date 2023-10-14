@@ -93,7 +93,6 @@ export class Pokemon {
         return this.eggGroup;
     }
 
-
     get getDescription() {
         return this.description;
     }
@@ -105,6 +104,4 @@ export class Pokemon {
     get getType2() {
         return this.type2;
     }
-
-
 }

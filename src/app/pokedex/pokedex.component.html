@@ -1,14 +1,27 @@
-<!-- <section class="containerPrincipal">
-    <form class="containerForm" id="containerForm">
-        <label for="nombre">Buscar Pokémon:</label>
-        <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" (keyup)="filterPokemons(nombreInput.value)">
-    </form>
-    <ul id="lista" class="lista">
-        <a href="./pokemon.html" (click)="viewPokemon(pokemon.id)" *ngFor="let pokemon of pokemonList">
-            <li class="pokemon">
-              Nombre: {{ pokemon.name }}
-              <img [src]= "pokemon.sprites.front_default" alt="Pokemon" />
-            </li>
-          </a>
-    </ul>
-</section> -->
+<section class="containerPrincipal">
+  <form class="containerForm" id="containerForm">
+    <label for="nombre">Buscar Pokémon:</label>
+    <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre"
+      (input)="filterPokemons(nombreInput.value)">
+    <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)">
+      <option value="">Generacion a seleccionar</option>
+      <option value="1">1° Generación</option>
+      <option value="2">2° Generación</option>
+      <option value="3">3° Generación</option>
+      <option value="4">4° Generación</option>
+      <option value="5">5° Generación</option>
+      <option value="6">6° Generación</option>
+      <option value="7">7° Generación</option>
+      <option value="8">8° Generación</option>
+      <option value="9">9° Generación</option>
+    </select>
+  </form>
+  <ul id="lista" class="lista">
+    <li *ngFor="let pokemon of pokemonList" class="pokemon">
+      <a href="./pokemon.html">
+        <span class="nombre">{{ pokemon.getName }}</span>
+        <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
+      </a>
+    </li>
+  </ul>
+</section>

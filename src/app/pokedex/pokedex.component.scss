@@ -11,6 +11,7 @@ $background-color_3: wheat;
     gap: 2rem;
     align-items: center;
     min-height: 100vh;
+    font-weight: 600;
 
     .containerForm {
         display: flex;
@@ -19,19 +20,17 @@ $background-color_3: wheat;
         align-items: center;
         gap: 2rem;
         background-color: $background-color_2;
-        width: 100%;
-        max-width: 30rem;
-        height: 100%;
-        min-height: 3rem;
-        max-height: 10rem;
+        width: fit-content;
+        padding: 1rem;
         border-radius: 3%;
 
         #nombre {
             padding: 0.5rem;
+            width: 11rem;
         }
 
-        .btnBuscar {
-            padding: 0.5rem;
+        select {
+            width: fit-content;
         }
     }
 
@@ -39,6 +38,7 @@ $background-color_3: wheat;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         width: fit-content;
         list-style: none;
         text-align: center;
@@ -49,12 +49,13 @@ $background-color_3: wheat;
         gap: 1rem;
 
         .pokemon {
-            background-color: $background-color_3;
-            width: 100%;
-            max-width: 15rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            background-color: $background-color_3;
+            width: 100%;
+            max-width: 15rem;
             border-radius: 5%;
             margin: 0.3rem;
             transition: all ease 0.5s;
@@ -62,6 +63,15 @@ $background-color_3: wheat;
             &:hover {
                 transform: scale(1.05);
                 cursor: pointer;
+            }
+
+            a {
+                text-decoration: none;
+                display: flex;
+                color: black;
+                font-weight: 600;
+                text-align: center;
+                align-items: center;
             }
 
             img {

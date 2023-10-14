@@ -1,78 +1,47 @@
 import { Component } from '@angular/core';
-import 'tslib';
 import { Pokemon } from '../models/pokemon.model';
+import { PokemonApiServices } from '../services/pokemonApi.service';
+
 @Component({
-    selector: 'app-pokedex',
-    templateUrl: './pokedex.component.html',
-    styleUrls: ['./pokedex.component.scss']
+  selector: 'app-pokedex',
+  templateUrl: './pokedex.component.html',
+  styleUrls: ['./pokedex.component.scss']
 })
 export class PokedexComponent {
-    /* min:number = 1;
-    max:number = 5;
-    pokemonList: Pokemon[] = [];
-    
+  pokemonList: Pokemon[] = [];
+  generation: string = '1';
 
-    ngOnInit() {
-        const storedData = localStorage.getItem("data");
-        if (storedData) {
-            this.data = JSON.parse(storedData);
-        }
+  constructor(private pokemonApiServices: PokemonApiServices) { }
 
-        this.renderTable();
+  ngOnInit() {
+    this.renderTable();
+  }
+
+  async renderTable() {
+    await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
+    this.pokemonList = this.pokemonApiServices.pokemonArray;
+  }
+
+  choiceGeneration(event: any) {
+    this.generation = event.target.value;
+  }
+
+  filterPokemons(text: string) {
+    console.log('filterPokemons called:', text);
+    let filteredList = [];
+
+    if (text.trim() !== '') {
+      filteredList = this.pokemonList.filter((pokemon) =>
+        pokemon.getName.toLowerCase().includes(text.toLowerCase())
+      );
+    } else {
+      filteredList = this.pokemonList;
     }
 
-    
+    this.showPokemons(filteredList);
+  }
 
-    async createPokemonList() {
-        const pokemons = [];
-        let pokemon;
-        for (let i = this.min; i < this.max; i++) {
-            pokemon = await this.fetchPokemon(i);
-            pokemons.push(pokemon);
-        }
-
-        return pokemons;
-    }
-
-    async renderTable() {
-        this.pokemonList = await this.createPokemonList();
-        //this.showPokemons(this.pokemonList);
-    }
-
-    async filterPokemons(text: string) {
-        let filteredList = [];
-
-        if (text.trim() !== "") {
-            filteredList = this.pokemonList.filter((pokemon) =>
-                pokemon.name.toLowerCase().includes(text.toLowerCase())
-            );
-            
-        } else {
-            filteredList = this.pokemonList;
-        }
-
-        this.showPokemons(filteredList);
-    }
-
-    showPokemons(pokemons: any) {
-        const table = document.getElementById("lista");
-        let html = "";
-      
-        for (const element of pokemons) {
-          html += `
-            <a href="./pokemon.html" (click)="viewPokemon(${element.id})">
-              <li class="pokemon">Nombre: ${element.name}
-                <img src="${element.sprites.front_default}" alt="Pokemon" />
-              </li>
-            </a>
-          `;
-        }
-      
-        if (table) {
-          table.innerHTML = "";
-          table.innerHTML = html;
-        }
-      }
-      
- */
+  showPokemons(pokemons: Pokemon[]) {
+    this.pokemonList = pokemons;
+  }
 }

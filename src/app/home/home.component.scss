@@ -1,11 +1,12 @@
 $color_1: black;
-$background-color_1: #f2f2f2;
+$background-color_1: #f2f2f2f3;
 $background-color_2: #8f8e8e;
 
 .containerMenuOpcionesHome {
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    font-weight: 600;
 
     .containerPrincipalIndex {
         display: flex;
@@ -26,13 +27,31 @@ $background-color_2: #8f8e8e;
             transition: all ease 0.6s;
             text-decoration: none;
             color: $color_1;
+            transition: all ease 1.6s;
 
             &:hover {
                 transform: scale(1.1);
-                background-color: $background-color_2;
+                background-size: cover;
                 border-radius: 20%;
                 cursor: pointer;
             }
         }
+
+        .wordleFacil:hover {
+            background-image: url('/assets/backGrounds/charizardFondo.png');
+        }
+
+        .wordleDificil:hover{
+            background-image: url('/assets/backGrounds/arceusFondo.png');
+        }
+
+        .wordleImagen:hover{
+            background-image: url('/assets/backGrounds/mewTwoFondo.png');
+        }
+
+        .pokedex:hover{
+            background-image: url('/assets/backGrounds/pokedexFondo.webp');
+        }
+
     }
 }

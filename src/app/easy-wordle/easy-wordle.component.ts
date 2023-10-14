@@ -35,8 +35,6 @@ export class EasyWordleComponent {
     this.guessPokemon = this.pokemonApiSevices.pokemonArray[this.idSelected];
   }
 
-
-
   ifLogging() {
     this.userService.ifLogging();
   }

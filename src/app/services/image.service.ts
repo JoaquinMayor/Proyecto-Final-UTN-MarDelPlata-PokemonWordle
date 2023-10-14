@@ -5,17 +5,20 @@ export class ImageService {
     imageNames: string[] = [
         "beectribeel.png",
         "charmander.png",
-        "groudon.jpg",
+        "groudon.png",
         "lucario.png",
         "mew.png",
         "mewtwo.png",
         "pefil-base.png",
         "pikachu.png",
-        "pokebal.jpeg",
-        "ratata.jpg",
-        "raykuaza.jpg",
-        "snorlax.jpg",
-        "wippinbel.png"
+        "ratata.png",
+        "raykuaza.png",
+        "snorlax.png",
+        "wippinbel.png",
+        "charizard.png",
+        "charizardX.png",
+        "magikarp.png",
+        "shaymin.png"
     ];
 
     getImageUrl(imageName: string): string {

@@ -1,8 +1,7 @@
 $color_1: #f2f2f2;
 $color_2: black;
-$background-color_1: #f2f2f2;
+$background-color_1: #f2f2f2ed;;
 $background-color_2: rgba(255, 0, 0, 0.644);
-$background-color_3: rgba(2, 2, 2, 0.521);
 $background-color_4: rgba(255, 255, 255, 0.836);
 
 .nav {
@@ -13,11 +12,26 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     height: 3.75rem;
     background-color: $background-color_1;
     padding: 0 1.25rem;
+    font-weight: 600;
 
     h1 {
         flex-grow: 1;
         text-align: center;
         margin-left: 10rem;
+        font-size: 1.8rem;
+    }
+
+    .navbar_menuSinLog{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+
+        a{
+            color: $color_2;
+            text-decoration: none;
+            cursor: pointer;
+        }
     }
 
     .bar__menu {
@@ -66,20 +80,13 @@ $background-color_4: rgba(255, 255, 255, 0.836);
 
                 &:nth-child(2) {
                     &:hover {
-                        background-color: $background-color_3;
-                    }
-
-                    a {
-                        &:hover {
-                            color: $color_1;
-                        }
+                        background-color: $background-color_4;
                     }
                 }
 
-                &:nth-child(3) {
-                    &:hover {
-                        background-color: $background-color_4;
-                    }
+                button {
+                    border: none;
+                    background: none;
                 }
             }
         }

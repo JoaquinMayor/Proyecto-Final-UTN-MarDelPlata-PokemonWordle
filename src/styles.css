@@ -15,3 +15,8 @@
 	font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
 	font-size: large;
 }
+
+body {
+	background-image: url('/assets/backGrounds/fondo2.jpg');
+	background-size: cover;
+}
