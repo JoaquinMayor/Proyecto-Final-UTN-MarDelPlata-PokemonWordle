@@ -3,6 +3,7 @@ import { ImageService } from '../../services/image.service';
 import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { PokemonApiServices } from '../../services/pokemonApi.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -11,9 +12,7 @@ import { PokemonApiServices } from '../../services/pokemonApi.service';
   styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent{
-  name: string = "";
-  password: string = "";
-  image: string = "";
+  
   photos: string[] = [];
   
 
@@ -22,10 +21,12 @@ export class UserCreateComponent{
 
   constructor(private photoService:ImageService, private userService:UsuariosServices, private jsonpokemon:PokemonApiServices) {
     this.photos = this.photoService.getAllImageUrls();
+    this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
  
 
-  show() {
+  show(event:any) {
+    event.preventDefault();
     this.view = !this.view;
   }
 
@@ -33,17 +34,22 @@ export class UserCreateComponent{
     this.selectedPhoto = photo;
   }
 
-  addUser() {
+  addUser(form:NgForm) {
+
+    const name:string = form.value.name;
+    const password:string = form.value.password;
     
-    if (this.userService.validateName(this.name) == false) {
-      if (!this.userService.validatePassword(this.password)) {
-        let user = new Usuario(this.userService.users.length + 1, this.name, this.password, this.selectedPhoto);
+    if (this.userService.validateName(name) == false) {
+      
+      if (!this.userService.validatePassword(password)) {
+        let user = new Usuario(this.userService.users.length + 1, name, password, this.selectedPhoto);
         this.userService.chargeUsuario(user);
       } else {
         alert("Contraseña muy corta");
       }
     } else {
       alert("Nombre de usuario existente");
+      
     }
     console.log(this.userService.users);
   }

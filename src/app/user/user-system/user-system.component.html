@@ -16,6 +16,7 @@
 
     <div *ngIf="viewPassword" class="containerNamexpassword">
         <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
+        <button (click)="changePassword()">Cambiar</button>
     </div>
 
     <div class="desplegable">
@@ -28,10 +29,7 @@
         </div>
     </div>
 
-    <div *ngIf="user.getPhoto " class="containerPhotoSelected">
-        <h4>Foto Seleccionada:</h4>
-        <img [src]="user.getPhoto" alt="Foto Seleccionada" class="fotoSeleccionada">
-    </div>
+    
 
     <section class="containerScore">
         <h2>Puntuación Imagenes: {{user.getImageScore}}</h2>

@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Usuario } from "../models/user.model";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: 'root' })
 export class UsuariosServices {
     user: Usuario = new Usuario(0, "", "", "");
     users: Usuario[] = [];
+
+    constructor(private router:Router){}
 
     chargeUsuario(user: Usuario) {
         this.users.push(user);
@@ -86,14 +89,16 @@ export class UsuariosServices {
         let flag = false;
 
         for (let user of this.users) {
-            if (user.getName === name) {
-                if (user.getPassword === password) {
+            if (user.getName == name) {
+                console.log("entre al if")
+                if (user.getPassword == password) {
                     this.user = user;
                 } else {
                     alert("Contrasela Incorrecta");
                     flag =  false;
                 }
             } else {
+                console.log("entre al error")
                 alert("Nombre de usuario incorrecto");
                 flag = false
             }
@@ -103,4 +108,10 @@ export class UsuariosServices {
     logout(){
         this.user = new Usuario(0, "", "", "");
     }
+
+    ifLogging() {
+        if (this.user.getId != 0) {
+          this.router.navigate(["/home"]);
+        }
+      }
 }

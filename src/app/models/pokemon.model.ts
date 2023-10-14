@@ -13,7 +13,7 @@ export class Pokemon {
     private speed: number;
     private defense: number;
     private specialDef: number;
-    private hp: number
+    private hp: number;
     private heigth: number;
     private weight: number;
 
@@ -62,7 +62,7 @@ export class Pokemon {
     }
 
     get getDefense() {
-        return this.defense
+        return this.defense;
     }
 
     get getSpecialDef() {
@@ -78,7 +78,7 @@ export class Pokemon {
     }
 
     get getWeigth() {
-        return this.weight
+        return this.weight;
     }
 
     get getFrontSprite() {

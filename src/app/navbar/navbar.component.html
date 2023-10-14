@@ -3,6 +3,7 @@
         <a class="back" [routerLink]="['/home']">Volver</a>
         <h1>PokeWordle</h1>
         <section class="navbar_menu" *ngIf="user.getId===0; else log">
+            <a [routerLink]="['user/create']">Crear Cuenta</a>
             <a [routerLink]="['user/logging']">Loguearse</a>
         </section>
         <ng-template  #log>

@@ -74,7 +74,16 @@ export class UserSystemComponent {
   }
 
   changePassword() {
-    this.user.setPassword = this.password;
-    this.userService.editUser(this.user);
+    if(!this.userService.validatePassword(this.password)){
+      this.user.setPassword = this.password;
+      this.userService.editUser(this.user);
+    }else{
+      alert("Contraseña muy corta");
+    }
+    
+  }
+
+  ifLogging() {
+    this.userService.ifLogging();
   }
 }

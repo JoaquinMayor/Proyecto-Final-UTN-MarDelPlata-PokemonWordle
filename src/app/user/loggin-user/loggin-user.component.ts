@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-loggin-user',
@@ -9,8 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./loggin-user.component.scss']
 })
 export class LogginUserComponent implements OnInit {
-  name: string = "";
-  password: string = "";
+  
   log: boolean = false;
 
   constructor(private userService: UsuariosServices, private router: Router) { }
@@ -22,13 +22,13 @@ export class LogginUserComponent implements OnInit {
     return this.userService.user;
   }
 
-  logging() {
-    this.userService.logging(this.name, this.password);
+  logging(form:NgForm) {
+    const name:string =  form.value.name;
+    const password:string = form.value.password;
+    this.userService.logging(name,password);
     this.router.navigate(["/home"]);
   }
   ifLogging() {
-    if (this.userService.user.getId != 0) {
-      this.router.navigate(["/home"]);
-    }
+    this.userService.ifLogging();
   }
 }

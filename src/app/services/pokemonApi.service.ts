@@ -90,21 +90,21 @@ export class PokemonApiServices{
 
     createArrayPokemon(jsonPokemon:any, jsonPoke:any){
              
-        let description = "";
-        let type2 = "None"
-        /*if(jsonPoke.types.length == 1){
-                        type2 = jsonPoke.types[1].name; 
-                    }*/
+        
+        let type2 = "none";
+        if(jsonPoke.types.length == 2){
+            type2 = jsonPoke.types[1].type.name; 
+        }
                     //console.log(jsonPokemon.generation.name);
                     
      this.pokemonArray.push(new Pokemon(jsonPokemon.id, 
-        jsonPokemon.name,
+        jsonPokemon.names[6].name,
         jsonPokemon.generation.name,
         jsonPoke.sprites.front_default,
         jsonPoke.sprites.back_default,
         jsonPokemon.egg_groups[0].name,
-        "description",
-        jsonPoke.types[0].name, 
+        jsonPokemon.flavor_text_entries[39],
+        jsonPoke.types[0].type.name, 
         type2, 
         jsonPoke.stats[1].base_stat,
         jsonPoke.stats[3].base_stat,
@@ -114,6 +114,8 @@ export class PokemonApiServices{
         jsonPoke.stats[0].base_stat,
         jsonPoke.heigth,
         jsonPoke.weight));
+        console.log(jsonPoke.types[0].type.name);
     }
+
 
 }
