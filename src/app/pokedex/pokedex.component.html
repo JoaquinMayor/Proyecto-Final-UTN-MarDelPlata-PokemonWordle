@@ -18,9 +18,9 @@
   </form>
   <ul id="lista" class="lista">
     <li *ngFor="let pokemon of filteredList" class="pokemon">
-      <a href="./pokemon.html">
+      <a [routerLink]="['pokedex/pokemon', pokemon.getId]">
         <span class="nombre">{{ pokemon.getName }}</span>
-        <img [src]="pokemon.getFrontSprite" alt="Pokemon" [routerLink]="['/pokedex/pokemon', pokemon.getId]" />
+        <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
       </a>
     </li>
   </ul>

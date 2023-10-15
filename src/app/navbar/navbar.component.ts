@@ -10,32 +10,29 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   dropdownActive: boolean = false;
-  name:string ="";
-  password:string ="";
- 
+  name: string = "";
+  password: string = "";
 
-  constructor(private userService:UsuariosServices, private router:Router){}
-  
+  constructor(private userService: UsuariosServices, private router: Router) { }
+
   get user(): Usuario {
     return this.userService.user;
   }
 
   toggleDropdown() {
     this.dropdownActive = !this.dropdownActive;
-    
   }
 
-  prueba(){
+  prueba() {
     this.router.navigate(["user/logging"])
   }
 
-  logOut(){
+  logOut() {
     this.userService.logout();
     this.router.navigate(["/home"])
   }
 
-  goBack(){
-    this.router.navigate(["/home"]);
+  getRouter() {
+    return this.router.url;
   }
-  
 }
