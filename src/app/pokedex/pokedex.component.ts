@@ -10,6 +10,7 @@ import { PokemonApiServices } from '../services/pokemonApi.service';
 export class PokedexComponent {
   pokemonList: Pokemon[] = [];
   generation: string = '1';
+  filteredList: Pokemon[] = [];
 
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
@@ -18,30 +19,26 @@ export class PokedexComponent {
   }
 
   async renderTable() {
+    this.pokemonList.splice(0, this.pokemonList.length);
     await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
     this.pokemonList = this.pokemonApiServices.pokemonArray;
+    this.filterPokemons('');
   }
 
   choiceGeneration(event: any) {
     this.generation = event.target.value;
+    this.renderTable();
   }
 
   filterPokemons(text: string) {
-    console.log('filterPokemons called:', text);
-    let filteredList = [];
-
+    this.filteredList.splice(0, this.filterPokemons.length - 1);
     if (text.trim() !== '') {
-      filteredList = this.pokemonList.filter((pokemon) =>
+      this.filteredList = this.pokemonList.filter((pokemon) =>
         pokemon.getName.toLowerCase().includes(text.toLowerCase())
       );
     } else {
-      filteredList = this.pokemonList;
+      console.log("entre");
+      this.filteredList = this.pokemonList;
     }
-
-    this.showPokemons(filteredList);
-  }
-
-  showPokemons(pokemons: Pokemon[]) {
-    this.pokemonList = pokemons;
   }
 }

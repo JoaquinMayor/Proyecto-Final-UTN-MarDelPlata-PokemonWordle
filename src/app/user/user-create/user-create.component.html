@@ -1,32 +1,27 @@
 <section class="containerCreacionUsuario">
-   
-   <form #f="ngForm" (ngSubmit)="f.form.valid && addUser(f)">
-    <fieldset>
-        <legend>Creación de Usuario</legend>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && addUser(f)">
+        <fieldset>
+            <legend>Creación de Usuario</legend>
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" placeholder="Ingrese su Nombre de Usuario" ngModel required>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password" placeholder="Ingrese su Contraseña" ngModel required>
 
-        <label for="name">Nombre:</label>
-        <input type="text" name="name" id="name" placeholder="Ingrese su Nombre de Usuario" ngModel required>
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password" placeholder="Ingrese su Contraseña" ngModel required>
-
-        <div class="desplegable">
-            <h3>Seleccione una foto de Perfil:</h3>
-            <button (click)="show($event)" class="btn">Opciones</button>
-            <div *ngIf="view == true" class="galeriaFotos">
-                <div *ngFor="let photo of photos">
-                    <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+            <div class="desplegable">
+                <h3>Seleccione una foto de Perfil:</h3>
+                <button (click)="show($event)" class="btn">Opciones</button>
+                <div *ngIf="view == true" class="galeriaFotos">
+                    <div *ngFor="let photo of photos">
+                        <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="selectedPhoto!='' ">
-            <h4>Foto Seleccionada:</h4>
-            <img [src]="selectedPhoto" alt="Foto Seleccionada" class="fotoSeleccionada">
-        </div>
+            <div *ngIf="selectedPhoto!='' ">
+                <h4>Foto Seleccionada:</h4>
+                <img [src]="selectedPhoto" alt="Foto Seleccionada" class="fotoSeleccionada">
+            </div>
 
-        <input value="Registrarse" type="submit" class="btn">
-    </fieldset>
-   </form>
-    
-
-    <button (click)="mostrarJson()">Mostrar</button>
+            <input value="Registrarse" type="submit" class="btn">
+        </fieldset>
+    </form>
 </section>

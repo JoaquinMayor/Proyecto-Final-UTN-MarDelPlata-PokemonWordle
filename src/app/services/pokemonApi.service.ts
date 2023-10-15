@@ -10,9 +10,7 @@ export class PokemonApiServices {
     pokemonArray: Pokemon[] = [];
     jsonPokemons: any[] = [];
 
-    constructor(private httpClient: HttpClient) {
-
-    }
+    constructor(private httpClient: HttpClient) {}
     //Hacer funcion de juntar datos de un pokemon solo
     singlePokemonApi(id: string) {
         const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -44,6 +42,7 @@ export class PokemonApiServices {
 
     async listaSpeciesPokemon(generation: string) { //Guarda la lista de especies de pokemon de esa generacion
         try {
+            this.pokemonSpeciesURLList.splice(0, this.pokemonSpeciesURLList.length);
             await this.obtenerListaPokemonApi(generation);
             for (let pokemon of this.pokemonSpecies.pokemon_species) {
                 this.pokemonSpeciesURLList.push(pokemon);
@@ -68,7 +67,6 @@ export class PokemonApiServices {
                 }
             );
         }
-        console.log(this.pokemonArray);
     }
 
     datesJsonPoke(jsonPokemon: any) {
@@ -103,6 +101,5 @@ export class PokemonApiServices {
             jsonPoke.stats[0].base_stat,
             jsonPoke.heigth,
             jsonPoke.weight));
-        console.log(jsonPoke.types[0].type.name);
     }
 }

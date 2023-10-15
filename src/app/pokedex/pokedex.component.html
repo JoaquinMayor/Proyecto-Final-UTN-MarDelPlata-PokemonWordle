@@ -17,10 +17,10 @@
     </select>
   </form>
   <ul id="lista" class="lista">
-    <li *ngFor="let pokemon of pokemonList" class="pokemon">
+    <li *ngFor="let pokemon of filteredList" class="pokemon">
       <a href="./pokemon.html">
         <span class="nombre">{{ pokemon.getName }}</span>
-        <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
+        <img [src]="pokemon.getFrontSprite" alt="Pokemon" [routerLink]="['/pokedex/pokemon', pokemon.getId]" />
       </a>
     </li>
   </ul>

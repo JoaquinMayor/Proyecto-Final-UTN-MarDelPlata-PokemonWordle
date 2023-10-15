@@ -12,10 +12,11 @@ import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
 const routes: Routes = [
   { path: 'wordleDificil', component: HardWordleComponent },
   { path: 'wordleFacil', component: EasyWordleComponent },
-  { path: 'home', component: UserCreateComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'pokedex', component: PokedexComponent },
+  { path: 'pokedex/pokemon/:id', component: UniquePokemonComponent},
   { path: 'pokemon', component: UniquePokemonComponent },
-  { path: 'user/create', component: HomeComponent },
+  { path: 'user/create', component: UserCreateComponent },
   { path: 'user/logging', component: LogginUserComponent },
   { path: 'user/modify/:id', component: UserSystemComponent },
   {

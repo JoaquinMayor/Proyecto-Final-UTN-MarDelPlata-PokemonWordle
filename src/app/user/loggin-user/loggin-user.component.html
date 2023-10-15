@@ -1,6 +1,4 @@
 <section *ngIf="user.getId!=0" (load)="ifLogging()"></section>
-<button class="back">Volver</button>
-
 <section class="containerLogin">
    <form #f="ngForm" (ngSubmit)="f.form.valid && logging(f)">
       <fieldset>
