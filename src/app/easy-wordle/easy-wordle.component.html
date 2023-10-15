@@ -1,19 +1,11 @@
 <section class="mainWordle">
     <section class="modalRegiones containerPrincipal" *ngIf="show === false; else game">
-        <select name="" id="" aria-placeholder="Generacion a seleccionar" [(ngModel)]="generation" (change)="choiceGeneration($event)">
-            <option value="">Generacion a seleccionar</option>
-            <option value="1">1° Generación</option>
-            <option value="2">2° Generación</option>
-            <option value="3">3° Generación</option>
-            <option value="4">4° Generación</option>
-            <option value="5">5° Generación</option>
-            <option value="6">6° Generación</option>
-            <option value="7">7° Generación</option>
-            <option value="8">8° Generación</option>
-            <option value="9">9° Generación</option>
-        </select>
+        <app-generation (generationSelected)=" generationSelected($event)"></app-generation>
         <button (click)="showGame()">Aceptar</button>
     </section>
+    
+
+    <app-word-game [generation]="generation"></app-word-game>
 
     <ng-template #game>
     <section class="containerWorleFacil">

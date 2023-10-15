@@ -19,6 +19,9 @@ import { UsuariosServices } from './services/users.service';
 import { PokemonApiServices } from './services/pokemonApi.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
+import { GenerationComponent } from './game/generation/generation.component';
+import { HelpsComponent } from './game/helps/helps.component';
+import { WordGameComponent } from './game/word-game/word-game.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
     HomeComponent,
     UserCreateComponent,
     LogginUserComponent,
+    GenerationComponent,
+    HelpsComponent,
+    WordGameComponent,
   ],
   imports: [
     BrowserModule,

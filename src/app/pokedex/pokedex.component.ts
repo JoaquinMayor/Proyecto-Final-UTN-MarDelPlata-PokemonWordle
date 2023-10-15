@@ -9,25 +9,23 @@ import { PokemonApiServices } from '../services/pokemonApi.service';
 })
 export class PokedexComponent {
   pokemonList: Pokemon[] = [];
-  generation: string = '1';
   filteredList: Pokemon[] = [];
 
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
   ngOnInit() {
-    this.renderTable();
+    //this.renderTable();
   }
 
-  async renderTable() {
+  async renderTable(generation:string) {
     this.pokemonList.splice(0, this.pokemonList.length);
-    await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
+    await this.pokemonApiServices.listaSpeciesPokemon(generation);
     this.pokemonList = this.pokemonApiServices.pokemonArray;
     this.filterPokemons('');
   }
 
-  choiceGeneration(event: any) {
-    this.generation = event.target.value;
-    this.renderTable();
+  choiceGeneration(generation: any) {
+    this.renderTable(generation);
   }
 
   filterPokemons(text: string) {
@@ -37,8 +35,11 @@ export class PokedexComponent {
         pokemon.getName.toLowerCase().includes(text.toLowerCase())
       );
     } else {
-      console.log("entre");
       this.filteredList = this.pokemonList;
     }
+  }
+
+  selectedPokemon(pokemon: Pokemon) {
+    this.pokemonApiServices.setSinglePokemon(pokemon);
   }
 }

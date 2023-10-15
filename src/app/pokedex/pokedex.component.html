@@ -3,22 +3,11 @@
     <label for="nombre">Buscar Pokémon:</label>
     <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre"
       (input)="filterPokemons(nombreInput.value)">
-    <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)">
-      <option value="">Generacion a seleccionar</option>
-      <option value="1">1° Generación</option>
-      <option value="2">2° Generación</option>
-      <option value="3">3° Generación</option>
-      <option value="4">4° Generación</option>
-      <option value="5">5° Generación</option>
-      <option value="6">6° Generación</option>
-      <option value="7">7° Generación</option>
-      <option value="8">8° Generación</option>
-      <option value="9">9° Generación</option>
-    </select>
+    <app-generation (generationSelected)="choiceGeneration($event)"></app-generation>
   </form>
   <ul id="lista" class="lista">
     <li *ngFor="let pokemon of filteredList" class="pokemon">
-      <a [routerLink]="['pokedex/pokemon', pokemon.getId]">
+      <a [routerLink]="['pokemon', pokemon.getId]">
         <span class="nombre">{{ pokemon.getName }}</span>
         <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
       </a>
