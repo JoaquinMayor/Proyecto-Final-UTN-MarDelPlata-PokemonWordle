@@ -7,7 +7,7 @@ export class UsuariosServices {
     user: Usuario = new Usuario(0, "", "", "");
     users: Usuario[] = [];
 
-    constructor(private router:Router){}
+    constructor(private router: Router) { }
 
     chargeUsuario(user: Usuario) {
         this.users.push(user);
@@ -15,7 +15,6 @@ export class UsuariosServices {
 
     searchUsuario(name: string, password: string) {
         let userExist: Usuario = new Usuario(0, "", "", "");
-
         if (this.users.length != 0) {
             let flag = false;
             for (let i = 0; i < this.users.length && flag == false; i++) {
@@ -34,21 +33,19 @@ export class UsuariosServices {
         return userExist;
     }
 
-    findUser(name:string){
-        let flag:boolean = false;
-       
+    findUser(name: string) {
+        let flag: boolean = false;
         for (const user of this.users) {
-            if(name === user.getName){
+            if (name === user.getName) {
                 flag = true;
                 break;
             }
         }
-
         return flag;
     }
 
     editUser(user: Usuario) {
-        let flag:boolean = false;
+        let flag: boolean = false;
         if (user && this.users.length != 0) {
             for (let i = 0; i < this.users.length && flag == false; i++) {
                 if (user.getId == this.users[i].getId) {
@@ -61,13 +58,9 @@ export class UsuariosServices {
 
     validateName(name: string) {
         let flag = false;
-        
         if (this.users.length > 0) {
-            
             for (let user of this.users) {
-                
                 if (name == user.getName || name == "") {
-                    
                     flag = true;
                 }
             }
@@ -77,17 +70,14 @@ export class UsuariosServices {
 
     validatePassword(password: string) {
         let flag = false;
-
         if (password.length < 5 || password === "") {
             flag = true;
         }
-
         return flag;
     }
 
     logging(name: string, password: string) {
         let flag = false;
-
         for (let user of this.users) {
             if (user.getName == name) {
                 console.log("entre al if")
@@ -95,7 +85,7 @@ export class UsuariosServices {
                     this.user = user;
                 } else {
                     alert("Contrasela Incorrecta");
-                    flag =  false;
+                    flag = false;
                 }
             } else {
                 console.log("entre al error")
@@ -105,13 +95,13 @@ export class UsuariosServices {
         }
     }
 
-    logout(){
+    logout() {
         this.user = new Usuario(0, "", "", "");
     }
 
     ifLogging() {
         if (this.user.getId != 0) {
-          this.router.navigate(["/home"]);
+            this.router.navigate(["/home"]);
         }
-      }
+    }
 }

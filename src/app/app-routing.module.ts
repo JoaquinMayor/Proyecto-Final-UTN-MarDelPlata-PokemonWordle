@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pokedex', component: PokedexComponent },
   { path: 'pokedex/pokemon/:id', component: UniquePokemonComponent},
-  { path: 'pokemon', component: UniquePokemonComponent },
   { path: 'user/create', component: UserCreateComponent },
   { path: 'user/logging', component: LogginUserComponent },
   { path: 'user/modify/:id', component: UserSystemComponent },

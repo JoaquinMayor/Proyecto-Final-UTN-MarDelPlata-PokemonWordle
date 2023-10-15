@@ -2,39 +2,37 @@
     <section id="cuerpo">
         <div class="subContainer">
             <div id="cabecera-datos">
-                <h3 id="nombre">Nombre</h3>
-                <p id="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aliquam enim
-                    praesentium, explicabo amet iste nihil labore nobis commodi accusantium neque fugit maiores atque
-                    sapiente in similique suscipit repellat quia.</p>
+                <h3 id="nombre">{{pokemon.getName}}</h3>
+                <p id="descripcion">{{pokemon.getDescription}}</p>
             </div>
             <ul class="containerRegion-Huevo">
-                <li id="region">Region
-                    <p>Nombre Region</p>
+                <li id="region">Generacion
+                    <p>{{pokemon.getGeneration}}</p>
                 </li>
                 <li id="groupEgg">Grupo Huevo
-                    <p>Group egg</p>
+                    <p>{{pokemon.getEggGroup}}</p>
                 </li>
             </ul>
         </div>
 
         <div class="containerStats">
             <ul id="stats">
-                <li id="vida">Vida: </li>
-                <li id="ataque">Ataque: </li>
-                <li id="defensa">Defensa: </li>
-                <li id="ataque-especial">Ataque Especial:</li>
-                <li id="defensa-especial">Defensa Especial:</li>
-                <li id="velocidad">Velocidad: </li>
+                <li id="vida">Vida: {{pokemon.getHp}}</li>
+                <li id="ataque">Ataque: {{pokemon.getAtk}}</li>
+                <li id="defensa">Defensa: {{pokemon.getDefense}}</li>
+                <li id="ataque-especial">Ataque Especial: {{pokemon.getSpecialAtk}}</li>
+                <li id="defensa-especial">Defensa Especial: {{pokemon.getSpecialDef}}</li>
+                <li id="velocidad">Velocidad: {{pokemon.getSpeed}}</li>
             </ul>
         </div>
     </section>
 
     <section class="sectionImgUniquePokemon">
         <div id="imagen-tipo">
-            <img id="foto" src="../../assets/photos/beectribeel.png">
+            <img id="foto" [src]="pokemon.getFrontSprite">
             <ul id="lista-tipo">
-                <li>tipo 1</li>
-                <li>tipo 2</li>
+                <li>{{pokemon.getType1}}</li>
+                <li>{{pokemon.getType2}}</li>
             </ul>
         </div>
     </section>

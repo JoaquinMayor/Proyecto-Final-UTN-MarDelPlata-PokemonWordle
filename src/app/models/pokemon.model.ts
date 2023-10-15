@@ -53,7 +53,7 @@ export class Pokemon {
         return this.atk;
     }
 
-    get getSpecialAtl() {
+    get getSpecialAtk() {
         return this.specialAtk;
     }
 

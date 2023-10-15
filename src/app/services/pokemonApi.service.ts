@@ -9,8 +9,9 @@ export class PokemonApiServices {
     pokemonSpeciesURLList: any[] = [];
     pokemonArray: Pokemon[] = [];
     jsonPokemons: any[] = [];
+    pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
     //Hacer funcion de juntar datos de un pokemon solo
     singlePokemonApi(id: string) {
         const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -19,6 +20,14 @@ export class PokemonApiServices {
 
     jsonSinglePokemon(url: string) {
         return this.httpClient.get(url);
+    }
+
+    setSinglePokemon(data: Pokemon) {
+        this.pokemon = data;
+    }
+
+    getSinglePokemon() {
+        return this.pokemon;
     }
 
     generationPokemonApi(generation: string) { //Junta todo el dato de la generacion
@@ -55,9 +64,6 @@ export class PokemonApiServices {
 
     datesSinglePokemons() {
         let jsonPokemon: any;
-        let jsonPoke: any;
-        let description = "";
-        let type2 = "None"
 
         for (const pokemon of this.pokemonSpeciesURLList) {
             this.jsonSinglePokemon(pokemon.url).subscribe(
@@ -81,8 +87,24 @@ export class PokemonApiServices {
 
     createArrayPokemon(jsonPokemon: any, jsonPoke: any) {
         let type2 = "none";
+        let description = "";
+        let flag: boolean = false;
         if (jsonPoke.types.length == 2) {
             type2 = jsonPoke.types[1].type.name;
+        }
+        for (let i = 0; i < jsonPokemon.flavor_text_entries.length && flag == false; i++) {
+            if (jsonPokemon.flavor_text_entries[i].language.name == "es") {
+                description = jsonPokemon.flavor_text_entries[i].flavor_text;
+                flag = true;
+            }
+        }
+        if (flag == false) {
+            for (let i = 0; i < jsonPokemon.flavor_text_entries.length && flag == false; i++) {
+                if (jsonPokemon.flavor_text_entries[i].language.name == "en") {
+                    description = jsonPokemon.flavor_text_entries[i].flavor_text;
+                    flag = true;
+                }
+            }
         }
         this.pokemonArray.push(new Pokemon(jsonPokemon.id,
             jsonPokemon.names[6].name,
@@ -90,7 +112,7 @@ export class PokemonApiServices {
             jsonPoke.sprites.front_default,
             jsonPoke.sprites.back_default,
             jsonPokemon.egg_groups[0].name,
-            jsonPokemon.flavor_text_entries[39],
+            description,
             jsonPoke.types[0].type.name,
             type2,
             jsonPoke.stats[1].base_stat,

@@ -1,20 +1,22 @@
 // Define los colores de la paleta de Pokémon
 $colorFondoPrincipal: #F0FFF0;
-$colorContenedor: #FFFAF0;
+$colorContenedor: #fffaf0c7;
 $colorSubContenedor: #F0FFFF;
 
 .mainUniquePokemon {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     min-height: 100vh;
-    background-color: $colorFondoPrincipal;
+    font-weight: 600;
 
     #cuerpo {
         display: flex;
         flex-direction: column;
         min-width: 60vw;
         max-width: 70vw;
+        min-height: 30rem;
 
         .subContainer {
             display: flex;
@@ -73,11 +75,14 @@ $colorSubContenedor: #F0FFFF;
         display: flex;
         flex-direction: column;
         padding: 2rem;
+        min-height: 30rem;
 
         #imagen-tipo {
             #foto {
-                border: 2px solid $colorSubContenedor;
                 border-radius: 30%;
+                min-width: 15rem;
+                max-width: 40rem;
+                background-color: #87ceeb82;
             }
 
             #lista-tipo {
@@ -85,6 +90,12 @@ $colorSubContenedor: #F0FFFF;
                 gap: 2rem;
                 justify-content: space-around;
                 list-style: none;
+
+                li {
+                    background-color: rgba(135, 206, 235, 0.5098039216);
+                    border-radius: 10%;
+                    padding: 0.5rem 1.5rem;
+                }
             }
         }
     }
