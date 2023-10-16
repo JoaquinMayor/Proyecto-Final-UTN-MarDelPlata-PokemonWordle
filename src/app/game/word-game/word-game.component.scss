@@ -1,0 +1,164 @@
+$background-color_1: gray;
+$background-color_2: red;
+$background-color_3: green;
+$background-color_4: orange;
+
+.containerPrincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    button {
+        padding: 0.5rem;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    button:active {
+        background-color: #3e8e41;
+    }
+}
+
+.containerTodoWordle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    .containerInputBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        input[type="text"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+            transition: border-color 0.3s ease;
+
+            &::placeholder {
+                color: #888;
+            }
+
+            &:hover {
+                border-color: #999;
+            }
+
+            &:focus {
+                outline: none;
+                border-color: #5c9ce6;
+                box-shadow: 0 0 0 2px #5c9ce6;
+            }
+        }
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #5c9ce6;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #4287f5;
+        }
+    }
+
+    .containerWorleFacil {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 55rem;
+        height: 30rem;
+        background-color: #ff0000a9;
+        /* Cambia el color a tu gusto */
+        padding: 4rem;
+        border-radius: 2rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+
+        .subContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            input {
+                padding: 0.5rem;
+                width: 13.1rem;
+                border: none;
+                border-radius: 0.5rem;
+                background-color: #fff;
+                box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+                color: #333;
+                font-size: 1rem;
+
+                &::placeholder {
+                    color: #999;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+
+        .contenedorPalabraCompleta {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            padding: 0;
+
+            .contenedorLetra {
+                display: flex;
+                margin: 0.8rem;
+                width: 2rem;
+                height: 3rem;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20%;
+                border: 0.125rem solid black;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
+
+        .gris {
+            background-color: $background-color_1;
+        }
+
+        .rojo {
+            background-color: $background-color_2;
+        }
+
+        .verde {
+            background-color: $background-color_3;
+        }
+
+        .naranja {
+            background-color: $background-color_4;
+        }
+    }
+}

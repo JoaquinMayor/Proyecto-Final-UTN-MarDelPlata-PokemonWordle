@@ -1,20 +1,27 @@
-
-
-<section class="modalRegiones containerPrincipal" *ngIf="show === false; else game">
+<section class="containerPrincipal" *ngIf="show === false; else game">
     <app-generation (generationSelected)=" generationSelected($event)"></app-generation>
     <button (click)="showGame()">Aceptar</button>
 </section>
 <button (click)="startGame()">Start</button>
 
 <ng-template #game>
-    <input type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon" [(ngModel)]="namePokemon">
-    <button (click)="validateGlobal()">Probar</button>
-    
-    <section id="container" name="container" class="containerWorleFacil">
-        <ul *ngFor="let word of words">
-            <li *ngFor="let letter of word.split(''); let i = index" [ngClass]="wordColor(letter,i)" class="contenedorPalabraCompleta">{{letter}}</li>
-          </ul>
-    
+    <section class="containerTodoWordle">
+        <section class="containerInputBtn">
+            <input type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon"
+                [(ngModel)]="namePokemon">
+            <button (click)="validateGlobal()">Probar</button>
+        </section>
+
+        <section class="containerWorleFacil">
+            <section id="container" name="container" class="subContainer">
+                <ul class="contenedorPalabraCompleta">
+                    <li *ngFor="let letter of guessPokemon.getName.split('')" class="contenedorLetra"></li>
+                </ul>
+                <ul *ngFor="let word of words" class="contenedorPalabraCompleta">
+                    <li *ngFor="let letter of word.split(''); let i = index" [ngClass]="wordColor(letter,i)"
+                        class="contenedorLetra">{{letter}}</li>
+                </ul>
+            </section>
+        </section>
     </section>
 </ng-template>
-

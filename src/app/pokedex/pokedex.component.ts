@@ -14,7 +14,7 @@ export class PokedexComponent {
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
   ngOnInit() {
-    //this.renderTable();
+    this.renderTable('1');
   }
 
   async renderTable(generation:string) {

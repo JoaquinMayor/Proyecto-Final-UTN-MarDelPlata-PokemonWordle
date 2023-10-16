@@ -10,27 +10,7 @@ $background-color_4: orange;
     min-height: 100vh;
 }
 
-.modalRegiones {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-image: radial-gradient(circle, white 0%, white 45%, black 45%, black 55%, red 55%);
-    width: 25rem;
-    height: 25rem;
-    border-radius: 5%;
-
-    select {
-        padding: 0.3rem;
-    }
-
-    button {
-        padding: 0.5rem;
-        cursor: pointer;
-    }
-}
-
-.containerWorleFacil {
+.containerAyudas {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -43,64 +23,6 @@ $background-color_4: orange;
     padding: 4rem;
     border-radius: 2rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
-
-    .subContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-
-        input {
-            padding: 0.5rem;
-            width: 13.1rem;
-            border: none;
-            border-radius: 0.5rem;
-            background-color: #fff;
-            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-            color: #333;
-            font-size: 1rem;
-
-            &::placeholder {
-                color: #999;
-            }
-
-            &:focus {
-                outline: none;
-                box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
-            }
-        }
-    }
-
-    .contenedorPalabraCompleta {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        padding: 0;
-
-        .contenedorLetra {
-            background-color: $background-color_1;
-            display: flex;
-            margin: 0.8rem;
-            width: 2rem;
-            height: 3rem;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20%;
-            border: 0.125rem solid black;
-        }
-
-        .contenedorLetra.rojo {
-            background-color: $background-color_2;
-        }
-
-        .contenedorLetra.verde {
-            background-color: $background-color_3;
-        }
-
-        .contenedorLetra.naranja {
-            background-color: $background-color_4;
-        }
-    }
 
     .contenedorAyudas {
         display: flex;

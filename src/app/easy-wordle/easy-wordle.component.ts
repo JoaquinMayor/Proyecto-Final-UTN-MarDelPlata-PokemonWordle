@@ -9,16 +9,20 @@ import { Pokemon } from '../models/pokemon.model';
   styleUrls: ['./easy-wordle.component.scss']
 })
 export class EasyWordleComponent {
-  generation:string = "";
-  show:boolean = false;
-  
-  constructor(private userService:UsuariosServices){}
+  generation: string = "";
+  show: boolean = false;
+  pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
 
-  generationSelected(generation:any){
+  constructor(private userService: UsuariosServices, private pokemonApiServices: PokemonApiServices) { }
+
+  ngOnInit() {
+    this.pokemon = this.pokemonApiServices.getSinglePokemon();
+  }
+  generationSelected(generation: any) {
     this.generation = generation;
-  } 
+  }
 
-  showGame(){
+  showGame() {
     this.show = true;
   }
 

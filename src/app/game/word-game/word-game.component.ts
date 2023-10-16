@@ -7,90 +7,87 @@ import { UsuariosServices } from 'src/app/services/users.service';
 @Component({
   selector: 'app-word-game',
   templateUrl: './word-game.component.html',
-  styleUrls: ['./word-game.component.css']
+  styleUrls: ['./word-game.component.scss']
 })
 export class WordGameComponent {
-
-  generation:string ="";
+generation:string ="";
   show: boolean = false;
   idSelected:number = 0;
   guessPokemon:Pokemon = new Pokemon(0,"","","","","","","","",0,0,0,0,0,0,0,0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
   namePokemon:string="";//nombre del pokemon ingresado por el usuario
   index:number = 0;
   words:string[]=[]; //palabras usadas
-  color:number[]=[]; //arreglo paralelo para saber acierto
+  cantLetters:number[]=[]; //arreglo paralelo para saber acierto
+  letters:string[] = [];
 
-  constructor(private pokemonApiSevices: PokemonApiServices, private userService:UsuariosServices, private htmlService:HtmlElementService){}
+  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService) { }
 
-  startGame(){
+  startGame() {
     this.generateRandomNumber();
     this.randomPokemon();
   }
- 
-  generateRandomNumber(){
-    
-    console.log(this.pokemonApiSevices.pokemonArray);
-    console.log(this.pokemonApiSevices.pokemonArray.length);
-    this.idSelected = Math.floor(Math.random() * (this.pokemonApiSevices.pokemonArray.length - 0 +1));
+
+  generateRandomNumber() {
+    console.log(this.pokemonApiServices.pokemonArray);
+    console.log(this.pokemonApiServices.pokemonArray.length);
+    this.idSelected = Math.floor(Math.random() * (this.pokemonApiServices.pokemonArray.length - 0 + 1));
     console.log(this.idSelected);
   }
 
-  randomPokemon(){ //guarda el pokemon a elegido aleatoriamente
-    this.guessPokemon = this.pokemonApiSevices.pokemonArray[this.idSelected];
+  randomPokemon() { //guarda el pokemon a elegido aleatoriamente
+    this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
     console.log(this.guessPokemon);
   }
 
-  validationIfPokemon(){
+  validationIfPokemon() {
     let flag = false;
-    for(let i = 0; i<this.pokemonApiSevices.pokemonArray.length && flag==false; i++){
+    for (let i = 0; i < this.pokemonApiServices.pokemonArray.length && flag == false; i++) {
       console.log("Entre al for")
-      if(this.namePokemon.toLowerCase() ===this.pokemonApiSevices.pokemonArray[i].getName.toLowerCase()){
+      if (this.namePokemon.toLowerCase() === this.pokemonApiServices.pokemonArray[i].getName.toLowerCase()) {
         flag = true;
-      }else{
+      } else {
         //alert("El nombre no pertenece a un Pokemon o no es de esta generacion");
       }
     }
     return flag;
   }
 
-  validateGlobal(){
+  validateGlobal() {
     console.log(this.guessPokemon);
-    console.log(this.pokemonApiSevices.pokemonArray.length);
-    if(this.validationIfPokemon()){
+    console.log(this.pokemonApiServices.pokemonArray.length);
+    if (this.validationIfPokemon()) {
       console.log("entre al primer if")
-      if(this.validateName() === false){
+      if (this.validateName() === false) {
         console.log("entre al segundo if");
         this.wordCorrect();
       }
     }
-    
   }
 
-  validateName(){
+  validateName() {
     let flag = false;
-    if(this.namePokemon.toLowerCase() === this.guessPokemon.getName.toLowerCase()){
-        flag = true;
+    if (this.namePokemon.toLowerCase() === this.guessPokemon.getName.toLowerCase()) {
+      flag = true;
     }
     return flag;
   }
 
-  ulGenerator(){
+  ulGenerator() {
     let container = this.htmlService.getElementRef("container");
     container.nativeElement.innerHTML = `<ul class="contenedorPalabraCompleta" id="${this.index}" name="${this.index}"></ul>`;
   }
 
-  wordCorrect(){
+  wordCorrect() {
     this.words.push(this.namePokemon);
-
   }
 
-  wordColor(letter: string,i:number): string {
+  wordColor(letter: string, i: number): string {
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       return "verde";
     } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase())) {
       return "naranja";
     } else {
-      return "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
+      return "gris";
     }
   }
 
@@ -98,14 +95,16 @@ export class WordGameComponent {
     this.userService.ifLogging();
   }
 
-
-  generationSelected(generation:any){
+  generationSelected(generation: any) {
     this.generation = generation;
-  } 
+  }
 
-  async showGame(){
+  async showGame() {
     this.startGame();
     this.show = true;
-    
+  }
+
+  selectedPokemon(pokemon: Pokemon) {
+    this.pokemonApiServices.setSinglePokemon(pokemon);
   }
 }

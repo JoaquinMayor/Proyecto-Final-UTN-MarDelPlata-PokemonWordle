@@ -26,7 +26,6 @@ $colorSubContenedor: #F0FFFF;
                 display: flex;
                 flex-direction: column;
                 margin: 1.5rem;
-                background-color: $colorContenedor;
                 border-radius: 5%;
 
                 h3 {
@@ -48,7 +47,6 @@ $colorSubContenedor: #F0FFFF;
                 display: flex;
                 flex-direction: column;
                 width: fit-content;
-                background-color: $colorContenedor;
                 min-width: 10vw;
                 padding: 0.5rem;
                 border-radius: 5%;
@@ -59,7 +57,6 @@ $colorSubContenedor: #F0FFFF;
 
         .containerStats {
             margin-left: 2rem;
-            background-color: $colorContenedor;
             padding: 2rem;
             border-radius: 5%;
 
@@ -82,7 +79,6 @@ $colorSubContenedor: #F0FFFF;
                 border-radius: 30%;
                 min-width: 15rem;
                 max-width: 40rem;
-                background-color: #87ceeb82;
             }
 
             #lista-tipo {
@@ -92,11 +88,82 @@ $colorSubContenedor: #F0FFFF;
                 list-style: none;
 
                 li {
-                    background-color: rgba(135, 206, 235, 0.5098039216);
                     border-radius: 10%;
                     padding: 0.5rem 1.5rem;
                 }
             }
         }
+    }
+
+    .normal {
+        background-color: rgba(168, 160, 144, 0.753);
+    }
+
+    .fire {
+        background-color: rgba(240, 80, 48, 0.712);
+    }
+
+    .water {
+        background-color: rgba(0, 0, 255, 0.445);
+    }
+
+    .grass {
+        background-color: rgba(120, 200, 80, 0.726);
+    }
+
+    .electric{
+        background-color: rgba(255, 255, 0, 0.712);
+    }
+
+    .ice{
+        background-color: rgba(0, 98, 128, 0.733);
+    }
+
+    .fighting{
+        background-color: rgba(165, 42, 42, 0.692);
+    }
+
+    .poison{
+        background-color: rgba(176, 88, 160, 0.712);
+    }
+
+    .ground{
+        background-color: rgba(234, 214, 164, 0.678);
+    }
+
+    .flying{
+        background-color: rgba(152, 168, 240, 0.699);
+    }
+
+    .psychic{
+        background-color: rgba(248, 112, 160, 0.699);
+    }
+
+    .bug{
+        background-color: rgba(0, 128, 0, 0.705);
+    }
+
+    .rock{
+        background-color: rgba(184, 160, 88, 0.671);
+    }
+
+    .ghost{
+        background-color: rgba(96, 96, 176, 0.658);
+    }
+
+    .dragon{
+        background-color: rgba(0, 0, 255, 0.747);
+    }
+
+    .dark{
+        background-color: rgba(122, 88, 72, 0.692);
+    }
+
+    .steel{
+        background-color: rgba(168, 168, 192, 0.664);
+    }
+
+    .fairy{
+        background-color: rgba(231, 159, 231, 0.705);
     }
 }

@@ -29,18 +29,20 @@ export class UniquePokemonComponent {
     'steel',
     'fairy',
   ];
-  backColor: string = '';
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
   ngOnInit() {
     this.pokemon = this.pokemonApiServices.getSinglePokemon();
   }
 
-  isPokemonType(type: string){
-    for (const type of this.pokemonTypes) {
-      if (this.pokemon.getType1.includes(type)) {
-        this.backColor = type;
+  isPokemonType(type: string): string {
+    let backColor = '';
+    for (const pokemonType of this.pokemonTypes) {
+      if (type.includes(pokemonType)) {
+        backColor = pokemonType;
+        break;
       }
     }
+    return backColor;
   }
 }

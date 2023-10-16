@@ -7,7 +7,7 @@
   </form>
   <ul id="lista" class="lista">
     <li *ngFor="let pokemon of filteredList" class="pokemon">
-      <a [routerLink]="['pokemon', pokemon.getId]">
+      <a [routerLink]="['pokemon', pokemon.getId]" (click)="selectedPokemon(pokemon)">
         <span class="nombre">{{ pokemon.getName }}</span>
         <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
       </a>

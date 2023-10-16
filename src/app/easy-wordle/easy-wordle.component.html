@@ -1,23 +1,12 @@
 <section class="mainWordle">
-
-        <app-word-game></app-word-game>
-    <!--<section class="containerWorleFacil">
-        <section class="subContainer">
-            <input type="text" placeholder="Escribir nombre del Pokemon">
-            <ul class="contenedorPalabraCompleta">
-                <li class="contenedorLetra">z</li>
-                <li class="contenedorLetra">u</li>
-                <li class="contenedorLetra naranja">b</li>
-                <li class="contenedorLetra">a</li>
-                <li class="contenedorLetra verde">t</li>
-            </ul>
-        </section>
+    <app-word-game></app-word-game>
+    <section class="containerAyudas">
         <ul class="contenedorAyudas">
             <li>Tipo 1
-                <p class="contenedorLetra verde">Volador</p>
+                <p class="contenedorLetra verde">{{pokemon.getType1}}</p>
             </li>
             <li>Tipo 2
-                <p class="contenedorLetra">Veneno</p>
+                <p class="contenedorLetra">{{pokemon.getType2}}</p>
             </li>
             <li>Peso
                 <img src="" alt="">
@@ -29,5 +18,5 @@
                 <p class="contenedorLetra rojo">Vel</p>
             </li>
         </ul>
-    </section>-->
+    </section>
 </section>
