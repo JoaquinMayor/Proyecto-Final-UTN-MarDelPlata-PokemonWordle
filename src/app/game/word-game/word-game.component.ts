@@ -36,6 +36,7 @@ generation:string ="";
 
   randomPokemon() { //guarda el pokemon a elegido aleatoriamente
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
+    this.pokemonApiServices.setSinglePokemon(this.guessPokemon);
     console.log(this.guessPokemon);
   }
 
@@ -102,9 +103,5 @@ generation:string ="";
   async showGame() {
     this.startGame();
     this.show = true;
-  }
-
-  selectedPokemon(pokemon: Pokemon) {
-    this.pokemonApiServices.setSinglePokemon(pokemon);
   }
 }

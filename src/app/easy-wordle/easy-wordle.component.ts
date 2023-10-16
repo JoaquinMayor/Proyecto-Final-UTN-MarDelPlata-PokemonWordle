@@ -11,13 +11,9 @@ import { Pokemon } from '../models/pokemon.model';
 export class EasyWordleComponent {
   generation: string = "";
   show: boolean = false;
-  pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
 
   constructor(private userService: UsuariosServices, private pokemonApiServices: PokemonApiServices) { }
 
-  ngOnInit() {
-    this.pokemon = this.pokemonApiServices.getSinglePokemon();
-  }
   generationSelected(generation: any) {
     this.generation = generation;
   }
