@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 
 @Component({
   selector: 'app-generation',
@@ -7,10 +8,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class GenerationComponent {
   @Output() generationSelected = new EventEmitter<String>();
-  generation: string = '1';
-
-  choiceGeneration(event: any) {
+  generation: string = '';
+  constructor(private apiService:PokemonApiServices){}
+  
+  async choiceGeneration(event: any) {
     this.generation = event.target.value;
+    await this.apiService.listaSpeciesPokemon(this.generation);
     this.generationSelected.emit(this.generation);
   }
 

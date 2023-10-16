@@ -1,14 +1,7 @@
 <section class="mainWordle">
-    <section class="modalRegiones containerPrincipal" *ngIf="show === false; else game">
-        <app-generation (generationSelected)=" generationSelected($event)"></app-generation>
-        <button (click)="showGame()">Aceptar</button>
-    </section>
-    
 
-    <app-word-game [generation]="generation"></app-word-game>
-
-    <ng-template #game>
-    <section class="containerWorleFacil">
+        <app-word-game></app-word-game>
+    <!--<section class="containerWorleFacil">
         <section class="subContainer">
             <input type="text" placeholder="Escribir nombre del Pokemon">
             <ul class="contenedorPalabraCompleta">
@@ -36,6 +29,5 @@
                 <p class="contenedorLetra rojo">Vel</p>
             </li>
         </ul>
-    </section>
-</ng-template>
+    </section>-->
 </section>

@@ -52,6 +52,7 @@ export class PokemonApiServices {
     async listaSpeciesPokemon(generation: string) { //Guarda la lista de especies de pokemon de esa generacion
         try {
             this.pokemonSpeciesURLList.splice(0, this.pokemonSpeciesURLList.length);
+            this.pokemonArray.splice(0, this.pokemonArray.length);
             await this.obtenerListaPokemonApi(generation);
             for (let pokemon of this.pokemonSpecies.pokemon_species) {
                 this.pokemonSpeciesURLList.push(pokemon);
