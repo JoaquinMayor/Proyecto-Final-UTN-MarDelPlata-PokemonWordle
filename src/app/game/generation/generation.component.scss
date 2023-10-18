@@ -5,13 +5,15 @@
     justify-content: space-around;
     align-items: center;
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.781) 0%, white 45%, rgba(0, 0, 0, 0.719) 45%, black 55%, rgba(255, 0, 0, 0.753) 55%);
-    width: 25rem;
-    height: 25rem;
+    width: clamp(15rem, 40vw, 25rem);
+    height: clamp(15rem, 40vw, 25rem);
     border-radius: 50%;
+    width: clamp;
 
     select {
+        width: 50%;
         padding: 0.3rem;
-        font-size: 1rem;
+        font-size: 0.9rem;
         border: 1px solid #ccc;
         border-radius: 4px;
         background-color: #fff;

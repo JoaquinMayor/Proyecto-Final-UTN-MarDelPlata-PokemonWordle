@@ -1,4 +1,4 @@
-<section [ngClass]="{'modalRegiones': getRouter()=='/wordleFacil'}">
+<section [ngClass]="{'modalRegiones': getRouter()=='/wordleFacil' || getRouter()=='/wordleDificil'}">
   <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)">
     <option value="">Generacion a seleccionar</option>
     <option value="1">1° Generación</option>

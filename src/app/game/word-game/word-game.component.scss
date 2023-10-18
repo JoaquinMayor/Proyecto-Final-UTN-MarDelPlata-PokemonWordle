@@ -20,14 +20,14 @@ $background-color_4: orange;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
         font-size: 1rem;
-    }
 
-    button:hover {
-        background-color: #45a049;
-    }
+        &:hover {
+            background-color: #45a049;
+        }
 
-    button:active {
-        background-color: #3e8e41;
+        &:active {
+            background-color: #3e8e41;
+        }
     }
 }
 
@@ -36,13 +36,13 @@ $background-color_4: orange;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1rem;
 
     .containerInputBtn {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        margin-top: 2rem;
 
         input[type="text"] {
             padding: 0.5rem;
@@ -90,10 +90,10 @@ $background-color_4: orange;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 55rem;
-        height: 30rem;
+        width: clamp(35rem, 60vw, 65rem);
+        height: clamp(25rem, 80vh, 35rem);
         background-color: #ff0000a9;
-        /* Cambia el color a tu gusto */
+        margin: 2rem;
         padding: 4rem;
         border-radius: 2rem;
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
@@ -133,9 +133,9 @@ $background-color_4: orange;
 
             .contenedorLetra {
                 display: flex;
-                margin: 0.8rem;
-                width: 2rem;
-                height: 3rem;
+                margin: 0.2rem;
+                width: clamp(1rem, 8vw, 2rem);
+                height: clamp(1.5rem, 10vh, 3rem);
                 align-items: center;
                 justify-content: center;
                 border-radius: 20%;
@@ -159,6 +159,52 @@ $background-color_4: orange;
 
         .naranja {
             background-color: $background-color_4;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .containerWorleFacil {
+            width: 90%;
+            height: auto;
+            padding: 2rem;
+        }
+
+        .subContainer {
+            input {
+                width: 100%;
+            }
+        }
+
+        .contenedorPalabraCompleta {
+            flex-wrap: wrap;
+
+            .contenedorLetra {
+                margin: 0.5rem;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .containerPrincipal {
+            gap: 1rem;
+        }
+
+        .containerTodoWordle {
+            .containerInputBtn {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .containerWorleFacil {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .subContainer {
+                input {
+                    width: 100%;
+                }
+            }
         }
     }
 }

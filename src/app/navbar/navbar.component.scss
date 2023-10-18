@@ -1,6 +1,6 @@
 $color_1: #f2f2f2;
 $color_2: black;
-$background-color_1: #f2f2f2ed;;
+$background-color_1: #f2f2f2ed;
 $background-color_2: rgba(255, 0, 0, 0.644);
 $background-color_4: rgba(255, 255, 255, 0.836);
 
@@ -19,15 +19,23 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         text-align: center;
         margin-left: 10rem;
         font-size: 1.8rem;
+
+        @media screen and (max-width: 768px) {
+            margin-left: 7rem;
+        }
+
+        @media screen and (max-width: 668px) {
+            margin-left: 0;
+        }
     }
 
-    .navbar_menuSinLog{
+    .navbar_menuSinLog {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 2.5rem;
 
-        a{
+        a {
             color: $color_2;
             text-decoration: none;
             cursor: pointer;
@@ -89,6 +97,24 @@ $background-color_4: rgba(255, 255, 255, 0.836);
                     background: none;
                 }
             }
+
+            @media screen and (max-width: 668px) {
+                position: static;
+            }
+        }
+
+        @media screen and (max-width: 668px) {
+            position: static;
+            max-height: initial;
+            visibility: visible;
+            overflow: visible;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+
+            li {
+                margin-bottom: 10px;
+            }
         }
     }
 
@@ -100,5 +126,20 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     .active {
         max-height: 1000px !important;
         visibility: visible !important;
+    }
+
+    @media screen and (max-width: 668px) {
+        flex-direction: column;
+        height: auto;
+
+        h1 {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        .navbar_menuSinLog {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { HtmlElementService } from 'src/app/services/htmlElement.service';
 import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
@@ -10,21 +10,24 @@ import { UsuariosServices } from 'src/app/services/users.service';
   styleUrls: ['./word-game.component.scss']
 })
 export class WordGameComponent {
-generation:string ="";
+  generation: string = "";
   show: boolean = false;
-  idSelected:number = 0;
-  guessPokemon:Pokemon = new Pokemon(0,"","","","","","","","",0,0,0,0,0,0,0,0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
-  namePokemon:string="";//nombre del pokemon ingresado por el usuario
-  index:number = 0;
-  words:string[]=[]; //palabras usadas
-  cantLetters:number[]=[]; //arreglo paralelo para saber acierto
-  letters:string[] = [];
+  idSelected: number = 0;
+  @Output() pokeelegido = new EventEmitter<Pokemon>();
+  guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
+  namePokemon: string = "";//nombre del pokemon ingresado por el usuario
+  index: number = 0;
+  words: string[] = []; //palabras usadas
+  cantLetters: number[] = []; //arreglo paralelo para saber acierto
+  letters: string[] = [];
+  limit: number = 6; // Establece la cantidad máxima de li que se mostrarán
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService) { }
 
   startGame() {
     this.generateRandomNumber();
     this.randomPokemon();
+    this.pokeelegido.emit(this.guessPokemon);
   }
 
   generateRandomNumber() {

@@ -19,6 +19,13 @@ export class HelpsComponent {
     console.log(this.pokemon);
   }
 
+  pokeElegido(poke: any) {
+    this.pokemon = poke;
+    this.pokeUsados.push(poke);
+    this.color = this.colors[Math.floor(Math.random() * (this.colors.length - 0 + 1))];
+    console.log(this.pokeUsados);
+  }
+
   compareType1(poke: Pokemon) {
     if (poke.getType1 !== this.pokemon.getType1) {
       return true;

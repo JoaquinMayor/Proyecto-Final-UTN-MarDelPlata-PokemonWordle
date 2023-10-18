@@ -1,5 +1,5 @@
 <section class="containerPrincipal" *ngIf="show === false; else game">
-    <app-generation (generationSelected)=" generationSelected($event)"></app-generation>
+    <app-generation (generationSelected)="generationSelected($event)"></app-generation>
     <button (click)="showGame()">Aceptar</button>
 </section>
 <button (click)="startGame()">Start</button>
@@ -17,12 +17,12 @@
                 <ul class="contenedorPalabraCompleta">
                     <li *ngFor="let letter of guessPokemon.getName.split('')" class="contenedorLetra"></li>
                 </ul>
-                <ul *ngFor="let word of words" class="contenedorPalabraCompleta">
+                <ul *ngFor="let word of words.slice(0, limit)" class="contenedorPalabraCompleta">
                     <li *ngFor="let letter of word.split(''); let i = index" [ngClass]="wordColor(letter,i)"
                         class="contenedorLetra">{{letter}}</li>
                 </ul>
             </section>
         </section>
     </section>
-    <app-helps></app-helps>
+    <!-- <app-helps (pokeelegido)="pokeElegido($event)"></app-helps> -->
 </ng-template>
