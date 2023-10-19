@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Pokemon } from "../models/pokemon.model";
 import { HttpClient } from '@angular/common/http';
+import { Stats } from "../models/stats.model";
 
 
 @Injectable({ providedIn: 'root' })
@@ -10,6 +11,7 @@ export class PokemonApiServices {
     pokemonArray: Pokemon[] = [];
     jsonPokemons: any[] = [];
     pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+    stats: Stats[] = [];
 
     constructor(private httpClient: HttpClient) { }
     //Hacer funcion de juntar datos de un pokemon solo
@@ -22,12 +24,12 @@ export class PokemonApiServices {
         return this.httpClient.get(url);
     }
 
-    setSinglePokemon(data: Pokemon) {
-        this.pokemon = data;
-    }
-
     getSinglePokemon() {
         return this.pokemon;
+    }
+
+    setSinglePokemon(pokemon: Pokemon) {
+        this.pokemon = pokemon;
     }
 
     generationPokemonApi(generation: string) { //Junta todo el dato de la generacion
@@ -86,7 +88,38 @@ export class PokemonApiServices {
         )
     }
 
+    datesJsonSinglePokeGame(name: string) {
+        let jsonPoke: any;
+        this.singlePokemonApi(name).subscribe(
+            res => {
+                jsonPoke = res;
+                this.createPokemon(jsonPoke);
+            }
+        )
+    }
+
+    createPokemon(jsonPokemon: any) {
+        let stat: Stats = new Stats("", 0, 0, 0, 0, 0, 0, 0, 0, "", "");
+        let type2 = "none";
+        if (jsonPokemon.types.length == 2) {
+            type2 = jsonPokemon.types[1].type.name;
+        }
+        stat.setName(jsonPokemon.name);
+        stat.setHp(jsonPokemon.stats[0].base_stat);
+        stat.setAtk(jsonPokemon.stats[1].base_stat);
+        stat.setDefense(jsonPokemon.stats[2].base_stat);
+        stat.setSpecialAtk(jsonPokemon.stats[3].base_stat);
+        stat.setSpecialDef(jsonPokemon.stats[4].base_stat);
+        stat.setSpeed(jsonPokemon.stats[5].base_stat);
+        stat.setHeight(jsonPokemon.height);
+        stat.setWeight(jsonPokemon.weight);
+        stat.setType1(jsonPokemon.types[0].type.name);
+        stat.setType2(type2);
+        this.stats.push(stat);
+    }
+
     createArrayPokemon(jsonPokemon: any, jsonPoke: any) {
+        this.stats.splice(0, this.stats.length);
         let type2 = "none";
         let description = "";
         let flag: boolean = false;
@@ -122,7 +155,7 @@ export class PokemonApiServices {
             jsonPoke.stats[2].base_stat,
             jsonPoke.stats[4].base_stat,
             jsonPoke.stats[0].base_stat,
-            jsonPoke.heigth,
+            jsonPoke.height,
             jsonPoke.weight));
     }
 }

@@ -1,19 +1,17 @@
-<section class="containerAyudas">
-    <ul *ngFor="let poke of pokeUsados" class="contenedorAyudas">
-        <li>Tipo 1
-            <p class="contenedorLetra">{{poke.getType1}}</p>
-        </li>
-        <li>Tipo 2
-            <p class="contenedorLetra">{{poke.getType2}}</p>
-        </li>
-        <li>Peso
-            <img src="" alt="">
-        </li>
-        <li>Altura
-            <img src="" alt="">
-        </li>
-        <li>Estadistica Destacada
-            <p class="contenedorLetra"><!-- {{poke.getStat}} --></p>
-        </li>
-    </ul>
-</section>
+<ul class="contenedorAyudas">
+    <li>Tipo 1
+        <p class="contenedorLetra" [ngClass]="compareType1()">{{stat.getType1}}</p>
+    </li>
+    <li>Tipo 2
+        <p class="contenedorLetra" [ngClass]="compareType2()">{{stat.getType2}}</p>
+    </li>
+    <li>Peso
+        <img [src]="compareWeight()" alt="Flecha">
+    </li>
+    <li>Altura
+        <img [src]="compareHeight()" alt="Flecha">
+    </li>
+    <li>Estadistica Destacada
+        <p class="contenedorLetra" [ngClass]="compareBestStat()">{{bestStat}}</p>
+    </li>
+</ul>

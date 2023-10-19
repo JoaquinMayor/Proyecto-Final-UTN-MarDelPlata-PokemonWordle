@@ -3,49 +3,44 @@ $background-color_2: red;
 $background-color_3: green;
 $background-color_4: orange;
 
-.containerAyudas {
-    position: relative;
+.contenedorAyudas {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: fit-content;
-    height: 30rem;
-    background-color: #00eeff;
-    padding: 4rem;
-    border-radius: 2rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+    list-style: none;
+    flex-direction: row;
+    text-align: center;
+    gap: 1rem;
 
-    .contenedorAyudas {
+    .contenedorLetra {
+        background-color: gray;
         display: flex;
-        list-style: none;
-        flex-direction: row;
-        justify-content: space-evenly;
-        text-align: center;
+        width: 5rem;
+        height: 3rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20%;
+        border: 0.125rem solid black;
+    }
 
-        .contenedorLetra {
-            background-color: $background-color_1;
-            display: flex;
-            margin: 1rem;
-            width: 5rem;
-            height: 3rem;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20%;
-            border: 0.125rem solid black;
-        }
+    .contenedorLetra.rojo {
+        background-color: $background-color_2;
+    }
 
-        .contenedorLetra.rojo {
-            background-color: $background-color_2;
-        }
+    .contenedorLetra.verde {
+        background-color: $background-color_3;
+    }
 
-        .contenedorLetra.verde {
-            background-color: $background-color_3;
-        }
+    .contenedorLetra.naranja {
+        background-color: $background-color_4;
+    }
 
-        .contenedorLetra.naranja {
-            background-color: $background-color_4;
+    li {
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 2.5rem;
         }
     }
 }

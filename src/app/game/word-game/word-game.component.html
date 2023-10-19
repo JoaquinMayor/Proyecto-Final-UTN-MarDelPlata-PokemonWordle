@@ -24,5 +24,7 @@
             </section>
         </section>
     </section>
-    <!-- <app-helps (pokeelegido)="pokeElegido($event)"></app-helps> -->
+    <section class="containerAyudas">
+    <app-helps *ngFor="let stat of pokeUsados" [stat] = "stat" [pokemon] = "guessPokemon"></app-helps>
+    </section>
 </ng-template>

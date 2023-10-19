@@ -208,3 +208,18 @@ $background-color_4: orange;
         }
     }
 }
+
+.containerAyudas {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: fit-content;
+    height: 30rem;
+    background-color: #00eeff;
+    padding: 4rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+}

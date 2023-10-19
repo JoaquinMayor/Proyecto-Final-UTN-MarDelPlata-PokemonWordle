@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { Stats } from 'src/app/models/stats.model';
 import { HtmlElementService } from 'src/app/services/htmlElement.service';
 import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 import { UsuariosServices } from 'src/app/services/users.service';
@@ -13,21 +14,19 @@ export class WordGameComponent {
   generation: string = "";
   show: boolean = false;
   idSelected: number = 0;
-  @Output() pokeelegido = new EventEmitter<Pokemon>();
   guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
+  pokemon: Pokemon;
   namePokemon: string = "";//nombre del pokemon ingresado por el usuario
   index: number = 0;
   words: string[] = []; //palabras usadas
-  cantLetters: number[] = []; //arreglo paralelo para saber acierto
-  letters: string[] = [];
   limit: number = 6; // Establece la cantidad máxima de li que se mostrarán
+  pokeUsados: Stats[] = [];
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService) { }
 
   startGame() {
     this.generateRandomNumber();
     this.randomPokemon();
-    this.pokeelegido.emit(this.guessPokemon);
   }
 
   generateRandomNumber() {
@@ -39,7 +38,6 @@ export class WordGameComponent {
 
   randomPokemon() { //guarda el pokemon a elegido aleatoriamente
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
-    this.pokemonApiServices.setSinglePokemon(this.guessPokemon);
     console.log(this.guessPokemon);
   }
 
@@ -63,6 +61,7 @@ export class WordGameComponent {
       console.log("entre al primer if")
       if (this.validateName() === false) {
         console.log("entre al segundo if");
+        this.pokemonWritter();
         this.wordCorrect();
       }
     }
@@ -74,11 +73,6 @@ export class WordGameComponent {
       flag = true;
     }
     return flag;
-  }
-
-  ulGenerator() {
-    let container = this.htmlService.getElementRef("container");
-    container.nativeElement.innerHTML = `<ul class="contenedorPalabraCompleta" id="${this.index}" name="${this.index}"></ul>`;
   }
 
   wordCorrect() {
@@ -106,5 +100,12 @@ export class WordGameComponent {
   async showGame() {
     this.startGame();
     this.show = true;
+  }
+
+  pokemonWritter(){
+    this.pokemonApiServices.datesJsonSinglePokeGame(this.namePokemon);
+    console.log(this.pokemonApiServices.stats);
+    this.pokeUsados = this.pokemonApiServices.stats;
+    console.log(this.pokeUsados);
   }
 }
