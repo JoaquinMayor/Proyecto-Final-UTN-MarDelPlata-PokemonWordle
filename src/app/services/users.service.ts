@@ -22,7 +22,7 @@ export class UsuariosServices {
                 if (usuario.getName === name) {
                     if (usuario.getPassword === password) {
                         userExist = usuario;
-                        userExist.setLogging = true;
+                        userExist.setLogging(true);
                         flag = true;
                     } else {
                         alert("Contraseña Incorrecta");

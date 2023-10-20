@@ -4,8 +4,14 @@ export class Usuario{
     private name:string;
     private password:string;
     private imagenScore:number;
+    private tryImage:number
     private hardScrore:number;
+    private tryHard:number;
     private easyScore:number;
+    private tryEasy:number;
+    private maxScoreImage:number;
+    private maxScoreEasy:number;
+    private maxScoreHard:number;
     private photo:string;
     private logging:boolean;
 
@@ -17,7 +23,13 @@ export class Usuario{
         this.imagenScore = 0;
         this.easyScore = 0;
         this.hardScrore = 0
+        this.tryEasy = 0;
+        this.tryHard = 0;
+        this.tryImage = 0;
         this.logging = false;
+        this.maxScoreEasy = 0;
+        this.maxScoreHard = 0;
+        this.maxScoreImage = 0;
     }
 
     get getId(){
@@ -52,31 +64,79 @@ export class Usuario{
         return this.easyScore;
     }
 
-    set setName(name:string){
+    get getTryImage(){
+        return this.tryImage;
+    }
+
+    get getTryEasy(){
+        return this.tryEasy;
+    }
+
+    get getTryHard(){
+        return this.tryHard;
+    }
+
+    get getMaxScoreImage(){
+        return this.maxScoreImage;
+    }
+
+    get getMaxScoreEasy(){
+        return this.maxScoreEasy;
+    }
+
+    get getMaxScoreHard(){
+        return this.maxScoreHard;
+    }
+
+    setName(name:string){
         this.name = name;
     }
 
-    set setPassword(password:string){
+    setPassword(password:string){
         this.password = password;
     }
 
-    set setPhoto(photo:string){
+    setPhoto(photo:string){
         this.photo = photo;
     }
 
-    set setLogging(logging:boolean){
+    setLogging(logging:boolean){
         this.logging= logging;
     }
 
-    set setImageScore(imageScore:number){
+    setImageScore(imageScore:number){
         this.imagenScore = imageScore;
     }
 
-    set setHardScore(hardScore:number){
+    setHardScore(hardScore:number){
         this.hardScrore = hardScore;
     }
 
-    set setEasyScore(easyScore:number){
+    setEasyScore(easyScore:number){
         this.easyScore = easyScore;
+    }
+
+    setTryImage(tryImage:number){
+        this.tryImage = tryImage;
+    }
+
+    setTryEasy(tryEasy:number){
+        this.tryEasy = tryEasy;
+    }
+
+    setTryHard(tryHard:number){
+        this.tryHard = tryHard;
+    }
+
+    setMaxScoreImage(maxScoreImage:number){
+        this.maxScoreImage = maxScoreImage;
+    }
+
+    setMaxScoreEasy(maxScoreEasy:number){
+        this.maxScoreEasy = maxScoreEasy
+    }
+
+    setMaxScorehard(maxScoreHard:number){
+        this.maxScoreHard = maxScoreHard;
     }
 }

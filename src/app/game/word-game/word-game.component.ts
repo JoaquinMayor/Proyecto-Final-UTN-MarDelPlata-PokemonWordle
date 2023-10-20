@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Stats } from 'src/app/models/stats.model';
 import { HtmlElementService } from 'src/app/services/htmlElement.service';
@@ -21,8 +22,11 @@ export class WordGameComponent {
   words: string[] = []; //palabras usadas
   limit: number = 6; // Establece la cantidad máxima de li que se mostrarán
   pokeUsados: Stats[] = [];
+  cantLetters: number[] = []; //arreglo paralelo para saber acierto
+  letters: string[] = [];
+  lives: number = 7;
 
-  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService) { }
+  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
   startGame() {
     this.generateRandomNumber();
@@ -44,7 +48,6 @@ export class WordGameComponent {
   validationIfPokemon() {
     let flag = false;
     for (let i = 0; i < this.pokemonApiServices.pokemonArray.length && flag == false; i++) {
-      console.log("Entre al for")
       if (this.namePokemon.toLowerCase() === this.pokemonApiServices.pokemonArray[i].getName.toLowerCase()) {
         flag = true;
       } else {
@@ -58,13 +61,45 @@ export class WordGameComponent {
     console.log(this.guessPokemon);
     console.log(this.pokemonApiServices.pokemonArray.length);
     if (this.validationIfPokemon()) {
-      console.log("entre al primer if")
-      if (this.validateName() === false) {
-        console.log("entre al segundo if");
+      if (this.validateName() === false && this.lives != 0) {
         this.pokemonWritter();
         this.wordCorrect();
+        this.lives--;
+      } else if (this.validateName() === true && this.lives != 0) {
+        this.pokemonWritter();
+        this.wordCorrect();
+        this.bestScore();
+        this.show = false;
       }
     }
+  }
+
+  cantLives() {
+    if (this.lives == 0) {
+      this.bestScore();
+      alert("Usted a perdido");
+      this.show = false;
+    }
+    return "";
+  }
+
+  resetValidation() {
+    this.cantLetters.splice(0, this.cantLetters.length);
+    this.letters.splice(0, this.letters.length);
+    for (let i = 0; i < this.guessPokemon.getName.length; i++) {
+      if (!this.letters.includes(this.guessPokemon.getName.charAt(i))) {
+        this.cantLetters.push(1);
+        this.letters.push(this.guessPokemon.getName.charAt(i));
+      } else {
+        for (let j = 0; j < this.letters.length; j++) {
+          if (this.guessPokemon.getName.charAt(i) == this.letters[j]) {
+            this.cantLetters[j] = this.cantLetters[j] + 1;
+          }
+        }
+      }
+    }
+    return ""
+
   }
 
   validateName() {
@@ -79,14 +114,26 @@ export class WordGameComponent {
     this.words.push(this.namePokemon);
   }
 
-  wordColor(letter: string, i: number): string {
+  wordColor(letter: string, i: number, u: number): string {
+    let color = "";
+    let pos = this.letters.indexOf(letter.toLowerCase());
+
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       return "verde";
-    } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase())) {
-      return "naranja";
+      this.cantLetters[pos] = this.cantLetters[pos] - 1;
+    } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase()) && this.cantLetters[pos] > 0) {
+      for (let k = i; k < this.words[u].length; k++)
+        if (this.words[u].charAt(k) === this.guessPokemon.getName.charAt(k).toLowerCase()) {
+          return "gris";
+        } else {
+          this.cantLetters[pos] = this.cantLetters[pos] - 1;
+          color = "naranja";
+        }
+
     } else {
-      return "gris";
+      color = "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
     }
+    return color;
   }
 
   ifLogging() {
@@ -100,12 +147,118 @@ export class WordGameComponent {
   async showGame() {
     this.startGame();
     this.show = true;
+    this.lives = 7
   }
 
-  pokemonWritter(){
+  pokemonWritter() {
     this.pokemonApiServices.datesJsonSinglePokeGame(this.namePokemon);
-    console.log(this.pokemonApiServices.stats);
     this.pokeUsados = this.pokemonApiServices.stats;
-    console.log(this.pokeUsados);
+  }
+
+  bestScore() {
+    switch (this.lives) {
+      case 0:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setTryEasy(this.userService.user.getEasyScore+1);
+          this.userService.editUser(this.userService.user);
+        }else{
+          
+          this.userService.user.setTryHard(this.userService.user.getHardScore);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 1:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        
+        break;
+      case 2:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 3:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 4:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 5:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 6:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+      case 7:
+        if(this.router.url === "/wordleFacil"){
+          this.userService.user.setEasyScore(this.userService.user.getEasyScore+1);
+          this.userService.user.setTryEasy(this.userService.user.getTryEasy+1);
+          this.userService.user.setMaxScoreEasy(this.userService.user.getMaxScoreEasy+20);
+          this.userService.editUser(this.userService.user);
+        }else{
+          this.userService.user.setHardScore(this.userService.user.getHardScore+1);
+          this.userService.user.setTryHard(this.userService.user.getTryHard+1);
+          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard+20);
+          this.userService.editUser(this.userService.user);
+        }
+        break;
+    }
   }
 }

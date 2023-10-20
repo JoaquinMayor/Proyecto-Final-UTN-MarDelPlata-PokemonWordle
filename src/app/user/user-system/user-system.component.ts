@@ -30,7 +30,7 @@ export class UserSystemComponent {
   }
 
   onPhotoSelected(photo: string) {
-    this.user.setPhoto = photo;
+    this.user.setPhoto(photo);
     this.userService.editUser(this.user);
   }
 
@@ -65,7 +65,7 @@ export class UserSystemComponent {
 
   changeName() {
     if(this.userService.findUser(this.name)===false){
-      this.user.setName = this.name;
+      this.user.setName(this.name);
       this.userService.editUser(this.user);
     }else{
       alert("Nombre ya en uso");
@@ -75,7 +75,7 @@ export class UserSystemComponent {
 
   changePassword() {
     if(!this.userService.validatePassword(this.password)){
-      this.user.setPassword = this.password;
+      this.user.setPassword(this.password);
       this.userService.editUser(this.user);
     }else{
       alert("Contraseña muy corta");
