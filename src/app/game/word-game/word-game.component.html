@@ -7,9 +7,18 @@
 <ng-template #game>
     <section class="containerTodoWordle" [ngClass]="cantLives()">
         <section class="containerInputBtn">
-            <section class="life"><img [src]="" alt="vidas"><p class="cantLife">{{lives-1}}</p></section>
-            <input type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon"
-                [(ngModel)]="namePokemon">
+            <section class="life"><img src="../../../assets/heart.gif" alt="vidas">
+                <p class="cantLife">{{lives-1}}</p>
+            </section>
+            <section class="containerInputList">
+                <input #nombreInput type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon"
+                    [(ngModel)]="namePokemon" (input)="filterPokemons(nombreInput.value)">
+                <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
+                    <li *ngFor="let pokemon of filteredList" class="pokemon">
+                        <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
+                    </li>
+                </ul>
+            </section>
             <button (click)="validateGlobal()">Probar</button>
         </section>
 
@@ -18,14 +27,16 @@
                 <ul class="contenedorPalabraCompleta">
                     <li *ngFor="let letter of guessPokemon.getName.split('')" class="contenedorLetra"></li>
                 </ul>
-                <ul *ngFor="let word of words.slice(0, limit), let u = index" class="contenedorPalabraCompleta" [ngClass]="resetValidation()">
+                <ul *ngFor="let word of words.slice(0, limit), let u = index" class="contenedorPalabraCompleta"
+                    [ngClass]="resetValidation()">
                     <li *ngFor="let letter of word.split(''); let i = index" [ngClass]="wordColor(letter,i,u)"
                         class="contenedorLetra">{{letter}}</li>
                 </ul>
             </section>
         </section>
         <section class="containerAyudas">
-            <app-helps *ngFor="let stat of pokeUsados.slice(0, limit)" [stat] = "stat" [pokemon] = "guessPokemon"></app-helps>
+            <app-helps *ngFor="let stat of pokeUsados.slice(0, limit)" [stat]="stat"
+                [pokemon]="guessPokemon"></app-helps>
         </section>
     </section>
 </ng-template>
