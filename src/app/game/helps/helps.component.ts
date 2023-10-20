@@ -13,7 +13,7 @@ export class HelpsComponent {
   @Input() pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
   colors: string[] = ['rojo', 'verde'];
   color: string = '';
-  bestStat:string = "";
+  bestStat: string = "";
 
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
@@ -34,7 +34,7 @@ export class HelpsComponent {
   }
 
   compareHeight() {
-    if (this.pokemon.getHeigth < this.stat.getHeigth) {
+    if (this.pokemon.getHeigth > this.stat.getHeigth) {
       return './assets/flechaHaciaArriba.png';
     } else {
       return './assets/flechaHaciaAbajo.png';
@@ -42,7 +42,7 @@ export class HelpsComponent {
   }
 
   compareWeight() {
-    if (this.pokemon.getWeigth < this.stat.getWeigth) {
+    if (this.pokemon.getWeigth > this.stat.getWeigth) {
       return './assets/flechaHaciaArriba.png';
     } else {
       return './assets/flechaHaciaAbajo.png';
@@ -51,36 +51,35 @@ export class HelpsComponent {
 
   selectBestStat(pokemon: any) {
     let statSelected = "hp";
-    let stat = this.pokemon.getHp;
-    if (stat < this.pokemon.getAtk) {
-      stat = this.pokemon.getAtk;
+    let stat = pokemon.getHp;
+    if (stat < pokemon.getAtk) {
+      stat = pokemon.getAtk;
       statSelected = "atk";
     }
-    if (stat < this.pokemon.getDefense) {
-      stat = this.pokemon.getDefense;
+    if (stat < pokemon.getDefense) {
+      stat = pokemon.getDefense;
       statSelected = "def";
     }
-    if (stat < this.pokemon.getSpecialAtk) {
-      stat = this.pokemon.getSpecialAtk;
+    if (stat < pokemon.getSpecialAtk) {
+      stat = pokemon.getSpecialAtk;
       statSelected = "spAtk";
     }
-    if (stat < this.pokemon.getSpecialDef) {
-      stat = this.pokemon.getSpecialDef;
+    if (stat < pokemon.getSpecialDef) {
+      stat = pokemon.getSpecialDef;
       statSelected = "spDef";
     }
-    if (stat < this.pokemon.getSpeed) {
-      stat = this.pokemon.getSpeed;
+    if (stat < pokemon.getSpeed) {
+      stat = pokemon.getSpeed;
       statSelected = "speed";
     }
-
     return statSelected;
   }
-
   compareBestStat() {
     let bestStat1 = this.selectBestStat(this.pokemon);
     let bestStat2 = this.selectBestStat(this.stat);
+
     this.bestStat = bestStat2;
-    if (bestStat1 != bestStat2) {
+    if (bestStat1 !== bestStat2) {
       return 'rojo';
     } else {
       return 'verde';

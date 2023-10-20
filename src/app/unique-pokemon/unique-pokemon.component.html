@@ -32,7 +32,8 @@
             <img id="foto" [src]="pokemon.getFrontSprite" [ngClass]="isPokemonType(pokemon.getType1)">
             <ul id="lista-tipo">
                 <li [ngClass]="isPokemonType(pokemon.getType1)">{{pokemon.getType1}}</li>
-                <li [ngClass]="isPokemonType(pokemon.getType2)">{{pokemon.getType2}}</li>
+                <li *ngIf="pokemon.getType2 !== 'none'" [ngClass]="isPokemonType(pokemon.getType2)">{{pokemon.getType2}}
+                </li>
             </ul>
         </div>
     </section>

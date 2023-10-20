@@ -17,7 +17,7 @@ export class PokedexComponent {
     this.renderTable('1');
   }
 
-  async renderTable(generation:string) {
+  async renderTable(generation: string) {
     this.pokemonList.splice(0, this.pokemonList.length);
     await this.pokemonApiServices.listaSpeciesPokemon(generation);
     this.pokemonList = this.pokemonApiServices.pokemonArray;

@@ -36,6 +36,7 @@ $background-color_4: orange;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 98vw;
 
     .containerInputBtn {
         display: flex;
@@ -43,6 +44,12 @@ $background-color_4: orange;
         align-items: center;
         gap: 2rem;
         margin-top: 2rem;
+
+        input {
+            @media screen and (max-width: 550px) {
+                width: 12rem;
+            }
+        }
 
         input[type="text"] {
             padding: 0.5rem;
@@ -67,6 +74,14 @@ $background-color_4: orange;
                 box-shadow: 0 0 0 2px #5c9ce6;
             }
         }
+
+        @media screen and (max-width: 550px) {
+            gap: 0rem;
+
+            input[type="text"] {
+                font-size: 0.8rem;
+            }
+        }
     }
 
     button {
@@ -82,6 +97,10 @@ $background-color_4: orange;
         &:hover {
             background-color: #4287f5;
         }
+
+        @media (max-width: 420px) {
+            padding: 0.5rem 0.8rem;
+        }
     }
 
     .containerWorleFacil {
@@ -91,7 +110,7 @@ $background-color_4: orange;
         align-items: center;
         justify-content: space-between;
         width: clamp(35rem, 60vw, 65rem);
-        height: clamp(25rem, 80vh, 35rem);
+        height: auto;
         background-color: #ff0000a9;
         margin: 2rem;
         padding: 4rem;
@@ -215,11 +234,23 @@ $background-color_4: orange;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: fit-content;
-    height: 30rem;
-    background-color: #00eeff;
+    width: clamp(20rem, 100%, fit-content);
+    max-width: 100vw;
+    height: auto;
+    background-color: #feff0096;
     padding: 4rem;
     border-radius: 2rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+
+    @media (max-width: 768px) {
+        padding: 2rem;
+        border-radius: 1rem;
+        margin: 2rem;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.39);
+    }
+
+    @media (max-width: 480px) {
+        border-radius: 0.5rem;
+        box-shadow: none;
+    }
 }

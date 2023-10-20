@@ -23,8 +23,8 @@
                 </ul>
             </section>
         </section>
-    </section>
-    <section class="containerAyudas">
-    <app-helps *ngFor="let stat of pokeUsados" [stat] = "stat" [pokemon] = "guessPokemon"></app-helps>
+        <section class="containerAyudas">
+            <app-helps *ngFor="let stat of pokeUsados.slice(0, limit)" [stat] = "stat" [pokemon] = "guessPokemon"></app-helps>
+        </section>
     </section>
 </ng-template>
