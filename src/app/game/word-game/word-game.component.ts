@@ -27,6 +27,9 @@ export class WordGameComponent {
   lives: number = 7;
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
+  badFinish:boolean = false;
+  goodFinish:boolean = false;
+
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
@@ -52,11 +55,15 @@ export class WordGameComponent {
     for (let i = 0; i < this.pokemonApiServices.pokemonArray.length && flag == false; i++) {
       if (this.namePokemon.toLowerCase() === this.pokemonApiServices.pokemonArray[i].getName.toLowerCase()) {
         flag = true;
-      } else {
-        //alert("El nombre no pertenece a un Pokemon o no es de esta generacion");
       }
     }
     return flag;
+  }
+
+  confirm(){
+    this.show = false;
+    this.goodFinish = false;
+    this.badFinish = false;
   }
 
   validateGlobal() {
@@ -69,7 +76,9 @@ export class WordGameComponent {
         this.pokemonWritter();
         this.wordCorrect();
         this.bestScore();
-        this.show = false;
+        this.goodFinish = true;
+          
+        
       }
     }
   }
@@ -77,8 +86,12 @@ export class WordGameComponent {
   cantLives() {
     if (this.lives == 0) {
       this.bestScore();
-      alert("Usted a perdido");
-      this.show = false;
+      this.badFinish = true;
+      setTimeout(()=>{
+        alert("Usted a perdido, el pokemon era "+ this.guessPokemon.getName);
+        this.show = false;
+      },1000);
+      
     }
     return "";
   }

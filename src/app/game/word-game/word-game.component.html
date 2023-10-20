@@ -2,7 +2,7 @@
     <app-generation (generationSelected)="generationSelected($event)"></app-generation>
     <button (click)="showGame()">Aceptar</button>
 </section>
-<button (click)="startGame()">Start</button>
+<button (click)="startGame()" *ngIf="guessPokemon.getId === 0">Start</button>
 
 <ng-template #game>
     <section class="containerTodoWordle" [ngClass]="cantLives()">
@@ -10,16 +10,17 @@
             <section class="life"><img src="../../../assets/heart.gif" alt="vidas">
                 <p class="cantLife">{{lives-1}}</p>
             </section>
-            <section class="containerInputList">
+            <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                 <input #nombreInput type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon"
-                    [(ngModel)]="namePokemon" (input)="filterPokemons(nombreInput.value)">
+                    [(ngModel)]="namePokemon" (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()">
                 <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                     <li *ngFor="let pokemon of filteredList" class="pokemon">
                         <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
                     </li>
                 </ul>
+                <button (click)="validateGlobal()">Probar</button>
             </section>
-            <button (click)="validateGlobal()">Probar</button>
+            
         </section>
 
         <section class="containerWorleFacil">
@@ -39,4 +40,14 @@
                 [pokemon]="guessPokemon"></app-helps>
         </section>
     </section>
+
+    <div *ngIf="goodFinish == true">
+        <p>¡Felicidades, el pokemon era {{this.guessPokemon.getName}} !</p>
+        <button (click)="confirm()">Aceptar</button>
+    </div>
+
+    <div *ngIf="badFinish == true">
+        <p>Usted a perdido, el pokemon era  {{this.guessPokemon.getName}}</p>
+        <button (click)="confirm()">Aceptar</button>
+    </div>
 </ng-template>

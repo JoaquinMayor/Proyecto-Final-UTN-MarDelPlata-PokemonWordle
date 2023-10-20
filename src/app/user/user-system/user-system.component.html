@@ -34,10 +34,15 @@
 </section>
 
     <section class="containerScore">
+        <h2>Intentos: {{user.getTryImage}}</h2>
         <h2>Puntuación Imagenes: {{user.getImageScore}}</h2>
-
-        <h2>Puntuación Wordle Difícil: {{user.getHardScore}}</h2>
-
-        <h2>Puntuación Wordle Fácil: {{user.getEasyScore}}</h2>
+        
+        <h2>Intentos: {{user.getTryHard}}</h2>
+        <h2>Puntuación Total: {{user.getMaxScoreHard}}</h2>
+        <h2>Partidas Ganadas Wordle Difícil: {{user.getHardScore}}</h2>
+        
+        <h2>Intentos: {{user.getTryEasy}}</h2>
+        <h2>Puntuación Total: {{user.getMaxScoreEasy}}</h2>
+        <h2>Partidas Ganadas Wordle Fácil: {{user.getEasyScore}}</h2>
     </section>
 </section>
