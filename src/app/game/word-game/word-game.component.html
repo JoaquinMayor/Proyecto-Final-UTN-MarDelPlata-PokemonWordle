@@ -5,10 +5,10 @@
 <button (click)="startGame()" *ngIf="guessPokemon.getId === 0">Start</button>
 
 <ng-template #game>
-    <section class="containerTodoWordle" [ngClass]="cantLives()">
+    <section class="containerTodoWordle">
         <section class="containerDataWordle">
             <section class="life">
-                <p class="cantLife">{{lives-1}}</p>
+                <p class="cantLife">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="vidas">
             </section>
             <section class="containerInputBtn">

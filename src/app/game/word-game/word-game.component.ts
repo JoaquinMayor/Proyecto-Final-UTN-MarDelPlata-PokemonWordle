@@ -24,7 +24,7 @@ export class WordGameComponent {
   pokeUsados: Stats[] = [];
   cantLetters: number[] = []; //arreglo paralelo para saber acierto
   letters: string[] = [];
-  lives: number = 7;
+  lives: number = 6;
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
   badFinish:boolean = false;
@@ -38,10 +38,7 @@ export class WordGameComponent {
   }
 
   generateRandomNumber() {
-    console.log(this.pokemonApiServices.pokemonArray);
-    console.log(this.pokemonApiServices.pokemonArray.length);
     this.idSelected = Math.floor(Math.random() * (this.pokemonApiServices.pokemonArray.length - 0 + 1));
-    console.log(this.idSelected);
   }
 
   randomPokemon() { //guarda el pokemon a elegido aleatoriamente
@@ -60,6 +57,7 @@ export class WordGameComponent {
   }
 
   confirm(){
+    this.words.splice(0,this.wordColor.length);
     this.show = false;
     this.goodFinish = false;
     this.badFinish = false;
@@ -76,19 +74,11 @@ export class WordGameComponent {
         this.wordCorrect();
         this.bestScore();
         this.goodFinish = true;
+      }else if(this.lives == 0){
+        this.bestScore();
+        this.badFinish = true;
       }
     }
-  }
-
-  cantLives() {
-    if (this.lives == 0) {
-      this.bestScore();
-      this.badFinish = true;
-      setTimeout(()=>{
-        this.show = false;
-      },1000);
-    }
-    return "";
   }
 
   resetValidation() {
@@ -152,10 +142,11 @@ export class WordGameComponent {
     this.renderTable();
   }
 
-  async showGame() {
+   showGame() {
+    this.words.splice(0,this.wordColor.length);
     this.startGame();
     this.show = true;
-    this.lives = 7
+    this.lives = 6
   }
 
   pokemonWritter() {
