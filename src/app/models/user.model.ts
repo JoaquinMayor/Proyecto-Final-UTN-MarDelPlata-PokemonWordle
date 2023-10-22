@@ -1,22 +1,22 @@
 
-export class Usuario{
-    private id:number
-    private name:string;
-    private password:string;
-    private imagenScore:number;
-    private tryImage:number
-    private hardScrore:number;
-    private tryHard:number;
-    private easyScore:number;
-    private tryEasy:number;
-    private maxScoreImage:number;
-    private maxScoreEasy:number;
-    private maxScoreHard:number;
-    private photo:string;
-    private logging:boolean;
+export class Usuario {
+    private id: number
+    private name: string;
+    private password: string;
+    private imagenScore: number;
+    private tryImage: number
+    private hardScrore: number;
+    private tryHard: number;
+    private easyScore: number;
+    private tryEasy: number;
+    private maxScoreImage: number;
+    private maxScoreEasy: number;
+    private maxScoreHard: number;
+    private photo: string;
+    private logging: boolean;
 
-    constructor(id:number, name:string, password:string, photo:string){
-        this.id  =id;
+    constructor(id: number, name: string, password: string, photo: string) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.photo = photo;
@@ -32,111 +32,111 @@ export class Usuario{
         this.maxScoreImage = 0;
     }
 
-    get getId(){
+    get getId() {
         return this.id;
     }
-    
-    get getName(){
+
+    get getName() {
         return this.name;
     }
 
-    get getPassword(){
+    get getPassword() {
         return this.password;
     }
 
-    get getPhoto(){
+    get getPhoto() {
         return this.photo;
     }
 
-    get getLogging(){
+    get getLogging() {
         return this.logging;
     }
 
-    get getImageScore(){
+    get getImageScore() {
         return this.imagenScore;
     }
 
-    get getHardScore(){
+    get getHardScore() {
         return this.hardScrore;
     }
 
-    get getEasyScore(){
+    get getEasyScore() {
         return this.easyScore;
     }
 
-    get getTryImage(){
+    get getTryImage() {
         return this.tryImage;
     }
 
-    get getTryEasy(){
+    get getTryEasy() {
         return this.tryEasy;
     }
 
-    get getTryHard(){
+    get getTryHard() {
         return this.tryHard;
     }
 
-    get getMaxScoreImage(){
+    get getMaxScoreImage() {
         return this.maxScoreImage;
     }
 
-    get getMaxScoreEasy(){
+    get getMaxScoreEasy() {
         return this.maxScoreEasy;
     }
 
-    get getMaxScoreHard(){
+    get getMaxScoreHard() {
         return this.maxScoreHard;
     }
 
-    setName(name:string){
+    setName(name: string) {
         this.name = name;
     }
 
-    setPassword(password:string){
+    setPassword(password: string) {
         this.password = password;
     }
 
-    setPhoto(photo:string){
+    setPhoto(photo: string) {
         this.photo = photo;
     }
 
-    setLogging(logging:boolean){
-        this.logging= logging;
+    setLogging(logging: boolean) {
+        this.logging = logging;
     }
 
-    setImageScore(imageScore:number){
+    setImageScore(imageScore: number) {
         this.imagenScore = imageScore;
     }
 
-    setHardScore(hardScore:number){
+    setHardScore(hardScore: number) {
         this.hardScrore = hardScore;
     }
 
-    setEasyScore(easyScore:number){
+    setEasyScore(easyScore: number) {
         this.easyScore = easyScore;
     }
 
-    setTryImage(tryImage:number){
+    setTryImage(tryImage: number) {
         this.tryImage = tryImage;
     }
 
-    setTryEasy(tryEasy:number){
+    setTryEasy(tryEasy: number) {
         this.tryEasy = tryEasy;
     }
 
-    setTryHard(tryHard:number){
+    setTryHard(tryHard: number) {
         this.tryHard = tryHard;
     }
 
-    setMaxScoreImage(maxScoreImage:number){
+    setMaxScoreImage(maxScoreImage: number) {
         this.maxScoreImage = maxScoreImage;
     }
 
-    setMaxScoreEasy(maxScoreEasy:number){
+    setMaxScoreEasy(maxScoreEasy: number) {
         this.maxScoreEasy = maxScoreEasy
     }
 
-    setMaxScorehard(maxScoreHard:number){
+    setMaxScorehard(maxScoreHard: number) {
         this.maxScoreHard = maxScoreHard;
     }
 }

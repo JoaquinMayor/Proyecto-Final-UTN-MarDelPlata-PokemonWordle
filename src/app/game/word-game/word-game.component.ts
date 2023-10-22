@@ -30,7 +30,6 @@ export class WordGameComponent {
   badFinish:boolean = false;
   goodFinish:boolean = false;
 
-
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
   startGame() {
@@ -77,8 +76,6 @@ export class WordGameComponent {
         this.wordCorrect();
         this.bestScore();
         this.goodFinish = true;
-          
-        
       }
     }
   }
@@ -88,10 +85,8 @@ export class WordGameComponent {
       this.bestScore();
       this.badFinish = true;
       setTimeout(()=>{
-        alert("Usted a perdido, el pokemon era "+ this.guessPokemon.getName);
         this.show = false;
       },1000);
-      
     }
     return "";
   }
@@ -142,7 +137,6 @@ export class WordGameComponent {
           color = "naranja";
         }
       }
-        
     } else {
       color = "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
     }

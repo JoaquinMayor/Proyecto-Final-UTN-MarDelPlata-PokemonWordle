@@ -6,21 +6,24 @@
 
 <ng-template #game>
     <section class="containerTodoWordle" [ngClass]="cantLives()">
-        <section class="containerInputBtn">
-            <section class="life"><img src="../../../assets/heart.gif" alt="vidas">
+        <section class="containerDataWordle">
+            <section class="life">
                 <p class="cantLife">{{lives-1}}</p>
+                <img src="../../../assets/heart.gif" alt="vidas">
             </section>
-            <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
-                <input #nombreInput type="text" id="pokemon" name="pokemon" placeholder="Ingrese el nombre del pokemon"
-                    [(ngModel)]="namePokemon" (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()">
-                <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
-                    <li *ngFor="let pokemon of filteredList" class="pokemon">
-                        <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
-                    </li>
-                </ul>
-                <button (click)="validateGlobal()">Probar</button>
+            <section class="containerInputBtn">
+                <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
+                    <input #nombreInput type="text" id="pokemon" name="pokemon"
+                        placeholder="Ingrese el nombre del pokemon" [(ngModel)]="namePokemon"
+                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()">
+                    <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
+                        <li *ngFor="let pokemon of filteredList" class="pokemon">
+                            <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
+                        </li>
+                    </ul>
+                </section>
+                <button (click)="validateGlobal()" *ngIf="badFinish== false && goodFinish==false">Probar</button>
             </section>
-            
         </section>
 
         <section class="containerWorleFacil">
@@ -41,13 +44,17 @@
         </section>
     </section>
 
-    <div *ngIf="goodFinish == true">
-        <p>¡Felicidades, el pokemon era {{this.guessPokemon.getName}} !</p>
-        <button (click)="confirm()">Aceptar</button>
+    <div class="overlay" *ngIf="goodFinish == true">
+        <div class="containerFinish">
+            <p>¡Felicidades, el pokemon era {{this.guessPokemon.getName}} !</p>
+            <button (click)="confirm()">Aceptar</button>
+        </div>
     </div>
 
-    <div *ngIf="badFinish == true">
-        <p>Usted a perdido, el pokemon era  {{this.guessPokemon.getName}}</p>
-        <button (click)="confirm()">Aceptar</button>
+    <div class="overlay" *ngIf="badFinish == true">
+        <div class="containerFinish">
+            <p>Usted a perdido, el pokemon era {{this.guessPokemon.getName}}</p>
+            <button (click)="confirm()">Aceptar</button>
+        </div>
     </div>
 </ng-template>

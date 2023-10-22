@@ -1,48 +1,85 @@
 <section class="containerModifyUser">
     <section class="containerPrincipal">
-    <section class="containerPrincipalModifyUserNamePassword">
-        <section class="containerModifyUserNamexPassword">
-            <h2>Nombre: {{user.getName}}</h2>
-            <button (click)="showName()"></button>
+        <section class="containerPrincipalModifyUserNamePassword">
+            <section class="containerModifyUserNamexPassword">
+                <h2>Nombre: {{user.getName}}</h2>
+                <button (click)="showName()"></button>
+            </section>
+
+            <section *ngIf="viewName" class="containerNamexpassword">
+                <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
+                <button (click)="changeName()">Cambiar</button>
+            </section>
+
+            <section class="containerModifyUserNamexPassword">
+                <h2>Contraseña: {{user.getPassword}}</h2>
+                <button (click)="showPassword()"></button>
+            </section>
+
+            <section *ngIf="viewPassword" class="containerNamexpassword">
+                <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
+                <button (click)="changePassword()">Cambiar</button>
+            </section>
         </section>
 
-        <section *ngIf="viewName" class="containerNamexpassword">
-            <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
-            <button (click)="changeName()">Cambiar</button>
-        </section>
-
-        <section class="containerModifyUserNamexPassword">
-            <h2>Contraseña: {{user.getPassword}}</h2>
-            <button (click)="showPassword()"></button>
-        </section>
-
-        <section *ngIf="viewPassword" class="containerNamexpassword">
-            <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
-            <button (click)="changePassword()">Cambiar</button>
-        </section>
-    </section>
-
-    <section class="desplegable">
-        <img [src]="user.getPhoto" alt="Foto de Perfil" class="fotoSeleccionada">
-        <button (click)="showPhoto()" class="btn">Opciones</button>
-        <div *ngIf="viewPhoto == true" class="galeriaFotos">
-            <div *ngFor="let photo of photos">
-                <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+        <section class="desplegable">
+            <img [src]="user.getPhoto" alt="Foto de Perfil" class="fotoSeleccionada">
+            <button (click)="showPhoto()" class="btn">Opciones</button>
+            <div *ngIf="viewPhoto == true" class="galeriaFotos">
+                <div *ngFor="let photo of photos">
+                    <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+                </div>
             </div>
-        </div>
+        </section>
     </section>
-</section>
 
     <section class="containerScore">
-        <h2>Intentos: {{user.getTryImage}}</h2>
-        <h2>Puntuación Imagenes: {{user.getImageScore}}</h2>
-        
-        <h2>Intentos: {{user.getTryHard}}</h2>
-        <h2>Puntuación Total: {{user.getMaxScoreHard}}</h2>
-        <h2>Partidas Ganadas Wordle Difícil: {{user.getHardScore}}</h2>
-        
-        <h2>Intentos: {{user.getTryEasy}}</h2>
-        <h2>Puntuación Total: {{user.getMaxScoreEasy}}</h2>
-        <h2>Partidas Ganadas Wordle Fácil: {{user.getEasyScore}}</h2>
+        <div class="wordleFacil">
+            <h2>Wordle Fácil:</h2>
+        </div>
+
+        <div>
+            <h2>Intentos: {{user.getTryEasy}}</h2>
+        </div>
+
+        <div>
+            <h2>Partidas Ganadas: {{user.getEasyScore}}</h2>
+        </div>
+
+        <div>
+            <h2>Puntuación Total: {{user.getMaxScoreEasy}}</h2>
+        </div>
+
+        <div class="wordleDificil">
+            <h2>Wordle Difícil:</h2>
+        </div>
+
+        <div>
+            <h2>Intentos: {{user.getTryHard}}</h2>
+        </div>
+
+        <div>
+            <h2>Partidas Ganadas: {{user.getHardScore}}</h2>
+        </div>
+
+        <div>
+            <h2>Puntuación Total: {{user.getMaxScoreHard}}</h2>
+        </div>
+
+        <div class="wordleImagenes">
+            <h2>Wordle Imágenes:</h2>
+        </div>
+
+        <div>
+            <h2>Intentos: {{user.getTryImage}}</h2>
+        </div>
+
+        <div>
+            <h2>Puntuación Imágenes: {{user.getImageScore}}</h2>
+        </div>
+
+        <div>
+            <h2>Puntuación Total: {{user.getMaxScoreImage}}</h2>
+        </div>
     </section>
 </section>
