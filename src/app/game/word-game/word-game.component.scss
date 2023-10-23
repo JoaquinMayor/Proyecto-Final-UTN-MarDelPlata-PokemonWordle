@@ -111,15 +111,20 @@ $background-color_4: orange;
                     top: 100%;
                     z-index: 10;
                     background-color: rgba(254, 255, 0, 0.5882352941);
-                    border-radius: 5%;
+                    border-radius: 1rem;
                     padding: 1rem;
                     list-style: none;
                     text-align: center;
+                    font-family: 'Times New Roman', Times, serif;
 
                     li {
                         border-radius: 10%;
                         cursor: pointer;
                         transition: all 1s ease;
+
+                        span{
+                            font-family: 'Times New Roman', Times, serif;
+                        }
 
                         &:hover {
                             background-color: rgba(0, 0, 0, 0.356);
@@ -311,7 +316,6 @@ $background-color_4: orange;
     display: flex;
     justify-content: center;
     align-items: center;
-
 
     .containerFinish {
         display: flex;

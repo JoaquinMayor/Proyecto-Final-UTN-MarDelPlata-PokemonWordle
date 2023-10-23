@@ -24,11 +24,11 @@ export class WordGameComponent {
   pokeUsados: Stats[] = [];
   cantLetters: number[] = []; //arreglo paralelo para saber acierto
   letters: string[] = [];
-  lives: number = 7;
+  lives: number = 6;
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
-  badFinish:boolean = false;
-  goodFinish:boolean = false;
+  badFinish: boolean = false;
+  goodFinish: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
@@ -59,7 +59,7 @@ export class WordGameComponent {
     return flag;
   }
 
-  confirm(){
+  confirm() {
     this.show = false;
     this.goodFinish = false;
     this.badFinish = false;
@@ -67,29 +67,23 @@ export class WordGameComponent {
 
   validateGlobal() {
     if (this.validationIfPokemon()) {
-      if (this.validateName() === false && this.lives != 0) {
+      if (this.validateName() === false && this.lives > 0) {
         this.pokemonWritter();
         this.wordCorrect();
         this.lives--;
-      } else if (this.validateName() === true && this.lives != 0) {
+      } else if (this.validateName() === true && this.lives > 0) {
         this.pokemonWritter();
         this.wordCorrect();
         this.bestScore();
         this.goodFinish = true;
+      } else if (this.lives == 0) {
+        this.bestScore();
+        this.badFinish = true;
       }
     }
   }
 
-  cantLives() {
-    if (this.lives == 0) {
-      this.bestScore();
-      this.badFinish = true;
-      setTimeout(()=>{
-        this.show = false;
-      },1000);
-    }
-    return "";
-  }
+
 
   resetValidation() {
     this.cantLetters.splice(0, this.cantLetters.length);
@@ -129,7 +123,7 @@ export class WordGameComponent {
       this.cantLetters[pos] = this.cantLetters[pos] - 1;
       return "verde";
     } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase()) && this.cantLetters[pos] > 0) {
-      for (let k = i; k < this.words[u].length; k++){
+      for (let k = i; k < this.words[u].length; k++) {
         if (this.words[u].charAt(k).toLowerCase() === letter.toLowerCase() && this.guessPokemon.getName.charAt(k).toLowerCase() === letter.toLowerCase()) {
           return "gris";
         } else {
@@ -153,9 +147,10 @@ export class WordGameComponent {
   }
 
   async showGame() {
+    this.words.splice(0, this.words.length);
     this.startGame();
     this.show = true;
-    this.lives = 7
+    this.lives = 6;
   }
 
   pokemonWritter() {

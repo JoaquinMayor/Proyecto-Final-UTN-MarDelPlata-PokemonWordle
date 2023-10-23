@@ -3,19 +3,19 @@
     <button (click)="showGame()">Aceptar</button>
 </section>
 <button (click)="startGame()" *ngIf="guessPokemon.getId === 0">Start</button>
-
 <ng-template #game>
-    <section class="containerTodoWordle" [ngClass]="cantLives()">
+    
+    <section class="containerTodoWordle">
         <section class="containerDataWordle">
             <section class="life">
-                <p class="cantLife">{{lives-1}}</p>
+                <p class="cantLife">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="vidas">
             </section>
             <section class="containerInputBtn">
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"
                         placeholder="Ingrese el nombre del pokemon" [(ngModel)]="namePokemon"
-                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()">
+                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()" autocomplete="off">
                     <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                         <li *ngFor="let pokemon of filteredList" class="pokemon">
                             <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
@@ -57,4 +57,5 @@
             <button (click)="confirm()">Aceptar</button>
         </div>
     </div>
+    
 </ng-template>

@@ -2,7 +2,7 @@
   <form class="containerForm" id="containerForm">
     <label for="nombre">Buscar Pokémon:</label>
     <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre"
-      (input)="filterPokemons(nombreInput.value)">
+      (input)="filterPokemons(nombreInput.value)" autocomplete="off">
     <app-generation (generationSelected)="choiceGeneration($event)"></app-generation>
   </form>
   <ul id="lista" class="lista">
