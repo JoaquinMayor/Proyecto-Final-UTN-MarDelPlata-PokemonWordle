@@ -33,6 +33,7 @@ $colorSubContenedor: #F0FFFF;
                     width: 100%;
                     max-width: 30vw;
                     margin-left: 1rem;
+                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
 
                 p {
@@ -40,6 +41,7 @@ $colorSubContenedor: #F0FFFF;
                     margin: 0.5rem;
                     padding: 0.5rem;
                     max-width: 50vw;
+                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
             }
 
@@ -52,6 +54,12 @@ $colorSubContenedor: #F0FFFF;
                 border-radius: 5%;
                 gap: 1rem;
                 list-style: none;
+
+                li{
+                    p{
+                        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+                    }
+                }
             }
         }
 
@@ -64,6 +72,7 @@ $colorSubContenedor: #F0FFFF;
                 list-style: none;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
         }
     }
@@ -90,6 +99,7 @@ $colorSubContenedor: #F0FFFF;
                 li {
                     border-radius: 10%;
                     padding: 0.5rem 1.5rem;
+                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
             }
         }

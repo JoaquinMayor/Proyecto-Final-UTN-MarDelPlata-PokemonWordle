@@ -19,6 +19,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         text-align: center;
         margin-left: 10rem;
         font-size: 1.8rem;
+        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
 
         @media screen and (max-width: 768px) {
             margin-left: 7rem;
@@ -39,6 +40,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             color: $color_2;
             text-decoration: none;
             cursor: pointer;
+            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
         }
     }
 
@@ -121,6 +123,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     a {
         color: $color_2;
         text-decoration: none;
+        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
     }
 
     .active {
