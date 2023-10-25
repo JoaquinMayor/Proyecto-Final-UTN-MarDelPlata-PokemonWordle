@@ -14,9 +14,10 @@ import { UsuariosServices } from 'src/app/services/users.service';
 export class WordGameComponent {
   generation: string = "";
   show: boolean = false;
+  showButton:boolean = false;
   idSelected: number = 0;
   guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
-  pokemon: Pokemon;
+
   namePokemon: string = "";//nombre del pokemon ingresado por el usuario
   index: number = 0;
   words: string[] = []; //palabras usadas
@@ -33,6 +34,8 @@ export class WordGameComponent {
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
   startGame() {
+    this.guessPokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+    this.showButton = true;
     this.generateRandomNumber();
     this.randomPokemon();
   }
@@ -78,6 +81,7 @@ export class WordGameComponent {
         this.bestScore();
         this.badFinish = true;
       }
+      this.showButton = false;
     }
   }
 

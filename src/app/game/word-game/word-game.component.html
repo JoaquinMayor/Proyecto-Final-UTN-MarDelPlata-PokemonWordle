@@ -2,7 +2,7 @@
     <app-generation (generationSelected)="generationSelected($event)"></app-generation>
     <button (click)="showGame()">Aceptar</button>
 </section>
-<button (click)="startGame()" *ngIf="guessPokemon.getId === 0">Start</button>
+<button (click)="startGame()" *ngIf="guessPokemon.getId === 0 && showButton">Start</button>
 
 <ng-template #game>
     <section class="containerTodoWordle">

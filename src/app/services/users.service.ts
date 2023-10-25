@@ -77,22 +77,23 @@ export class UsuariosServices {
     }
 
     logging(name: string, password: string) {
+        
         let flag = false;
-        for (let user of this.users) {
-            if (user.getName == name) {
-                console.log("entre al if")
-                if (user.getPassword == password) {
-                    this.user = user;
+        let value = 0;
+        for (let i = 0; i<this.users.length && flag == false;i++) {
+            if (this.users[i].getName == name) {
+                if (this.users[i].getPassword == password) {
+                    this.user = this.users[i];
+                    value = 0;
+                    flag = true;
                 } else {
-                    alert("Contrasela Incorrecta");
-                    flag = false;
+                    value = 2;
                 }
             } else {
-                console.log("entre al error")
-                alert("Nombre de usuario incorrecto");
-                flag = false
+                value =1;
             }
         }
+        return value;
     }
 
     logout() {

@@ -10,9 +10,9 @@ import { UserSystemComponent } from './user/user-system/user-system.component';
 import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
 
 const routes: Routes = [
-  { path: 'wordleDificil', component: HardWordleComponent },
-  { path: 'home', component: EasyWordleComponent },
-  { path: 'otro', component: HomeComponent },
+  { path: 'wordleHard', component: HardWordleComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'wordleEasy', component: EasyWordleComponent},
   { path: 'pokedex', component: PokedexComponent },
   { path: 'pokedex/pokemon/:id', component: UniquePokemonComponent},
   { path: 'user/create', component: UserCreateComponent },

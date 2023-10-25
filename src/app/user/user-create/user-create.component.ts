@@ -4,6 +4,7 @@ import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-create',
@@ -15,7 +16,7 @@ export class UserCreateComponent {
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices) {
+  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router) {
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
@@ -37,13 +38,14 @@ export class UserCreateComponent {
       if (!this.userService.validatePassword(password)) {
         let user = new Usuario(this.userService.users.length + 1, name, password, this.selectedPhoto);
         this.userService.chargeUsuario(user);
+        this.router.navigate(["/home"]);
       } else {
         alert("Contraseña muy corta");
       }
     } else {
       alert("Nombre de usuario existente");
     }
-    console.log(this.userService.users);
+    
   }
 
   mostrarJson() {

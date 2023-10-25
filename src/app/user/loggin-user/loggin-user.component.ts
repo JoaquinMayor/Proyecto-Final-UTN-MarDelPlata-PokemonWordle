@@ -23,10 +23,18 @@ export class LogginUserComponent implements OnInit {
   }
 
   logging(form:NgForm) {
+    let error:number = 0
     const name:string =  form.value.name;
     const password:string = form.value.password;
-    this.userService.logging(name,password);
-    this.router.navigate(["/home"]);
+    error = this.userService.logging(name,password);
+    if(error==1){
+      alert("Nombre de usuario Incorrecto");
+    }else if(error == 2){
+      alert("Contraseña Incorrecta");
+    }else{
+      this.router.navigate(["/home"]);
+    }
+    
   }
   ifLogging() {
     this.userService.ifLogging();
