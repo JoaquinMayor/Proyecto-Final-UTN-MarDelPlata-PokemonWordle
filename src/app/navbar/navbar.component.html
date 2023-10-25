@@ -1,6 +1,9 @@
 <header>
     <nav class="nav">
-        <a class="back" [routerLink]="['/home']" *ngIf="getRouter()!='/home'">Volver</a>
+        <a class="back"
+            [routerLink]="getRouter() !== '/home' ? (getRouter().startsWith('/pokedex/pokemon') ? ['/pokedex'] : ['']) : null"
+            *ngIf="getRouter() !== '/home'">Volver</a> <!-- La expresión (getRouter().startsWith('/pokedex/pokemon') ?
+        ['/pokedex'] : ['']) verifica si la ruta actual comienza con '/pokedex/pokemon'. -->
         <h1>PokeWordle</h1>
         <section class="navbar_menuSinLog" *ngIf="user.getId===0; else log">
             <a [routerLink]="['user/create']">Crear Cuenta</a>

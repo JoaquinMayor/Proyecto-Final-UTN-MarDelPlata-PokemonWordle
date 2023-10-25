@@ -8,7 +8,6 @@
     width: clamp(15rem, 40vw, 25rem);
     height: clamp(15rem, 40vw, 25rem);
     border-radius: 50%;
-    width: clamp;
 
     select {
         width: 50%;
@@ -20,6 +19,8 @@
         color: #333;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         transition: border-color 0.3s ease;
+        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+        font-weight: 600;
 
         &:hover {
             border-color: #999;

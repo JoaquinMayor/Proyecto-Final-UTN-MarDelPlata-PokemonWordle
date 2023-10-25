@@ -77,20 +77,18 @@ export class UsuariosServices {
     }
 
     logging(name: string, password: string) {
-        
         let flag = false;
         let value = 0;
-        for (let i = 0; i<this.users.length && flag == false;i++) {
+        for (let i = 0; i<this.users.length && flag == false; i++) {
             if (this.users[i].getName == name) {
                 if (this.users[i].getPassword == password) {
                     this.user = this.users[i];
-                    value = 0;
                     flag = true;
                 } else {
                     value = 2;
                 }
             } else {
-                value =1;
+                value = 1;
             }
         }
         return value;

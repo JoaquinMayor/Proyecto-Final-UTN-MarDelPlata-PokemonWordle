@@ -34,7 +34,6 @@ export class LogginUserComponent implements OnInit {
     }else{
       this.router.navigate(["/home"]);
     }
-    
   }
   ifLogging() {
     this.userService.ifLogging();
