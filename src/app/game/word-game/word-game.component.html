@@ -2,9 +2,12 @@
     <app-generation (generationSelected)="generationSelected($event)"></app-generation>
     <button (click)="showGame()">Aceptar</button>
 </section>
-<button (click)="startGame()" *ngIf="guessPokemon.getId === 0 && showButton">Start</button>
+
+<div class="overlay" *ngIf="guessPokemon.getId === 0 && showButton">
+    <button class="btnStart" (click)="startGame()">Start</button>
+</div>
+
 <ng-template #game>
-    
     <section class="containerTodoWordle">
         <section class="containerDataWordle">
             <section class="life">
@@ -15,7 +18,8 @@
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"
                         placeholder="Ingrese el nombre del pokemon" [(ngModel)]="namePokemon"
-                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()" autocomplete="off">
+                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()"
+                        autocomplete="off">
                     <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                         <li *ngFor="let pokemon of filteredList" class="pokemon">
                             <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>

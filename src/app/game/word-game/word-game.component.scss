@@ -347,4 +347,19 @@ $background-color_4: orange;
             }
         }
     }
+
+    .btnStart{
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: #fff;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
 }

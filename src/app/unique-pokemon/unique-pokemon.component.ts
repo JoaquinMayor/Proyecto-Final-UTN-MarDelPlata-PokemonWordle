@@ -29,10 +29,13 @@ export class UniquePokemonComponent {
     'steel',
     'fairy',
   ];
+  pokemonImageSrc: string = '';
+
   constructor(private pokemonApiServices: PokemonApiServices) { }
 
   ngOnInit() {
     this.pokemon = this.pokemonApiServices.getSinglePokemon();
+    this.pokemonImageSrc =  this.pokemon.getFrontSprite;
   }
 
   isPokemonType(type: string): string {
@@ -44,5 +47,13 @@ export class UniquePokemonComponent {
       }
     }
     return backColor;
+  }
+
+  changeImageSrc() {
+    if(this.pokemonImageSrc === this.pokemon.getFrontSprite) {
+      this.pokemonImageSrc = this.pokemon.getBackSprite;
+    } else {
+      this.pokemonImageSrc = this.pokemon.getFrontSprite;
+    }
   }
 }

@@ -14,7 +14,7 @@ import { UsuariosServices } from 'src/app/services/users.service';
 export class WordGameComponent {
   generation: string = "";
   show: boolean = false;
-  showButton:boolean = false;
+  showButton: boolean = false;
   idSelected: number = 0;
   guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
 
@@ -28,16 +28,16 @@ export class WordGameComponent {
   lives: number = 6;
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
-  badFinish:boolean = false;
-  goodFinish:boolean = false;
+  badFinish: boolean = false;
+  goodFinish: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
 
   startGame() {
     this.guessPokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
-    this.showButton = true;
     this.generateRandomNumber();
     this.randomPokemon();
+    this.showButton = true;
   }
 
   generateRandomNumber() {
@@ -59,8 +59,8 @@ export class WordGameComponent {
     return flag;
   }
 
-  confirm(){
-    this.words.splice(0,this.wordColor.length);
+  confirm() {
+    this.words.splice(0, this.wordColor.length);
     this.show = false;
     this.goodFinish = false;
     this.badFinish = false;
@@ -77,15 +77,13 @@ export class WordGameComponent {
         this.wordCorrect();
         this.bestScore();
         this.goodFinish = true;
-      }else if(this.lives == 0){
+      } else if (this.lives == 0) {
         this.bestScore();
         this.badFinish = true;
       }
       this.showButton = false;
     }
   }
-
-
 
   resetValidation() {
     this.cantLetters.splice(0, this.cantLetters.length);
@@ -148,7 +146,7 @@ export class WordGameComponent {
     this.renderTable();
   }
 
-  async showGame() {
+  showGame() {
     this.words.splice(0, this.words.length);
     this.startGame();
     this.show = true;
@@ -189,7 +187,6 @@ export class WordGameComponent {
           this.userService.user.setTryEasy(this.userService.user.getEasyScore + 1);
           this.userService.editUser(this.userService.user);
         } else {
-
           this.userService.user.setTryHard(this.userService.user.getHardScore);
           this.userService.editUser(this.userService.user);
         }
@@ -206,7 +203,6 @@ export class WordGameComponent {
           this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 5);
           this.userService.editUser(this.userService.user);
         }
-
         break;
       case 2:
         if (this.router.url === "/wordleFacil") {

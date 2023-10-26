@@ -67,7 +67,6 @@ export class PokemonApiServices {
 
     datesSinglePokemons() {
         let jsonPokemon: any;
-
         for (const pokemon of this.pokemonSpeciesURLList) {
             this.jsonSinglePokemon(pokemon.url).subscribe(
                 res => {
