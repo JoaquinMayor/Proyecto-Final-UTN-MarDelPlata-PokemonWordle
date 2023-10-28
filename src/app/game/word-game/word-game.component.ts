@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Stats } from 'src/app/models/stats.model';
@@ -11,10 +11,11 @@ import { UsuariosServices } from 'src/app/services/users.service';
   templateUrl: './word-game.component.html',
   styleUrls: ['./word-game.component.scss']
 })
-export class WordGameComponent {
+export class WordGameComponent implements OnInit {
   generation: string = "";
   show: boolean = false;
   showButton: boolean = false;
+  showHelps: boolean = false;
   idSelected: number = 0;
   guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
 
@@ -32,12 +33,19 @@ export class WordGameComponent {
   goodFinish: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
+  ngOnInit(): void {
+    if (this.router.url == "/wordleFacil") {
+      this.showHelps = true;
+    } else {
+      this.showHelps = false;
+    }
+  }
 
   startGame() {
-    this.guessPokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+    
     this.generateRandomNumber();
     this.randomPokemon();
-    this.showButton = true;
+    this.showButton = false;
   }
 
   generateRandomNumber() {
@@ -149,6 +157,9 @@ export class WordGameComponent {
   showGame() {
     this.words.splice(0, this.words.length);
     this.startGame();
+    if(this.guessPokemon == undefined || this.idSelected == 0){
+      this.showButton = true;
+    }
     this.show = true;
     this.lives = 6;
   }

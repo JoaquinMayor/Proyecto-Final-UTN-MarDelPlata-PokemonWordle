@@ -3,7 +3,7 @@
     <button (click)="showGame()">Aceptar</button>
 </section>
 
-<div class="overlay" *ngIf="guessPokemon.getId === 0 && showButton">
+<div class="overlay" *ngIf=" showButton">
     <button class="btnStart" (click)="startGame()">Start</button>
 </div>
 
@@ -42,7 +42,7 @@
                 </ul>
             </section>
         </section>
-        <section class="containerAyudas">
+        <section class="containerAyudas" *ngIf="showHelps">
             <app-helps *ngFor="let stat of pokeUsados.slice(0, limit)" [stat]="stat"
                 [pokemon]="guessPokemon"></app-helps>
         </section>
