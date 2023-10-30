@@ -1,19 +1,9 @@
 <main class="mainUniquePokemon">
     <section id="cuerpo">
-        <div class="subContainer">
             <div id="cabecera-datos" [ngClass]="isPokemonType(pokemon.getType1)">
                 <h3 id="nombre">{{pokemon.getName}}</h3>
                 <p id="descripcion">{{pokemon.getDescription}}</p>
             </div>
-            <ul class="containerRegion-Huevo" [ngClass]="isPokemonType(pokemon.getType1)">
-                <li id="region">Generacion
-                    <p>{{pokemon.getGeneration}}</p>
-                </li>
-                <li id="groupEgg">Grupo Huevo
-                    <p>{{pokemon.getEggGroup}}</p>
-                </li>
-            </ul>
-        </div>
 
         <div class="containerStats" [ngClass]="isPokemonType(pokemon.getType1)">
             <ul id="stats">
@@ -36,5 +26,13 @@
                 </li>
             </ul>
         </div>
+        <ul class="containerRegion-Huevo" [ngClass]="isPokemonType(pokemon.getType1)">
+            <li id="region">Generacion
+                <p>{{pokemon.getGeneration}}</p>
+            </li>
+            <li id="groupEgg">Grupo Huevo
+                <p>{{pokemon.getEggGroup}}</p>
+            </li>
+        </ul>
     </section>
 </main>

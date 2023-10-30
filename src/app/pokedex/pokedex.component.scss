@@ -11,6 +11,7 @@ $background-color_3: wheat;
     gap: 2rem;
     align-items: center;
     min-height: 100vh;
+    width: 100vw;
     font-weight: 600;
 
     .containerForm {
@@ -18,11 +19,13 @@ $background-color_3: wheat;
         justify-content: center;
         text-align: center;
         align-items: center;
+        flex-wrap: wrap;
         gap: 2rem;
         background-color: $background-color_2;
         width: fit-content;
         padding: 1rem;
         border-radius: 3%;
+        margin-top: 1rem;
 
         #nombre {
             padding: 0.5rem;

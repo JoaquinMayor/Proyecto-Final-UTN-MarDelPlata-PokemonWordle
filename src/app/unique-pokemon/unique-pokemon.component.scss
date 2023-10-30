@@ -15,56 +15,34 @@ $colorSubContenedor: #F0FFFF;
         display: flex;
         flex-direction: column;
         min-width: 60vw;
-        max-width: 70vw;
+        max-width: 100vw;
         min-height: 30rem;
 
-        .subContainer {
+        #cabecera-datos {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            margin: 1.5rem;
+            border-radius: 5%;
 
-            #cabecera-datos {
-                display: flex;
-                flex-direction: column;
-                margin: 1.5rem;
-                border-radius: 5%;
-
-                h3 {
-                    border-bottom: 2px solid #ff0e0e;
-                    width: 100%;
-                    max-width: 30vw;
-                    margin-left: 1rem;
-                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-                }
-
-                p {
-                    border-radius: 5%;
-                    margin: 0.5rem;
-                    padding: 0.5rem;
-                    max-width: 50vw;
-                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-                }
+            h3 {
+                border-bottom: 2px solid #ff0e0e;
+                width: 100%;
+                max-width: 30vw;
+                margin-left: 1rem;
+                font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
 
-            .containerRegion-Huevo {
-                display: flex;
-                flex-direction: column;
-                width: fit-content;
-                min-width: 10vw;
-                padding: 0.5rem;
+            p {
                 border-radius: 5%;
-                gap: 1rem;
-                list-style: none;
-
-                li{
-                    p{
-                        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-                    }
-                }
+                margin: 0.5rem;
+                padding: 0.5rem;
+                max-width: 50vw;
+                font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
         }
 
         .containerStats {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
             padding: 2rem;
             border-radius: 5%;
 
@@ -80,10 +58,13 @@ $colorSubContenedor: #F0FFFF;
     .sectionImgUniquePokemon {
         display: flex;
         flex-direction: column;
+        align-items: center;
         padding: 2rem;
         min-height: 30rem;
 
         #imagen-tipo {
+            margin-bottom: 1rem;
+
             #foto {
                 border-radius: 30%;
                 min-width: 15rem;
@@ -101,6 +82,41 @@ $colorSubContenedor: #F0FFFF;
                     padding: 0.5rem 1.5rem;
                     font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
+            }
+        }
+
+        .containerRegion-Huevo {
+            display: flex;
+            width: fit-content;
+            min-width: 10vw;
+            padding: 0.5rem;
+            border-radius: 5%;
+            gap: 1rem;
+            list-style: none;
+
+            li {
+                p {
+                    width: fit-content;
+                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+                }
+            }
+        }
+
+        @media screen and (max-width: 675px) {
+            padding: 1rem;
+
+            #imagen-tipo {
+                #foto {
+                    min-width: 12rem;
+                }
+
+                    #lista-tipo {
+                        gap: 0rem;
+
+                        li {
+                            padding: 0.5rem 1rem;
+                        }
+                    }
             }
         }
     }
@@ -121,59 +137,59 @@ $colorSubContenedor: #F0FFFF;
         background-color: rgba(120, 200, 80, 0.726);
     }
 
-    .electric{
+    .electric {
         background-color: rgba(255, 255, 0, 0.712);
     }
 
-    .ice{
+    .ice {
         background-color: rgba(0, 98, 128, 0.733);
     }
 
-    .fighting{
+    .fighting {
         background-color: rgba(165, 42, 42, 0.692);
     }
 
-    .poison{
+    .poison {
         background-color: rgba(176, 88, 160, 0.712);
     }
 
-    .ground{
+    .ground {
         background-color: rgba(234, 214, 164, 0.678);
     }
 
-    .flying{
+    .flying {
         background-color: rgba(152, 168, 240, 0.699);
     }
 
-    .psychic{
+    .psychic {
         background-color: rgba(248, 112, 160, 0.699);
     }
 
-    .bug{
+    .bug {
         background-color: rgba(0, 128, 0, 0.705);
     }
 
-    .rock{
+    .rock {
         background-color: rgba(184, 160, 88, 0.671);
     }
 
-    .ghost{
+    .ghost {
         background-color: rgba(96, 96, 176, 0.658);
     }
 
-    .dragon{
+    .dragon {
         background-color: rgba(0, 0, 255, 0.747);
     }
 
-    .dark{
+    .dark {
         background-color: rgba(122, 88, 72, 0.692);
     }
 
-    .steel{
+    .steel {
         background-color: rgba(168, 168, 192, 0.664);
     }
 
-    .fairy{
+    .fairy {
         background-color: rgba(231, 159, 231, 0.705);
     }
 }

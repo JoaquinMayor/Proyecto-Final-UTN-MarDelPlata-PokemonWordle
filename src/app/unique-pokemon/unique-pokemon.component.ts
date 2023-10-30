@@ -35,7 +35,7 @@ export class UniquePokemonComponent {
 
   ngOnInit() {
     this.pokemon = this.pokemonApiServices.getSinglePokemon();
-    this.pokemonImageSrc =  this.pokemon.getFrontSprite;
+    this.pokemonImageSrc = this.pokemon.getFrontSprite;
   }
 
   isPokemonType(type: string): string {
@@ -50,10 +50,12 @@ export class UniquePokemonComponent {
   }
 
   changeImageSrc() {
-    if(this.pokemonImageSrc === this.pokemon.getFrontSprite) {
-      this.pokemonImageSrc = this.pokemon.getBackSprite;
-    } else {
-      this.pokemonImageSrc = this.pokemon.getFrontSprite;
+    if (this.pokemon.getGeneration != 'generation-ix') {
+      if (this.pokemonImageSrc === this.pokemon.getFrontSprite) {
+        this.pokemonImageSrc = this.pokemon.getBackSprite;
+      } else {
+        this.pokemonImageSrc = this.pokemon.getFrontSprite;
+      }
     }
   }
 }
