@@ -8,6 +8,7 @@ import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.componen
 import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
 import { UserSystemComponent } from './user/user-system/user-system.component';
 import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
+import { ImageWordleComponent } from './image-wordle/image-wordle.component';
 
 const routes: Routes = [
   { path: 'wordleDificil', component: HardWordleComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'user/create', component: UserCreateComponent },
   { path: 'user/logging', component: LogginUserComponent },
   { path: 'user/modify/:id', component: UserSystemComponent },
+  {path:'imageGame', component:ImageWordleComponent},
   {
     path: '**',
     redirectTo: 'home'

@@ -1,1 +1,33 @@
-<p>image-wordle works!</p>
+<section class="containerPrincipal" *ngIf="show === false; else game">
+    <app-generation (generationSelected)="generationSelected($event)"></app-generation>
+    <button (click)="showGame()">Aceptar</button>
+</section>
+
+<ng-template #game>
+    <section class="containerDataWordle">
+        <section class="life">
+            <p class="cantLife">{{lives}}</p>
+            <img src="../../../assets/heart.gif" alt="vidas">
+        </section>
+    
+    <img [src]="imgPokemon" alt="Pokemon">
+
+    <input #nombreInput type="text" [(ngModel)] = "namePokemon" (input)="filterPokemons(nombreInput.value)" (keydown.enter)="searchPokemon()">
+    <button (click)="searchPokemon()">Adivinar</button>
+
+    <section class="errorWords">
+        <p *ngFor="let word of words">{{word}}</p>
+    </section>
+</section>
+    <section class="correctWords">
+        <img *ngFor="let image of guessed" [src]="image" alt="Pokemon">
+    </section>
+    <div class="overlay" *ngIf="showFinish == true">
+        <div class="containerFinish">
+            <p>Usted a perdido, el pokemon era {{this.guessPokemon.getName}}</p>
+            <button (click)="finishGame()">Aceptar</button>
+        </div>
+    </div>
+</ng-template>
+
+
