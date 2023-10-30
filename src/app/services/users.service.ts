@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 export class UsuariosServices {
     user: Usuario = new Usuario(0, "", "", "");
     users: Usuario[] = [];
-
+    
     constructor(private router: Router) { }
 
     chargeUsuario(user: Usuario) {
