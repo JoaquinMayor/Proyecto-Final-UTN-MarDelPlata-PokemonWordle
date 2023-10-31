@@ -48,5 +48,11 @@
                 <button (click)="finishGame()">Aceptar</button>
             </div>
         </div>
+        <div class="overlay" *ngIf="showVictory == true">
+            <div class="containerFinish">
+                <p>Usted a Adivinado Todos los Pokemon de Esta Generación Felicidades</p>
+                <button (click)="finishGame()">Aceptar</button>
+            </div>
+        </div>
     </ng-template>
 </section>

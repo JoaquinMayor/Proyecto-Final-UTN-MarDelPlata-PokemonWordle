@@ -1,0 +1,18 @@
+{"users":[
+    {
+        "id" : "",
+        "name" : "",
+        "password" : "",
+        "photo" : "",
+        "imagenScore" : 0,
+        "easyScore" : 0,
+        "hardScrore" : 0,
+        "tryEasy" : 0,
+        "tryHard" : 0,
+        "tryImage" : 0,
+        "logging" : false,
+        "maxScoreEasy" : 0,
+        "maxScoreHard" : 0,
+        "maxScoreImage": 0
+    }
+]}

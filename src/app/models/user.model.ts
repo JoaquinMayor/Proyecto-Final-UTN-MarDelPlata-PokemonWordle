@@ -13,7 +13,6 @@ export class Usuario {
     private maxScoreEasy: number;
     private maxScoreHard: number;
     private photo: string;
-    private logging: boolean;
 
     constructor(id: string, name: string, password: string, photo: string) {
         this.id = id;
@@ -26,7 +25,6 @@ export class Usuario {
         this.tryEasy = 0;
         this.tryHard = 0;
         this.tryImage = 0;
-        this.logging = false;
         this.maxScoreEasy = 0;
         this.maxScoreHard = 0;
         this.maxScoreImage = 0;
@@ -48,9 +46,6 @@ export class Usuario {
         return this.photo;
     }
 
-    get getLogging() {
-        return this.logging;
-    }
 
     get getImageScore() {
         return this.imagenScore;
@@ -98,10 +93,6 @@ export class Usuario {
 
     setPhoto(photo: string) {
         this.photo = photo;
-    }
-
-    setLogging(logging: boolean) {
-        this.logging = logging;
     }
 
     setImageScore(imageScore: number) {

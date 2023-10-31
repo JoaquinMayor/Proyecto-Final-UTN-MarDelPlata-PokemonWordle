@@ -3,16 +3,27 @@ import { Usuario } from "../models/user.model";
 import { Router } from "@angular/router";
 import * as bcrypt from 'bcryptjs';
 import { CryptoService } from "./crypto.service";
+import { DataService } from "./data.service";
 
 @Injectable({ providedIn: 'root' })
 export class UsuariosServices {
     user: Usuario = new Usuario("0", "", "", "");
     users: Usuario[] = [];
     
-    constructor(private router: Router, private cryptoService:CryptoService) { }
+    constructor(private router: Router, private cryptoService:CryptoService, private dataService:DataService) { }
 
+    loadUsuario(){
+        this.dataService.chargeUsers()
+        .subscribe(
+            (users:Usuario[]) => {
+                this.users = users;
+            } 
+        );
+    }
+    
     chargeUsuario(user: Usuario) {
         this.users.push(user);
+        this.dataService.saveUsers(this.users);
     }
 
     searchUsuario(name: string, password: string) {
@@ -24,7 +35,6 @@ export class UsuariosServices {
                 if (usuario.getName === name) {
                     if (usuario.getPassword === password) {
                         userExist = usuario;
-                        userExist.setLogging(true);
                         flag = true;
                     } else {
                         alert("Contraseña Incorrecta");
@@ -53,6 +63,7 @@ export class UsuariosServices {
                 if (user.getId == this.users[i].getId) {
                     flag = true;
                     this.users[i] = user;
+                    this.dataService.changeUser(i,user);
                 }
             }
         }
@@ -84,11 +95,8 @@ export class UsuariosServices {
         let hash ="";
         for (let i = 0; i<this.users.length && flag == false; i++) {
             if (this.users[i].getName == name) {
-                
-                    hash = await this.cryptoService.generarHashPassword(password);
-                    console.log(hash);
-                    console.log(this.users[i].getPassword)
-                if (await this.cryptoService.compararPassword(this.users[i].getPassword , hash)) {
+
+                if (await this.cryptoService.compararPassword(password , this.users[i].getPassword)) {
                     this.user = this.users[i];
                     flag = true;
                 } else {

@@ -16,6 +16,7 @@ export class ImageWordleComponent {
   show = false;
   showButton: boolean = false;
   showFinish: boolean = false;
+  showVictory:boolean = false;
   imgPokemon = "";
 
   pokemonList: Pokemon[] = [];
@@ -29,7 +30,6 @@ export class ImageWordleComponent {
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices) { }
 
   generationSelected(generation: any) {
-    console.log("entre")
     this.generation = generation;
     this.renderTable();
   }
@@ -71,6 +71,9 @@ export class ImageWordleComponent {
 
   randomPokemon() {
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
+    if(this.guessPokemon == undefined){
+      this.showVictory = true;
+    }
     console.log(this.guessPokemon);
   }
 
@@ -118,7 +121,6 @@ export class ImageWordleComponent {
       } else if (this.guessPokemon.getName.toLowerCase() != this.namePokemon.toLowerCase() && this.lives != 0) {
         this.lives--;
         this.words.push(this.namePokemon);
-        console.log(this.words)
       } else if (this.lives == 0) {
         this.showFinish = true;
         this.words.splice(0, this.words.length);

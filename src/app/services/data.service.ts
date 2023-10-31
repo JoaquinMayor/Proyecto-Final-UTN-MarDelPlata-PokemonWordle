@@ -12,8 +12,8 @@ export class DataService{
     constructor(private httpClient:HttpClient){}
 
     //Guardar usuarios
-    saveUser(users:Usuario[]){
-        this.httpClient.put('linkFirebase', users)
+    saveUsers(users:Usuario[]){
+        this.httpClient.put("https://wordlepokemon-default-rtdb.firebaseio.com/users.json", users)
         .subscribe(
             response => console.log("Guardado Exitoso"),
             error => console.log("No se Guardo de Manera Exitosa"+ error)
@@ -21,12 +21,12 @@ export class DataService{
     }
     //Cargar usuarios
     chargeUsers(){
-        return this.httpClient.get('linkFirebase');
+        return this.httpClient.get<any>("https://wordlepokemon-default-rtdb.firebaseio.com/users.json");
     }
 
     //Modificar usuario
     changeUser(index:number, user:Usuario){
-        let url = '' + index +'.json';
+        let url = "https://wordlepokemon-default-rtdb.firebaseio.com/users/" + index +'.json';
 
         this.httpClient.put(url, user)
         .subscribe(
