@@ -1,6 +1,6 @@
 
 export class Usuario {
-    private id: number
+    private id: string
     private name: string;
     private password: string;
     private imagenScore: number;
@@ -15,7 +15,7 @@ export class Usuario {
     private photo: string;
     private logging: boolean;
 
-    constructor(id: number, name: string, password: string, photo: string) {
+    constructor(id: string, name: string, password: string, photo: string) {
         this.id = id;
         this.name = name;
         this.password = password;

@@ -1,20 +1,22 @@
 import { Injectable } from "@angular/core";
 import { Usuario } from "../models/user.model";
 import { Router } from "@angular/router";
+import * as bcrypt from 'bcryptjs';
+import { CryptoService } from "./crypto.service";
 
 @Injectable({ providedIn: 'root' })
 export class UsuariosServices {
-    user: Usuario = new Usuario(0, "", "", "");
+    user: Usuario = new Usuario("0", "", "", "");
     users: Usuario[] = [];
     
-    constructor(private router: Router) { }
+    constructor(private router: Router, private cryptoService:CryptoService) { }
 
     chargeUsuario(user: Usuario) {
         this.users.push(user);
     }
 
     searchUsuario(name: string, password: string) {
-        let userExist: Usuario = new Usuario(0, "", "", "");
+        let userExist: Usuario = new Usuario("0", "", "", "");
         if (this.users.length != 0) {
             let flag = false;
             for (let i = 0; i < this.users.length && flag == false; i++) {
@@ -76,12 +78,17 @@ export class UsuariosServices {
         return flag;
     }
 
-    logging(name: string, password: string) {
+    async logging(name: string, password: string) {
         let flag = false;
         let value = 0;
+        let hash ="";
         for (let i = 0; i<this.users.length && flag == false; i++) {
             if (this.users[i].getName == name) {
-                if (this.users[i].getPassword == password) {
+                
+                    hash = await this.cryptoService.generarHashPassword(password);
+                    console.log(hash);
+                    console.log(this.users[i].getPassword)
+                if (await this.cryptoService.compararPassword(this.users[i].getPassword , hash)) {
                     this.user = this.users[i];
                     flag = true;
                 } else {
@@ -95,12 +102,14 @@ export class UsuariosServices {
     }
 
     logout() {
-        this.user = new Usuario(0, "", "", "");
+        this.user = new Usuario("0", "", "", "");
     }
 
     ifLogging() {
-        if (this.user.getId != 0) {
+        if (this.user.getId != "0") {
             this.router.navigate(["/home"]);
         }
     }
+
+   
 }

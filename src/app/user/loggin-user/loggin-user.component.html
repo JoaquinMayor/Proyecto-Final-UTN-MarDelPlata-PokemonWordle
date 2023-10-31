@@ -1,4 +1,4 @@
-<section *ngIf="user.getId!=0" (load)="ifLogging()"></section>
+<section *ngIf="user.getId!='0'" (load)="ifLogging()"></section>
 <section class="containerLogin">
    <form #f="ngForm" (ngSubmit)="f.form.valid && logging(f)">
       <fieldset>
@@ -7,7 +7,7 @@
          <input type="text" name="name" class="name" id="name" placeholder="Ingrese su nombre de usuario" required
             ngModel>
          <label for="password">Contraseña:</label>
-         <input type="password" name="password" class="password" id="password" placeholder="Ingrese su contraseña"
+         <input type="text" name="password" class="password" id="password" placeholder="Ingrese su contraseña"
             required ngModel>
          <input type="submit" class="btn" id="btn" value="Loguearse">
       </fieldset>

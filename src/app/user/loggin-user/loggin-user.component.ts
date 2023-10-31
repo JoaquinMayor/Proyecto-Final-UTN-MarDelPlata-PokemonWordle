@@ -3,6 +3,7 @@ import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CryptoService } from 'src/app/services/crypto.service';
 
 @Component({
   selector: 'app-loggin-user',
@@ -13,7 +14,7 @@ export class LogginUserComponent implements OnInit {
   
   log: boolean = false;
 
-  constructor(private userService: UsuariosServices, private router: Router) { }
+  constructor(private userService: UsuariosServices, private router: Router, private cryptoService:CryptoService) { }
   ngOnInit(): void {
     this.ifLogging()
   }
@@ -22,11 +23,11 @@ export class LogginUserComponent implements OnInit {
     return this.userService.user;
   }
 
-  logging(form:NgForm) {
+  async logging(form:NgForm) {
     let error:number = 0
     const name:string =  form.value.name;
     const password:string = form.value.password;
-    error = this.userService.logging(name,password);
+    error = await this.userService.logging(name,password);
     if(error==1){
       alert("Nombre de usuario Incorrecto");
     }else if(error == 2){

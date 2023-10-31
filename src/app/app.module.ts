@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { EasyWordleComponent } from './easy-wordle/easy-wordle.component';
 import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
-import { ImageWordleComponent } from './image-wordle/image-wordle.component';
+import { ImageWordleComponent } from './game/image-wordle/image-wordle.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { UniquePokemonComponent } from './unique-pokemon/unique-pokemon.component';
 import { UserSystemComponent } from './user/user-system/user-system.component';

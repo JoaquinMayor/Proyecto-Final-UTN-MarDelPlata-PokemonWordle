@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsuariosServices } from '../../services/users.service';
 import { ImageService } from '../../services/image.service';
 import { Usuario } from '../../models/user.model';
+import { CryptoService } from 'src/app/services/crypto.service';
 
 @Component({
   selector: 'app-user-system',
@@ -17,7 +18,7 @@ export class UserSystemComponent {
   viewPassword: boolean = false;
   photos: string[] = [];
 
-  constructor(private userService: UsuariosServices, private photoService: ImageService) {
+  constructor(private userService: UsuariosServices, private photoService: ImageService, private crytoService:CryptoService) {
     this.photos = this.photoService.getAllImageUrls();
   }
 
@@ -65,6 +66,7 @@ export class UserSystemComponent {
 
   changeName() {
     if(this.userService.findUser(this.name)===false){
+      
       this.user.setName(this.name);
       this.userService.editUser(this.user);
     }else{
@@ -73,9 +75,11 @@ export class UserSystemComponent {
     
   }
 
-  changePassword() {
+  async changePassword() {
     if(!this.userService.validatePassword(this.password)){
-      this.user.setPassword(this.password);
+      const hash = await this.crytoService.generarHashPassword(this.password);
+
+      this.user.setPassword(hash);
       this.userService.editUser(this.user);
     }else{
       alert("Contraseña muy corta");

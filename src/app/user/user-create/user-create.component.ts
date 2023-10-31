@@ -5,6 +5,8 @@ import { Usuario } from '../../models/user.model';
 import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
+import { CryptoService } from 'src/app/services/crypto.service';
 
 @Component({
   selector: 'app-user-create',
@@ -16,7 +18,7 @@ export class UserCreateComponent {
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router) {
+  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService) {
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
@@ -30,13 +32,15 @@ export class UserCreateComponent {
     this.selectedPhoto = photo;
   }
 
-  addUser(form: NgForm) {
+  async addUser(form: NgForm) {
 
     const name: string = form.value.name;
     const password: string = form.value.password;
     if (this.userService.validateName(name) == false) {
       if (!this.userService.validatePassword(password)) {
-        let user = new Usuario(this.userService.users.length + 1, name, password, this.selectedPhoto);
+        const crypt = await this.cryptoService.generarHashPassword(password);
+
+        let user = new Usuario(crypto.randomUUID(), name, crypt, this.selectedPhoto);
         this.userService.chargeUsuario(user);
         this.router.navigate(["/home"]);
       } else {
@@ -47,6 +51,7 @@ export class UserCreateComponent {
     }
     
   }
+
 
   mostrarJson() {
     this.jsonpokemon.listaSpeciesPokemon("3");

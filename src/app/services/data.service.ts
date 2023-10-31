@@ -19,12 +19,12 @@ export class DataService{
             error => console.log("No se Guardo de Manera Exitosa"+ error)
         )
     }
-
+    //Cargar usuarios
     chargeUsers(){
         return this.httpClient.get('linkFirebase');
     }
 
-
+    //Modificar usuario
     changeUser(index:number, user:Usuario){
         let url = '' + index +'.json';
 

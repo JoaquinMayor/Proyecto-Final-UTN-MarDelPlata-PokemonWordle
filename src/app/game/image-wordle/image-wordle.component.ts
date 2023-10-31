@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Pokemon } from '../models/pokemon.model';
-import { PokemonApiServices } from '../services/pokemonApi.service';
-import { UsuariosServices } from '../services/users.service';
+import { Pokemon } from '../../models/pokemon.model';
+import { PokemonApiServices } from '../../services/pokemonApi.service';
+import { UsuariosServices } from '../../services/users.service';
 
 @Component({
   selector: 'app-image-wordle',
