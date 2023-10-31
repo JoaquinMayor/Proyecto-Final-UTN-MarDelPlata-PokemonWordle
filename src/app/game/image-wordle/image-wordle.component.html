@@ -26,7 +26,7 @@
                             </li>
                         </ul>
                     </section>
-                    <button (click)="searchPokemon()">Adivinar</button>
+                    <button #adivinarBtn (click)="searchPokemon()">Adivinar</button>
                 </section>
                 <section class="errorWords">
                     <ul>
@@ -36,8 +36,9 @@
             </section>
             <section class="correctWords">
                 <ul>
-                    <li *ngFor="let image of guessed">
-                        <img [src]="image" alt="Pokemon">
+                    <li *ngFor="let pokemon of guessedList">
+                        <img [src]="pokemon.getFrontSprite" alt="Pokemon"(click)="addBounceEffect($event.target)">
+                        <p [ngClass]="isPokemonType(pokemon.getType1)" class="pokemonName">{{ pokemon.getName }}</p>
                     </li>
                 </ul>
             </section>

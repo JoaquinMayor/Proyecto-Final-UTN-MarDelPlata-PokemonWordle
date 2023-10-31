@@ -34,7 +34,7 @@ export class Pokemon {
         this.specialDef = specialDef;
         this.hp = hp;
         this.heigth = heigth;
-        this.weight = weigth
+        this.weight = weigth;
     }
 
     get getId() {

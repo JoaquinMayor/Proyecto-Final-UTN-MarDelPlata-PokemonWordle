@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Pokemon } from '../../models/pokemon.model';
 import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { UsuariosServices } from '../../services/users.service';
@@ -16,18 +16,63 @@ export class ImageWordleComponent {
   show = false;
   showButton: boolean = false;
   showFinish: boolean = false;
-  showVictory:boolean = false;
+  showVictory: boolean = false;
   imgPokemon = "";
+  guessedList: Pokemon[] = [];
 
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
   lives: number = 6;
   words: string[] = [];
-  guessed: string[] = [];
   selectedNumbers: number[] = [];
   imageScore: number = 0;
+  pokemonTypes: string[] = [
+    'normal',
+    'fire',
+    'water',
+    'grass',
+    'electric',
+    'ice',
+    'fighting',
+    'poison',
+    'ground',
+    'flying',
+    'psychic',
+    'bug',
+    'rock',
+    'ghost',
+    'dragon',
+    'dark',
+    'steel',
+    'fairy',
+  ];
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices) { }
+
+  @ViewChild('nombreInput', { static: false })
+  nombreInput!: ElementRef;
+  addGuessedPokemon() {
+    const guessedPokemon: Pokemon = new Pokemon(
+      this.guessPokemon.getId,
+      this.guessPokemon.getName,
+      this.guessPokemon.getGeneration,
+      this.guessPokemon.getFrontSprite,
+      this.guessPokemon.getBackSprite,
+      this.guessPokemon.getEggGroup,
+      this.guessPokemon.getDescription,
+      this.guessPokemon.getType1,
+      this.guessPokemon.getType2,
+      this.guessPokemon.getAtk,
+      this.guessPokemon.getSpecialAtk,
+      this.guessPokemon.getSpeed,
+      this.guessPokemon.getDefense,
+      this.guessPokemon.getSpecialDef,
+      this.guessPokemon.getHp,
+      this.guessPokemon.getHeigth,
+      this.guessPokemon.getWeigth
+    );
+    this.guessedList.push(guessedPokemon);
+  }
 
   generationSelected(generation: any) {
     this.generation = generation;
@@ -71,7 +116,7 @@ export class ImageWordleComponent {
 
   randomPokemon() {
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
-    if(this.guessPokemon == undefined){
+    if (this.guessPokemon == undefined) {
       this.showVictory = true;
     }
     console.log(this.guessPokemon);
@@ -116,7 +161,7 @@ export class ImageWordleComponent {
         if (this.userService.user.getImageScore < this.imageScore) {
           this.userService.user.setImageScore(this.imageScore);
         }
-        this.guessed.push(this.guessPokemon.getFrontSprite);
+        this.addGuessedPokemon();
         this.startGame();
       } else if (this.guessPokemon.getName.toLowerCase() != this.namePokemon.toLowerCase() && this.lives != 0) {
         this.lives--;
@@ -124,8 +169,9 @@ export class ImageWordleComponent {
       } else if (this.lives == 0) {
         this.showFinish = true;
         this.words.splice(0, this.words.length);
-        this.guessed.splice(0, this.guessed.length);
+        this.guessedList.splice(0, this.guessedList.length);
       }
+      this.nombreInput.nativeElement.value = '';
     }
   }
 
@@ -139,4 +185,21 @@ export class ImageWordleComponent {
     this.namePokemon = name.toLowerCase();
   }
 
+  addBounceEffect(img: any) {
+    img.classList.add('bounce');
+    setTimeout(() => {
+      img.classList.remove('bounce');
+    }, 1000);
+  }
+
+  isPokemonType(type: string): string {
+    let backColor = '';
+    for (const pokemonType of this.pokemonTypes) {
+      if (type.includes(pokemonType)) {
+        backColor = pokemonType;
+        break;
+      }
+    }
+    return backColor;
+  }
 }

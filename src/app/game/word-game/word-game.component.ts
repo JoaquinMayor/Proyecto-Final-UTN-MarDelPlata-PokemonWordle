@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Stats } from 'src/app/models/stats.model';
@@ -41,8 +41,10 @@ export class WordGameComponent implements OnInit {
     }
   }
 
+  @ViewChild('nombreInput', { static: false })
+  nombreInput!: ElementRef;
+
   startGame() {
-    
     this.generateRandomNumber();
     this.randomPokemon();
     this.showButton = false;
@@ -90,6 +92,7 @@ export class WordGameComponent implements OnInit {
         this.badFinish = true;
       }
       this.showButton = false;
+      this.nombreInput.nativeElement.value = '';
     }
   }
 
@@ -124,9 +127,9 @@ export class WordGameComponent implements OnInit {
   }
 
   wordColor(letter: string, i: number, u: number) {
-    
+
     let pos = this.letters.indexOf(letter.toLowerCase());
-   
+
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       this.cantLetters[pos] = this.cantLetters[pos] - 1;
 
@@ -137,13 +140,13 @@ export class WordGameComponent implements OnInit {
           return "gris";
         } else {
           this.cantLetters[pos] = this.cantLetters[pos] - 1;
-            return "naranja";
+          return "naranja";
         }
       }
     } else {
-      return  "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
+      return "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
     }
-     return
+    return
   }
 
   ifLogging() {
@@ -158,7 +161,7 @@ export class WordGameComponent implements OnInit {
   showGame() {
     this.words.splice(0, this.words.length);
     this.startGame();
-    if(this.guessPokemon == undefined || this.idSelected == 0){
+    if (this.guessPokemon == undefined || this.idSelected == 0) {
       this.showButton = true;
     }
     this.show = true;

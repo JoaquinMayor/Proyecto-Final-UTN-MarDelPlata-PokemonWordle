@@ -187,8 +187,10 @@
             }
 
             .errorWords {
+                position: relative;
                 padding: 1rem;
                 border-radius: 5px;
+                bottom: 1.5rem;
 
                 ul {
                     list-style-type: none;
@@ -233,33 +235,59 @@
                 height: 20rem;
                 overflow: auto;
                 list-style: none;
-            }
 
-            &::-webkit-scrollbar {
-                width: 8px;
-            }
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
 
-            &::-webkit-scrollbar-track {
-                background-color: #f1f1f1;
-            }
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1;
+                }
 
-            &::-webkit-scrollbar-thumb {
-                background-color: #888;
-                border-radius: 4px;
-            }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #888;
+                    border-radius: 4px;
+                }
 
-            &::-webkit-scrollbar-thumb:hover {
-                background-color: #555;
-            }
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #555;
+                }
 
-            img {
-                display: block;
-                margin-bottom: 1rem;
+                li {
+                    display: flex;
+                    align-items: center;
+
+                    .pokemonName {
+                        margin-left: 10px;
+                        font-weight: bold;
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        padding: 1rem;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                        color: white;
+                        font-weight: bold;
+                    }
+
+                    &:hover .pokemonName {
+                        visibility: visible;
+                        opacity: 1;
+                        transition-delay: 0s;
+                    }
+                }
+
+                img {
+                    display: block;
+                }
             }
 
             @media screen and (max-width: 650px) {
                 position: absolute;
-                top: 50rem;
+                top: 48rem;
 
                 ul {
                     display: flex;
@@ -268,6 +296,10 @@
                     width: 15rem;
                     height: fit-content;
                     overflow: auto;
+
+                    li {
+                        flex-direction: column-reverse;
+                    }
                 }
             }
         }
@@ -331,4 +363,92 @@
             }
         }
     }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.bounce {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+.normal {
+    background-color: rgba(168, 160, 144, 0.753);
+}
+
+.fire {
+    background-color: rgba(240, 80, 48, 0.712);
+}
+
+.water {
+    background-color: rgb(82 82 255 / 83%);
+}
+
+.grass {
+    background-color: rgba(120, 200, 80, 0.726);
+}
+
+.electric {
+    background-color: rgba(255, 255, 0, 0.712);
+}
+
+.ice {
+    background-color: rgba(0, 98, 128, 0.733);
+}
+
+.fighting {
+    background-color: rgba(165, 42, 42, 0.692);
+}
+
+.poison {
+    background-color: rgba(176, 88, 160, 0.712);
+}
+
+.ground {
+    background-color: rgba(234, 214, 164, 0.678);
+}
+
+.flying {
+    background-color: rgba(152, 168, 240, 0.699);
+}
+
+.psychic {
+    background-color: rgba(248, 112, 160, 0.699);
+}
+
+.bug {
+    background-color: rgba(0, 128, 0, 0.705);
+}
+
+.rock {
+    background-color: rgba(184, 160, 88, 0.671);
+}
+
+.ghost {
+    background-color: rgba(96, 96, 176, 0.658);
+}
+
+.dragon {
+    background-color: rgba(0, 0, 255, 0.747);
+}
+
+.dark {
+    background-color: rgba(122, 88, 72, 0.692);
+}
+
+.steel {
+    background-color: rgba(168, 168, 192, 0.664);
+}
+
+.fairy {
+    background-color: rgba(231, 159, 231, 0.705);
 }
