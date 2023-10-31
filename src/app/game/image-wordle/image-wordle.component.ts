@@ -23,7 +23,7 @@ export class ImageWordleComponent {
   lives: number = 6;
   words: string[] = [];
   guessed: string[] = [];
-
+  selectedNumbers: number[] = [];
   imageScore: number = 0;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices) { }
@@ -51,11 +51,25 @@ export class ImageWordleComponent {
     this.pokemonList = this.pokemonApiServices.pokemonArray;
     this.filterPokemons('');
   }
+
   generateRandomNumber() {
-    this.idSelected = Math.floor(Math.random() * (this.pokemonApiServices.pokemonArray.length - 0 + 1));
+    const availableNumbers = this.getAvailableNumbers();
+    const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+    this.idSelected = availableNumbers[randomIndex];
+    this.selectedNumbers.push(this.idSelected);
   }
 
-  randomPokemon() { //guarda el pokemon a elegido aleatoriamente
+  getAvailableNumbers(): number[] {
+    const availableNumbers: number[] = [];
+    for (let i = 0; i < this.pokemonApiServices.pokemonArray.length; i++) {
+      if (!this.selectedNumbers.includes(i)) {
+        availableNumbers.push(i);
+      }
+    }
+    return availableNumbers;
+  }
+
+  randomPokemon() {
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
     console.log(this.guessPokemon);
   }
