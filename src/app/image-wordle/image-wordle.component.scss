@@ -1,0 +1,269 @@
+.mainWordle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .containerPrincipal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+
+        button {
+            padding: 0.5rem;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+
+            &:hover {
+                background-color: #45a049;
+            }
+
+            &:active {
+                background-color: #3e8e41;
+            }
+        }
+    }
+
+    .containerTodoWordle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 98vw;
+
+        .containerDataWordle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+
+            .life {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 4rem;
+                }
+            }
+
+            .containerPokemon {
+                background-image: url('../../assets/backGrounds/guessPokemon.webp');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-direction: row;
+                gap: 1rem;
+                border-radius: 1rem;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.39);
+                max-width: 17rem;
+                width: 100%;
+                user-select: none;
+                pointer-events: none;
+
+                .imgPokemonGuess {
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 50%;
+                    margin-bottom: 1rem;
+                    filter: brightness(0);
+                    pointer-events: none;
+                }
+            }
+
+            .containerInputBtn {
+                display: flex;
+                gap: 1rem;
+
+                .containerInputList {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    position: relative;
+
+                    input {
+                        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+
+                        @media screen and (max-width: 550px) {
+                            width: 12rem;
+                        }
+                    }
+
+                    input[type="text"] {
+                        padding: 0.5rem;
+                        font-size: 1rem;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        background-color: #fff;
+                        color: #333;
+                        transition: border-color 0.3s ease;
+
+                        &::placeholder {
+                            color: #888;
+                        }
+
+                        &:hover {
+                            border-color: #999;
+                        }
+
+                        &:focus {
+                            outline: none;
+                            border-color: #5c9ce6;
+                            box-shadow: 0 0 0 2px #5c9ce6;
+                        }
+                    }
+
+                    @media screen and (max-width: 550px) {
+                        gap: 0rem;
+
+                        input[type="text"] {
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    .lista {
+                        position: absolute;
+                        max-height: 8rem;
+                        width: 12rem;
+                        overflow-y: scroll;
+                        top: 100%;
+                        z-index: 10;
+                        background-color: rgba(254, 255, 0, 0.5882352941);
+                        border-radius: 1rem;
+                        padding: 1rem;
+                        list-style: none;
+                        text-align: center;
+
+                        &::-webkit-scrollbar {
+                            width: 8px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background-color: #f1f1f1;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #888;
+                            border-radius: 4px;
+                        }
+
+                        &::-webkit-scrollbar-thumb:hover {
+                            background-color: #555;
+                        }
+
+                        li {
+                            border-radius: 10%;
+                            cursor: pointer;
+                            transition: all 1s ease;
+
+                            &:hover {
+                                background-color: rgba(0, 0, 0, 0.356);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .errorWords {
+                padding: 1rem;
+                border-radius: 5px;
+
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                    overflow-y: scroll;
+                    overflow: auto;
+                    height: 8rem;
+
+                    li {
+                        text-align: center;
+                        background-color: #ff9999;
+                        color: white;
+                        font-weight: bold;
+                        margin: 0.5rem 0;
+                        padding: 1rem;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    }
+                }
+            }
+
+            @media screen and (max-width: 650px) {
+                margin: 2rem 0rem 5rem 0rem;
+
+                .errorWords {
+                    ul {
+                        display: flex;
+                        gap: 0.5rem;
+                        width: 15rem;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        .correctWords {
+            position: absolute;
+            left: 2rem;
+
+            ul {
+                overflow: hidden;
+                height: 20rem;
+                overflow: auto;
+                list-style: none;
+            }
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #f1f1f1;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #888;
+                border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: #555;
+            }
+
+            img {
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            @media screen and (max-width: 650px) {
+                position: absolute;
+                top: 52rem;
+
+                ul {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    width: 15rem;
+                    height: fit-content;
+                    overflow: auto;
+                }
+            }
+        }
+    }
+}

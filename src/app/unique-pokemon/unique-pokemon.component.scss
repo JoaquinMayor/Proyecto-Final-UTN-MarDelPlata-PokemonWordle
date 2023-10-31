@@ -6,7 +6,7 @@ $colorSubContenedor: #F0FFFF;
 .mainUniquePokemon {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     min-height: 100vh;
     font-weight: 600;
@@ -16,7 +16,7 @@ $colorSubContenedor: #F0FFFF;
         flex-direction: column;
         min-width: 60vw;
         max-width: 100vw;
-        min-height: 30rem;
+        padding: 2rem;
 
         #cabecera-datos {
             display: flex;
@@ -42,7 +42,7 @@ $colorSubContenedor: #F0FFFF;
         }
 
         .containerStats {
-            margin-left: 1.5rem;
+            margin: 1.5rem;
             padding: 2rem;
             border-radius: 5%;
 
@@ -53,6 +53,10 @@ $colorSubContenedor: #F0FFFF;
                 gap: 1rem;
             }
         }
+
+        @media screen and (max-width: 675px) {
+            padding: 0;
+        }
     }
 
     .sectionImgUniquePokemon {
@@ -60,7 +64,6 @@ $colorSubContenedor: #F0FFFF;
         flex-direction: column;
         align-items: center;
         padding: 2rem;
-        min-height: 30rem;
 
         #imagen-tipo {
             margin-bottom: 1rem;
@@ -100,6 +103,10 @@ $colorSubContenedor: #F0FFFF;
                     font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
             }
+
+            @media screen and (max-width: 675px) {
+                flex-direction: column;
+            }
         }
 
         @media screen and (max-width: 675px) {
@@ -110,15 +117,19 @@ $colorSubContenedor: #F0FFFF;
                     min-width: 12rem;
                 }
 
-                    #lista-tipo {
-                        gap: 0rem;
+                #lista-tipo {
+                    gap: 0rem;
 
-                        li {
-                            padding: 0.5rem 1rem;
-                        }
+                    li {
+                        padding: 0.5rem 1rem;
                     }
+                }
             }
         }
+    }
+
+    @media screen and (max-width: 570px) {
+        flex-direction: column;
     }
 
     .normal {
