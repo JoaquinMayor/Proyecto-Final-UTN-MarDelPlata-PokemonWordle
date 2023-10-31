@@ -123,26 +123,27 @@ export class WordGameComponent implements OnInit {
     this.words.push(this.namePokemon);
   }
 
-  wordColor(letter: string, i: number, u: number): string {
-    let color = "";
+  wordColor(letter: string, i: number, u: number) {
+    
     let pos = this.letters.indexOf(letter.toLowerCase());
-
+   
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       this.cantLetters[pos] = this.cantLetters[pos] - 1;
+
       return "verde";
     } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase()) && this.cantLetters[pos] > 0) {
       for (let k = i; k < this.words[u].length; k++) {
-        if (this.words[u].charAt(k).toLowerCase() === letter.toLowerCase() && this.guessPokemon.getName.charAt(k).toLowerCase() === letter.toLowerCase()) {
+        if (this.words[u].charAt(k).toLowerCase() === letter.toLowerCase() && this.guessPokemon.getName.charAt(k).toLowerCase() === letter.toLowerCase() && this.cantLetters[pos] == 1) {
           return "gris";
         } else {
           this.cantLetters[pos] = this.cantLetters[pos] - 1;
-          color = "naranja";
+            return "naranja";
         }
       }
     } else {
-      color = "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
+      return  "gris"; // Puedes devolver un color por defecto o una cadena vacía si no se cumple ninguna condición
     }
-    return color;
+     return
   }
 
   ifLogging() {
