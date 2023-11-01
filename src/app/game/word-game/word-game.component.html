@@ -14,6 +14,7 @@
                 <p class="cantLife">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="vidas">
             </section>
+            <img class="signoAyuda" src="../../../assets/ayuda.webp" (click)="showTableHelp = true" *ngIf="showHelps">
             <section class="containerInputBtn">
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"
@@ -21,12 +22,14 @@
                         (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()"
                         autocomplete="off">
                     <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
-                        <li *ngFor="let pokemon of filteredList" class="pokemon">
-                            <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName }}</span>
+                        <li *ngFor="let pokemon of filteredList" class="pokemon"
+                            (click)="selectPokemon(pokemon.getName)">
+                            <span class="nombre">{{ pokemon.getName }}</span>
                         </li>
                     </ul>
                 </section>
-                <button #adivinarBtn (click)="validateGlobal()" *ngIf="badFinish== false && goodFinish==false">Probar</button>
+                <button #adivinarBtn (click)="validateGlobal()"
+                    *ngIf="badFinish== false && goodFinish==false">Probar</button>
             </section>
         </section>
 
@@ -59,6 +62,26 @@
         <div class="containerFinish">
             <p>Usted a perdido, el pokemon era {{this.guessPokemon.getName}}</p>
             <button (click)="confirm()">Aceptar</button>
+        </div>
+    </div>
+
+    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="!acceptButton">
+        <div class="popup">
+            <button class="close-button" (click)="closeTableHelp()">X</button>
+            <div class="content">
+                <p>¿Desea una pista con la descripción del Pokemon a adivinar? Perderá una vida si acepta.</p>
+            </div>
+            <button #acceptHelpButton class="accept-button" (click)="acceptHelp()">Aceptar</button>
+        </div>
+    </div>
+
+    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="acceptButton">
+        <div class="popup">
+            <button class="close-button" (click)="closeTableHelp()">X</button>
+            <div class="content">
+                <p>{{ this.guessPokemon.getDescription }}</p>
+            </div>
+            <button class="accept-button" (click)="closeTableHelp()">Aceptar</button>
         </div>
     </div>
 </ng-template>

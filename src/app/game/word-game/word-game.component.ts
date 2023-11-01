@@ -31,6 +31,10 @@ export class WordGameComponent implements OnInit {
   filteredList: Pokemon[] = [];
   badFinish: boolean = false;
   goodFinish: boolean = false;
+  @ViewChild('nombreInput', { static: false }) //es un decorador de Angular que se utiliza para obtener una referencia a un elemento del DOM o a un componente hijo.
+  nombreInput!: ElementRef; //ElementRef es un tipo de Angular que representa una referencia a un elemento del DOM.
+  showTableHelp: boolean = false;
+  acceptButton: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
   ngOnInit(): void {
@@ -40,9 +44,6 @@ export class WordGameComponent implements OnInit {
       this.showHelps = false;
     }
   }
-
-  @ViewChild('nombreInput', { static: false })
-  nombreInput!: ElementRef;
 
   startGame() {
     this.generateRandomNumber();
@@ -193,6 +194,18 @@ export class WordGameComponent implements OnInit {
 
   selectPokemon(name: string) {
     this.namePokemon = name.toLowerCase();
+  }
+
+  acceptHelp() {
+    if (this.lives > 0) {
+      this.showTableHelp = false;
+      this.lives--;
+      this.acceptButton = true;
+    }
+  }
+
+  closeTableHelp() {
+    this.showTableHelp = false;
   }
 
   bestScore() {

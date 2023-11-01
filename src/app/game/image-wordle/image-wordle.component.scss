@@ -365,6 +365,10 @@
     }
 }
 
+.bounce {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
 @keyframes bounce {
 
     0%,
@@ -375,10 +379,6 @@
     50% {
         transform: translateY(-20px);
     }
-}
-
-.bounce {
-    animation: bounce 0.5s ease-in-out infinite;
 }
 
 .normal {

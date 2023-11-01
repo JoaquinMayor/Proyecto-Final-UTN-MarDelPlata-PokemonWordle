@@ -20,8 +20,9 @@
                             (input)="filterPokemons(nombreInput.value)" (keydown.enter)="searchPokemon()"
                             placeholder="Ingresa el nombre del pokemon">
                         <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
-                            <li *ngFor="let pokemon of filteredList" class="pokemon">
-                                <span class="nombre" (click)="selectPokemon(pokemon.getName)">{{ pokemon.getName
+                            <li *ngFor="let pokemon of filteredList" class="pokemon"
+                                (click)="selectPokemon(pokemon.getName)">
+                                <span class="nombre">{{ pokemon.getName
                                     }}</span>
                             </li>
                         </ul>
@@ -37,7 +38,7 @@
             <section class="correctWords">
                 <ul>
                     <li *ngFor="let pokemon of guessedList">
-                        <img [src]="pokemon.getFrontSprite" alt="Pokemon"(click)="addBounceEffect($event.target)">
+                        <img [src]="pokemon.getFrontSprite" alt="Pokemon" (click)="addBounceEffect($event.target)">
                         <p [ngClass]="isPokemonType(pokemon.getType1)" class="pokemonName">{{ pokemon.getName }}</p>
                     </li>
                 </ul>
