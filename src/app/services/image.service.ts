@@ -18,7 +18,12 @@ export class ImageService {
         "charizard.png",
         "charizardX.png",
         "magikarp.png",
-        "shaymin.png"
+        "shaymin.png",
+        "Shuffle545.png",
+        "thundurus.png",
+        "chimchar.png",
+        "infernape.png"
+
     ];
 
     getImageUrl(imageName: string): string {
