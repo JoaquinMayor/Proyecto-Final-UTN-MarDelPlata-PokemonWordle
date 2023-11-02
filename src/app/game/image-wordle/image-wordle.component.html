@@ -17,7 +17,7 @@
                 <section class="containerInputBtn">
                     <section class="containerInputList">
                         <input #nombreInput type="text" [(ngModel)]="namePokemon"
-                            (input)="filterPokemons(nombreInput.value)" (keydown.enter)="searchPokemon()"
+                            (input)="filterPokemons(nombreInput.value)" (keydown.enter)="searchPokemon(); pikachuVoice()"
                             placeholder="Ingresa el nombre del pokemon">
                         <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                             <li *ngFor="let pokemon of filteredList" class="pokemon"
@@ -27,7 +27,7 @@
                             </li>
                         </ul>
                     </section>
-                    <button #adivinarBtn (click)="searchPokemon()">Adivinar</button>
+                    <button #adivinarBtn (click)="searchPokemon(); pikachuVoice()">Adivinar</button>
                 </section>
                 <section class="errorWords">
                     <ul>

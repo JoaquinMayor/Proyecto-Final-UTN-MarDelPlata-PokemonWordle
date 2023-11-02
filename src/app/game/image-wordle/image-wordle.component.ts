@@ -52,26 +52,14 @@ export class ImageWordleComponent {
   @ViewChild('nombreInput', { static: false })
   nombreInput!: ElementRef;
   addGuessedPokemon() {
-    const guessedPokemon: Pokemon = new Pokemon(
-      this.guessPokemon.getId,
-      this.guessPokemon.getName,
-      this.guessPokemon.getGeneration,
-      this.guessPokemon.getFrontSprite,
-      this.guessPokemon.getBackSprite,
-      this.guessPokemon.getEggGroup,
-      this.guessPokemon.getDescription,
-      this.guessPokemon.getType1,
-      this.guessPokemon.getType2,
-      this.guessPokemon.getAtk,
-      this.guessPokemon.getSpecialAtk,
-      this.guessPokemon.getSpeed,
-      this.guessPokemon.getDefense,
-      this.guessPokemon.getSpecialDef,
-      this.guessPokemon.getHp,
-      this.guessPokemon.getHeigth,
-      this.guessPokemon.getWeigth
-    );
-    this.guessedList.push(guessedPokemon);
+    this.guessedList.push(this.guessPokemon);
+  }
+  pikachuVoice(){
+     if(this.namePokemon.toLowerCase() =="pikachu"){
+      const audioPlayer= new Audio("../../../assets/pikachu.m4a");
+      audioPlayer.play();
+     }
+   
   }
 
   generationSelected(generation: any) {
