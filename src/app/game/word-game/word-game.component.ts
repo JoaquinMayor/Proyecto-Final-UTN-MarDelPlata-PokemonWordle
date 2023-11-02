@@ -35,6 +35,7 @@ export class WordGameComponent implements OnInit {
   nombreInput!: ElementRef; //ElementRef es un tipo de Angular que representa una referencia a un elemento del DOM.
   showTableHelp: boolean = false;
   acceptButton: boolean = false;
+  showLoader: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
   ngOnInit(): void {
@@ -160,13 +161,21 @@ export class WordGameComponent implements OnInit {
   }
 
   showGame() {
+    this.showLoader = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
-    this.startGame();
+    setTimeout(() => {
+      console.log(this.showLoader);
+      this.startGame();
+      this.showLoader = false; // Ocultar la imagen de carga después de 3 segundos
+    }, 3000);
+
     if (this.guessPokemon == undefined || this.idSelected == 0) {
       this.showButton = true;
     }
+
     this.show = true;
     this.lives = 6;
+
   }
 
   pokemonWritter() {
