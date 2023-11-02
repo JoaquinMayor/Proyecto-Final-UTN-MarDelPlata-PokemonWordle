@@ -43,32 +43,7 @@
                 width: 0;
                 height: 2px;
                 background-color: #F7D02C;
-                /* Color de la línea */
                 animation: line-animation 5s linear infinite;
-            }
-
-            @keyframes line-animation {
-                0% {
-                    width: 0;
-                    left: 50%;
-                    background-color: #ff0000;
-                }
-
-                40% {
-                    width: 100%;
-                    background-color: #F7D02C;
-                }
-
-                75% {
-                    width: 0;
-                    left: 50%;
-                    background-color: #2d70ff;
-                }
-
-                100% {
-                    width: 0;
-                    left: 50%;
-                }
             }
         }
 
@@ -88,7 +63,44 @@
             }
         }
     }
-    .btn{
+
+    .btn {
         cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .containerLogin {
+        flex-direction: column;
+        padding: 1rem;
+
+        fieldset {
+            width: 100%;
+            margin: 1rem 0;
+        }
+    }
+}
+
+@keyframes line-animation {
+    0% {
+        width: 0;
+        left: 50%;
+        background-color: #ff0000;
+    }
+
+    40% {
+        width: 100%;
+        background-color: #F7D02C;
+    }
+
+    75% {
+        width: 0;
+        left: 50%;
+        background-color: #2d70ff;
+    }
+
+    100% {
+        width: 0;
+        left: 50%;
     }
 }

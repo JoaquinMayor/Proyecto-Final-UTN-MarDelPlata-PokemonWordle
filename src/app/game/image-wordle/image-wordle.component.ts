@@ -25,7 +25,6 @@ export class ImageWordleComponent {
   words: string[] = [];
   selectedNumbers: number[] = [];
   imageScore: number = 0;
-  showLoader: boolean = false;
   pokemonTypes: string[] = [
     'normal',
     'fire',
@@ -54,12 +53,11 @@ export class ImageWordleComponent {
   addGuessedPokemon() {
     this.guessedList.push(this.guessPokemon);
   }
-  pikachuVoice(){
-     if(this.namePokemon.toLowerCase() =="pikachu"){
-      const audioPlayer= new Audio("../../../assets/pikachu.m4a");
+  pikachuVoice() {
+    if (this.namePokemon.toLowerCase() == "pikachu") {
+      const audioPlayer = new Audio("../../../assets/pikachu.m4a");
       audioPlayer.play();
-     }
-   
+    }
   }
 
   generationSelected(generation: any) {
@@ -111,11 +109,9 @@ export class ImageWordleComponent {
   }
 
   showGame() {
-    this.showLoader = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
     setTimeout(() => {
       this.startGame();
-      this.showLoader = false; // Ocultar la imagen de carga después de 3 segundos
     }, 3000);
 
     if (this.guessPokemon == undefined || this.idSelected == 0) {

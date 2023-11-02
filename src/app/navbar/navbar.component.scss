@@ -20,14 +20,18 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         margin-left: 10rem;
         font-size: 1.8rem;
         font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+        user-select: none;
 
-        @media screen and (max-width: 768px) {
-            margin-left: 7rem;
+        img {
+            position: relative;
+            width: 5.125rem;
+            top: 0.5rem;
+            pointer-events: none;
         }
+    }
 
-        @media screen and (max-width: 668px) {
-            margin-left: 0;
-        }
+    @media screen and (max-width: 668px) {
+        margin-left: 0;
     }
 
     .navbar_menuSinLog {

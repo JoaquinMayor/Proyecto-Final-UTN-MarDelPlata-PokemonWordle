@@ -14,7 +14,7 @@
                 <p class="cantLife">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="vidas">
             </section>
-            <img class="signoAyuda" src="../../../assets/ayuda.webp" (click)="showTableHelp = true" *ngIf="showHelps">
+            <img class="signoAyuda" src="../../../assets/ayuda.png" (click)="showTableHelp = true" *ngIf="showHelps">
             <section class="containerInputBtn">
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="!acceptButton">
+    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="!acceptButtonPressed">
         <div class="popup">
             <button class="close-button" (click)="closeTableHelp()">X</button>
             <div class="content">
@@ -75,11 +75,11 @@
         </div>
     </div>
 
-    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="acceptButton">
+    <div class="overlay" [ngClass]="{ hidden: !showTableHelp }" *ngIf="acceptButtonPressed">
         <div class="popup">
             <button class="close-button" (click)="closeTableHelp()">X</button>
             <div class="content">
-                <p>{{ this.guessPokemon.getDescription }}</p>
+                <p>{{ guessPokemon.getDescription }}</p>
             </div>
             <button class="accept-button" (click)="closeTableHelp()">Aceptar</button>
         </div>

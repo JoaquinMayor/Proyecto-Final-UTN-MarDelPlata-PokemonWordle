@@ -5,6 +5,12 @@
     align-items: center;
     color: yellow;
 
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
     fieldset {
         display: flex;
         flex-direction: column;
@@ -19,6 +25,11 @@
         text-align: center;
         width: 30rem;
         margin: 2rem;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            margin: 0;
+        }
 
         legend {
             position: relative;
@@ -43,32 +54,7 @@
                 width: 0;
                 height: 2px;
                 background-color: #F7D02C;
-                /* Color de la línea */
                 animation: line-animation 5s linear infinite;
-            }
-
-            @keyframes line-animation {
-                0% {
-                    width: 0;
-                    left: 50%;
-                    background-color: #ff0000;
-                }
-
-                40% {
-                    width: 100%;
-                    background-color: #F7D02C;
-                }
-
-                75% {
-                    width: 0;
-                    left: 50%;
-                    background-color: #2d70ff;
-                }
-
-                100% {
-                    width: 0;
-                    left: 50%;
-                }
             }
         }
 
@@ -96,7 +82,7 @@
             gap: 0.5rem;
             width: 15rem;
 
-            button{
+            button {
                 font-weight: 600;
                 font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
@@ -168,35 +154,59 @@
     h4 {
         font-weight: 100;
     }
+}
 
-    .border-animation {
-        animation: border-color 5s infinite;
+@keyframes line-animation {
+    0% {
+        width: 0;
+        left: 50%;
+        background-color: #ff0000;
     }
 
-    @keyframes border-color {
-        0% {
-            border-color: #93b954;
-            /* Color tipo Planta */
-        }
+    40% {
+        width: 100%;
+        background-color: #F7D02C;
+    }
 
-        25% {
-            border-color: #C22E28;
-            /* Color tipo Fuego */
-        }
+    75% {
+        width: 0;
+        left: 50%;
+        background-color: #2d70ff;
+    }
 
-        50% {
-            border-color: #4E6794;
-            /* Color tipo Agua */
-        }
+    100% {
+        width: 0;
+        left: 50%;
+    }
+}
 
-        75% {
-            border-color: #A33EA1;
-            /* Color tipo Veneno */
-        }
+.border-animation {
+    animation: border-color 5s infinite;
+}
 
-        100% {
-            border-color: #F7D02C;
-            /* Color tipo Eléctrico */
-        }
+@keyframes border-color {
+    0% {
+        border-color: #93b954;
+        /* Color tipo Planta */
+    }
+
+    25% {
+        border-color: #C22E28;
+        /* Color tipo Fuego */
+    }
+
+    50% {
+        border-color: #4E6794;
+        /* Color tipo Agua */
+    }
+
+    75% {
+        border-color: #A33EA1;
+        /* Color tipo Veneno */
+    }
+
+    100% {
+        border-color: #F7D02C;
+        /* Color tipo Eléctrico */
     }
 }

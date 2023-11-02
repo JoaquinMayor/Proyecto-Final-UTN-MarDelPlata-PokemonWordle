@@ -35,6 +35,7 @@ export class WordGameComponent implements OnInit {
   nombreInput!: ElementRef; //ElementRef es un tipo de Angular que representa una referencia a un elemento del DOM.
   showTableHelp: boolean = false;
   acceptButton: boolean = false;
+  acceptButtonPressed: boolean = false;
   showLoader: boolean = false;
 
   constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
@@ -51,7 +52,6 @@ export class WordGameComponent implements OnInit {
       const audioPlayer = new Audio("../../../assets/pikachu.m4a");
       audioPlayer.play();
     }
-
   }
 
   startGame() {
@@ -137,7 +137,6 @@ export class WordGameComponent implements OnInit {
   }
 
   wordColor(letter: string, i: number, u: number) {
-
     let pos = this.letters.indexOf(letter.toLowerCase());
 
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
@@ -212,10 +211,10 @@ export class WordGameComponent implements OnInit {
   }
 
   acceptHelp() {
-    if (this.lives > 0) {
-      this.showTableHelp = false;
+    if (!this.acceptButtonPressed && this.lives > 0) {
+      this.acceptButtonPressed = true;
+      this.showTableHelp = true;
       this.lives--;
-      this.acceptButton = true;
     }
   }
 
