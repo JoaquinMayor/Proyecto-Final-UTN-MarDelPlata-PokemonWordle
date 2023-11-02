@@ -4,6 +4,10 @@
         <button (click)="showGame()">Aceptar</button>
     </section>
 
+    <div class="overlay" *ngIf=" showButton">
+        <img src="../../../assets/logoPoke.jpg" alt="Cargando">
+    </div>
+
     <ng-template #game>
         <section class="containerTodoWordle">
             <section class="containerDataWordle">
@@ -17,7 +21,8 @@
                 <section class="containerInputBtn">
                     <section class="containerInputList">
                         <input #nombreInput type="text" [(ngModel)]="namePokemon"
-                            (input)="filterPokemons(nombreInput.value)" (keydown.enter)="searchPokemon(); pikachuVoice()"
+                            (input)="filterPokemons(nombreInput.value)"
+                            (keydown.enter)="searchPokemon(); pikachuVoice()"
                             placeholder="Ingresa el nombre del pokemon">
                         <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                             <li *ngFor="let pokemon of filteredList" class="pokemon"

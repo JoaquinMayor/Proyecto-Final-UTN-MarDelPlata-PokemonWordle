@@ -46,13 +46,13 @@ export class WordGameComponent implements OnInit {
     }
   }
 
-  pikachuVoice(){
-    if(this.namePokemon.toLowerCase() =="pikachu"){
-     const audioPlayer= new Audio("../../../assets/pikachu.m4a");
-     audioPlayer.play();
+  pikachuVoice() {
+    if (this.namePokemon.toLowerCase() == "pikachu") {
+      const audioPlayer = new Audio("../../../assets/pikachu.m4a");
+      audioPlayer.play();
     }
-  
- }
+
+  }
 
   startGame() {
     this.generateRandomNumber();
@@ -172,7 +172,6 @@ export class WordGameComponent implements OnInit {
     this.showLoader = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
     setTimeout(() => {
-      console.log(this.showLoader);
       this.startGame();
       this.showLoader = false; // Ocultar la imagen de carga después de 3 segundos
     }, 3000);
@@ -183,7 +182,6 @@ export class WordGameComponent implements OnInit {
 
     this.show = true;
     this.lives = 6;
-
   }
 
   pokemonWritter() {

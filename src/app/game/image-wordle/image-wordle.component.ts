@@ -19,13 +19,13 @@ export class ImageWordleComponent {
   showVictory: boolean = false;
   imgPokemon = "";
   guessedList: Pokemon[] = [];
-
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
   lives: number = 6;
   words: string[] = [];
   selectedNumbers: number[] = [];
   imageScore: number = 0;
+  showLoader: boolean = false;
   pokemonTypes: string[] = [
     'normal',
     'fire',
@@ -111,11 +111,17 @@ export class ImageWordleComponent {
   }
 
   showGame() {
-    this.userService.user.setTryImage(this.userService.user.getTryImage + 1);
-    this.startGame();
+    this.showLoader = true; // Mostrar la imagen de carga
+    this.words.splice(0, this.words.length);
+    setTimeout(() => {
+      this.startGame();
+      this.showLoader = false; // Ocultar la imagen de carga después de 3 segundos
+    }, 3000);
+
     if (this.guessPokemon == undefined || this.idSelected == 0) {
       this.showButton = true;
     }
+
     this.show = true;
     this.lives = 6;
   }
@@ -124,6 +130,7 @@ export class ImageWordleComponent {
     let frontBack = Math.floor(Math.random() * 2);;
     this.generateRandomNumber();
     this.randomPokemon();
+    this.showButton = false;
     if (frontBack == 1) {
       this.imgPokemon = this.guessPokemon.getBackSprite;
     } else {
