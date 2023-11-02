@@ -19,7 +19,7 @@
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"
                         placeholder="Ingrese el nombre del pokemon" [(ngModel)]="namePokemon"
-                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal()"
+                        (input)="filterPokemons(nombreInput.value)" (keydown.enter)="validateGlobal(); pikachuVoice()"
                         autocomplete="off">
                     <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
                         <li *ngFor="let pokemon of filteredList" class="pokemon"
@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                 </section>
-                <button #adivinarBtn (click)="validateGlobal()"
+                <button #adivinarBtn (click)="validateGlobal(); pikachuVoice()"
                     *ngIf="badFinish== false && goodFinish==false">Probar</button>
             </section>
         </section>

@@ -46,6 +46,14 @@ export class WordGameComponent implements OnInit {
     }
   }
 
+  pikachuVoice(){
+    if(this.namePokemon.toLowerCase() =="pikachu"){
+     const audioPlayer= new Audio("../../../assets/pikachu.m4a");
+     audioPlayer.play();
+    }
+  
+ }
+
   startGame() {
     this.generateRandomNumber();
     this.randomPokemon();
