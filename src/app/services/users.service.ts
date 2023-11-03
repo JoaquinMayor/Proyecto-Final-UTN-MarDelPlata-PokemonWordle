@@ -12,21 +12,17 @@ export class UsuariosServices {
     
     constructor(private router: Router, private cryptoService:CryptoService, private dataService:DataService) { }
 
-    loadUsuario(){
-        this.dataService.chargeUsers()
-        .subscribe(
-            (users:Usuario[]) => {
-                this.users = users;
-            } 
-        );
+    async loadUsuario(){
+        return this.dataService.chargeUsers();
     }
     
-    chargeUsuario(user: Usuario) {
+    async chargeUsuario(user: Usuario) {
         this.users.push(user);
         this.dataService.saveUsers(this.users);
     }
 
-    searchUsuario(name: string, password: string) {
+    async searchUsuario(name: string, password: string) {
+       
         let userExist: Usuario = new Usuario("0", "", "", "");
         if (this.users.length != 0) {
             let flag = false;
@@ -48,6 +44,7 @@ export class UsuariosServices {
     findUser(name: string) {
         let flag: boolean = false;
         for (const user of this.users) {
+            
             if (name === user.getName) {
                 flag = true;
                 break;
@@ -56,7 +53,8 @@ export class UsuariosServices {
         return flag;
     }
 
-    editUser(user: Usuario) {
+    async editUser(user: Usuario) {
+        
         let flag: boolean = false;
         if (user && this.users.length != 0) {
             for (let i = 0; i < this.users.length && flag == false; i++) {
@@ -92,7 +90,7 @@ export class UsuariosServices {
     async logging(name: string, password: string) {
         let flag = false;
         let value = 0;
-        let hash ="";
+        
         for (let i = 0; i<this.users.length && flag == false; i++) {
             if (this.users[i].getName == name) {
 

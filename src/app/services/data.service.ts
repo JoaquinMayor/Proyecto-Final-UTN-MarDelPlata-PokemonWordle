@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Usuario } from "../models/user.model";
+import { Observable } from "rxjs";
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class DataService{
     }
     //Cargar usuarios
     chargeUsers(){
-        return this.httpClient.get<any>("https://wordlepokemon-default-rtdb.firebaseio.com/users.json");
+        return this.httpClient.get<Usuario[]>("https://wordlepokemon-default-rtdb.firebaseio.com/users.json");
     }
 
     //Modificar usuario

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../services/image.service';
 import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
@@ -7,20 +7,32 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
 import { CryptoService } from 'src/app/services/crypto.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.scss']
 })
-export class UserCreateComponent {
+export class UserCreateComponent implements OnInit{
   photos: string[] = [];
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService) {
+  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService, private dataService:DataService) {
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
+  }
+  ngOnInit(): void {
+    this.dataService.chargeUsers().subscribe(
+      (users:Usuario[]) => {
+        let aux:Usuario;
+        for (const user of users) {
+          aux = user;
+          this.userService.users.push(aux);
+        }
+      })
+
   }
 
   show(event: any) {
@@ -39,7 +51,7 @@ export class UserCreateComponent {
     if (this.userService.validateName(name) == false) {
       if (!this.userService.validatePassword(password)) {
         const crypt = await this.cryptoService.generarHashPassword(password);
-
+        console.log("entre al password")
         let user = new Usuario(crypto.randomUUID(), name, crypt, this.selectedPhoto);
         this.userService.chargeUsuario(user);
         this.router.navigate(["/home"]);
