@@ -1,7 +1,6 @@
 import { Stats } from './../../models/stats.model';
 import { Component, Input } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 
 @Component({
   selector: 'app-helps',
@@ -15,7 +14,7 @@ export class HelpsComponent {
   color: string = '';
   bestStat: string = "";
 
-  constructor(private pokemonApiServices: PokemonApiServices) { }
+  constructor() { }
 
   compareType1() {
     if (this.pokemon.getType1 !== this.stat.getType1) {

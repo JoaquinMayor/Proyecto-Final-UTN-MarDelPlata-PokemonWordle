@@ -97,12 +97,15 @@ export class WordGameComponent implements OnInit {
         this.wordCorrect();
         this.bestScore();
         this.goodFinish = true;
-      } else if (this.lives == 0) {
+      }
+
+      if (this.lives == 0) {
         this.bestScore();
         this.badFinish = true;
       }
       this.showButton = false;
       this.nombreInput.nativeElement.value = '';
+      this.namePokemon = "";
     }
   }
 
@@ -141,7 +144,6 @@ export class WordGameComponent implements OnInit {
 
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       this.cantLetters[pos] = this.cantLetters[pos] - 1;
-
       return "verde";
     } else if (this.guessPokemon.getName.toLowerCase().includes(letter.toLowerCase()) && this.cantLetters[pos] > 0) {
       for (let k = i; k < this.words[u].length; k++) {
@@ -168,11 +170,13 @@ export class WordGameComponent implements OnInit {
   }
 
   showGame() {
-    this.showLoader = true; // Mostrar la imagen de carga
+    this.showButton = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
+    this.pokeUsados.splice(0, this.pokeUsados.length);
+    this.acceptButtonPressed = false;
     setTimeout(() => {
       this.startGame();
-      this.showLoader = false; // Ocultar la imagen de carga después de 3 segundos
+      this.showButton = false; // Ocultar la imagen de carga después de 3 segundos
     }, 3000);
 
     if (this.guessPokemon == undefined || this.idSelected == 0) {

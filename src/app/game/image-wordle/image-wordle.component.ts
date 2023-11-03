@@ -109,6 +109,7 @@ export class ImageWordleComponent {
   }
 
   showGame() {
+    this.showButton = true;
     this.words.splice(0, this.words.length);
     setTimeout(() => {
       this.startGame();

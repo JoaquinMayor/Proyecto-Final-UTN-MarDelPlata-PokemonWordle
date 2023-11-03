@@ -1,6 +1,6 @@
 $color_1: #f2f2f2;
 $color_2: black;
-$background-color_1: #f2f2f2ed;
+$background-color_1: #f2f2f2;
 $background-color_2: rgba(255, 0, 0, 0.644);
 $background-color_4: rgba(255, 255, 255, 0.836);
 
@@ -9,7 +9,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3.75rem;
+    height: 4.75rem;
     background-color: $background-color_1;
     padding: 0 1.25rem;
     font-weight: 600;
@@ -17,15 +17,15 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     h1 {
         flex-grow: 1;
         text-align: center;
-        margin-left: 10rem;
+        margin-left: 14rem;
         font-size: 1.8rem;
         font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
         user-select: none;
 
         img {
             position: relative;
-            width: 5.125rem;
-            top: 0.5rem;
+            width: 6.125rem;
+            top: 0.6rem;
             pointer-events: none;
         }
     }
@@ -45,6 +45,11 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             text-decoration: none;
             cursor: pointer;
             font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+            transition: all 0.5s ease;
+
+            &:hover {
+                color: $background-color_2;
+            }
         }
     }
 
@@ -87,6 +92,8 @@ $background-color_4: rgba(255, 255, 255, 0.836);
                 transition: background-color 0.3s ease;
                 padding: 0.3rem;
                 cursor: pointer;
+                border-radius: 1rem;
+                text-align: center;
 
                 &:hover {
                     background-color: $background-color_2;
@@ -101,6 +108,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
                 button {
                     border: none;
                     background: none;
+                    cursor: pointer;
                 }
             }
 
