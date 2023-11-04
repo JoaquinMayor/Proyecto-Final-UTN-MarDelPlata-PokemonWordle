@@ -9,14 +9,15 @@ import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 })
 export class GenerationComponent {
   @Output() generationSelected = new EventEmitter<String>();
-  generation: string = '1';
+  generation: string = "0";
   constructor(private apiService: PokemonApiServices, private router: Router) { }
 
   async choiceGeneration(event: any) {
     this.generation = event.target.value;
-    await this.apiService.listaSpeciesPokemon(this.generation);
+    
     this.generationSelected.emit(this.generation);
   }
+
 
   getRouter() {
     return this.router.url;

@@ -11,7 +11,7 @@ import { UsuariosServices } from '../../services/users.service';
 export class ImageWordleComponent {
   guessPokemon: Pokemon;
   namePokemon: string = "";
-  generation: string = "";
+  generation: string = "0";
   idSelected: number = 0;
   show = false;
   showButton: boolean = false;
@@ -60,7 +60,7 @@ export class ImageWordleComponent {
     }
   }
 
-  generationSelected(generation: any) {
+   generationSelected(generation: any) {
     this.generation = generation;
     this.renderTable();
   }
@@ -108,7 +108,14 @@ export class ImageWordleComponent {
     console.log(this.guessPokemon);
   }
 
-  showGame() {
+  async showGame() {
+
+    if(this.generation =="0"){
+      let aleatorio = Math.floor(Math.random()*9)+1
+      this.generation = aleatorio.toString();
+    } 
+     await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
+     
     this.showButton = true;
     this.words.splice(0, this.words.length);
     setTimeout(() => {

@@ -12,7 +12,7 @@ import { UsuariosServices } from 'src/app/services/users.service';
   styleUrls: ['./word-game.component.scss']
 })
 export class WordGameComponent implements OnInit {
-  generation: string = "";
+  generation: string = "0";
   show: boolean = false;
   showButton: boolean = false;
   showHelps: boolean = false;
@@ -66,7 +66,6 @@ export class WordGameComponent implements OnInit {
 
   randomPokemon() { //guarda el pokemon a elegido aleatoriamente
     this.guessPokemon = this.pokemonApiServices.pokemonArray[this.idSelected];
-    console.log(this.guessPokemon);
   }
 
   validationIfPokemon() {
@@ -168,7 +167,16 @@ export class WordGameComponent implements OnInit {
     this.renderTable();
   }
 
-  showGame() {
+  async showGame() {
+
+    
+    if(this.generation =="0"){
+      let aleatorio = Math.floor(Math.random()*9)+1
+      this.generation = aleatorio.toString();
+    } 
+     await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
+     
+    
     this.showButton = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
     this.pokeUsados.splice(0, this.pokeUsados.length);
