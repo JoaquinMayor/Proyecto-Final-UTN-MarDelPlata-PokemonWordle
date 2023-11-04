@@ -15,14 +15,12 @@ import { HomeComponent } from './home/home.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { ImageService } from './services/image.service';
-import { UsuariosServices } from './services/users.service';
 import { PokemonApiServices } from './services/pokemonApi.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule } from '@angular/common/http';
 import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
 import { GenerationComponent } from './game/generation/generation.component';
 import { HelpsComponent } from './game/helps/helps.component';
 import { WordGameComponent } from './game/word-game/word-game.component';
-import { DataService } from './services/data.service';
 import { HtmlElementService } from './services/htmlElement.service';
 
 @NgModule({
@@ -49,7 +47,7 @@ import { HtmlElementService } from './services/htmlElement.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ImageService, UsuariosServices,PokemonApiServices,DataService,HtmlElementService],
+  providers: [ImageService,PokemonApiServices,HtmlElementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

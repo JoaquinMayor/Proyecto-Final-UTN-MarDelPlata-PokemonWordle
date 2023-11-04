@@ -9,7 +9,7 @@ import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 })
 export class GenerationComponent {
   @Output() generationSelected = new EventEmitter<String>();
-  generation: string = '';
+  generation: string = '1';
   constructor(private apiService: PokemonApiServices, private router: Router) { }
 
   async choiceGeneration(event: any) {

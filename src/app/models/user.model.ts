@@ -1,6 +1,6 @@
 
 export class Usuario {
-    private id: string
+    private id: string;
     private name: string;
     private password: string;
     private imagenScore: number;
@@ -81,6 +81,10 @@ export class Usuario {
 
     get getMaxScoreHard() {
         return this.maxScoreHard;
+    }
+
+    setId(id:string){
+        this.id = id;
     }
 
     setName(name: string) {

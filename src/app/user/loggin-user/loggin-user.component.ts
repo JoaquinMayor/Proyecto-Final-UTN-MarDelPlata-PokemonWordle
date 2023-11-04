@@ -4,7 +4,8 @@ import { Usuario } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CryptoService } from 'src/app/services/crypto.service';
-import { DataService } from 'src/app/services/data.service';
+import { getUsers } from 'src/config/config';
+
 
 @Component({
   selector: 'app-loggin-user',
@@ -15,12 +16,9 @@ export class LogginUserComponent implements OnInit {
   
   log: boolean = false;
 
-  constructor(private userService: UsuariosServices, private router: Router, private cryptoService:CryptoService, private dataService:DataService) { }
+  constructor(private userService: UsuariosServices, private router: Router, private cryptoService:CryptoService) { }
   ngOnInit(): void {
-    this.dataService.chargeUsers().subscribe(
-      (users:Usuario[]) => {
-        this.userService.users = users;
-      })
+   
     
     this.ifLogging()
   }
@@ -30,6 +28,7 @@ export class LogginUserComponent implements OnInit {
   }
 
   async logging(form:NgForm) {
+    
     let error:number = 0
     const name:string =  form.value.name;
     const password:string = form.value.password;

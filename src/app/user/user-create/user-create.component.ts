@@ -6,34 +6,25 @@ import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
+import{setUser, getUsers} from "../../../config/config"
 import { CryptoService } from 'src/app/services/crypto.service';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.scss']
 })
-export class UserCreateComponent implements OnInit{
+export class UserCreateComponent {
   photos: string[] = [];
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService, private dataService:DataService) {
+  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService) {
+    
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
-  ngOnInit(): void {
-    this.dataService.chargeUsers().subscribe(
-      (users:Usuario[]) => {
-        let aux:Usuario;
-        for (const user of users) {
-          aux = user;
-          this.userService.users.push(aux);
-        }
-      })
-
-  }
+  
 
   show(event: any) {
     event.preventDefault();
@@ -45,7 +36,8 @@ export class UserCreateComponent implements OnInit{
   }
 
   async addUser(form: NgForm) {
-
+    this.userService.users = await getUsers();
+    console.log(this.userService.users);
     const name: string = form.value.name;
     const password: string = form.value.password;
     if (this.userService.validateName(name) == false) {
