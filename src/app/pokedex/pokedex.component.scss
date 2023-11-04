@@ -34,10 +34,6 @@ $background-color_3: wheat;
         select {
             width: fit-content;
         }
-
-        input {
-            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-        }
     }
 
     .lista {
@@ -77,10 +73,10 @@ $background-color_3: wheat;
                 font-weight: 600;
                 text-align: center;
                 align-items: center;
-
-                span {
-                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-                }
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
             }
 
             img {

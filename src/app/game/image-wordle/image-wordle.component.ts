@@ -66,13 +66,13 @@ export class ImageWordleComponent {
   }
 
   filterPokemons(text: string) {
-    this.filteredList.splice(0, this.filterPokemons.length - 1);
-    if (text.trim() !== '') {
+    this.filteredList.splice(0, this.filteredList.length - 1);
+    if (text.trim() !== '' && text.trim().length >= 2) {
       this.filteredList = this.pokemonList.filter((pokemon) =>
         pokemon.getName.toLowerCase().includes(text.toLowerCase())
       );
     } else {
-      this.filteredList = this.pokemonList;
+      this.filteredList = [];
     }
   }
 
@@ -128,8 +128,12 @@ export class ImageWordleComponent {
     this.generateRandomNumber();
     this.randomPokemon();
     this.showButton = false;
-    if (frontBack == 1) {
-      this.imgPokemon = this.guessPokemon.getBackSprite;
+    if (this.guessPokemon.getGeneration != 'generation-ix') {
+      if (frontBack == 1) {
+        this.imgPokemon = this.guessPokemon.getBackSprite;
+      } else {
+        this.imgPokemon = this.guessPokemon.getFrontSprite;
+      }
     } else {
       this.imgPokemon = this.guessPokemon.getFrontSprite;
     }
@@ -163,7 +167,13 @@ export class ImageWordleComponent {
         this.words.splice(0, this.words.length);
         this.guessedList.splice(0, this.guessedList.length);
       }
+
+      if (this.lives == 0) {
+        this.showFinish = true;
+      }
+
       this.nombreInput.nativeElement.value = '';
+      this.namePokemon = "";
     }
   }
 

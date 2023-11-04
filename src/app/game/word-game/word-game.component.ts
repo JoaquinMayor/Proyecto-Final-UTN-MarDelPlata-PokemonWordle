@@ -141,7 +141,6 @@ export class WordGameComponent implements OnInit {
 
   wordColor(letter: string, i: number, u: number) {
     let pos = this.letters.indexOf(letter.toLowerCase());
-
     if (letter.toLowerCase() === this.guessPokemon.getName.charAt(i).toLowerCase()) {
       this.cantLetters[pos] = this.cantLetters[pos] - 1;
       return "verde";
@@ -177,7 +176,7 @@ export class WordGameComponent implements OnInit {
     setTimeout(() => {
       this.startGame();
       this.showButton = false; // Ocultar la imagen de carga después de 3 segundos
-    }, 3000);
+    }, 3500);
 
     if (this.guessPokemon == undefined || this.idSelected == 0) {
       this.showButton = true;
@@ -193,13 +192,13 @@ export class WordGameComponent implements OnInit {
   }
 
   filterPokemons(text: string) {
-    this.filteredList.splice(0, this.filterPokemons.length - 1);
-    if (text.trim() !== '') {
+    this.filteredList.splice(0, this.filteredList.length - 1);
+    if (text.trim() !== '' && text.trim().length >= 2) {
       this.filteredList = this.pokemonList.filter((pokemon) =>
         pokemon.getName.toLowerCase().includes(text.toLowerCase())
       );
     } else {
-      this.filteredList = this.pokemonList;
+      this.filteredList = [];
     }
   }
 

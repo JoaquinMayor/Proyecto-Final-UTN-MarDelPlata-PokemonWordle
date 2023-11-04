@@ -43,7 +43,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+            font-family: 'Pokemon Solid', sans-serif;
 
             &::after {
                 content: "";
@@ -64,7 +64,6 @@
             border-radius: 0.5rem;
             font-size: 0.9rem;
             width: 15rem;
-            font-family: 'Times New Roman', Times, serif;
 
             &:focus {
                 outline: none;
@@ -84,7 +83,6 @@
 
             button {
                 font-weight: 600;
-                font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
 
             .galeriaFotos {

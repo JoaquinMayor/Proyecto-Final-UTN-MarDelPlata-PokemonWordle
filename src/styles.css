@@ -1,19 +1,25 @@
 @font-face {
+	font-family: 'Pokemon Solid';
+	src: url('/assets/fonts/Pokemon Solid.ttf') format('truetype');
+}
+
+@font-face {
 	font-family: 'Pokemon Hollow';
 	src: url('/assets/fonts/Pokemon Hollow.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: 'Pokemon Solid';
-	src: url('/assets/fonts/Pokemon Solid.ttf') format('truetype');
+	font-family: 'Ketchum';
+	src: url('/assets/fonts/Ketchum.otf') format('truetype');
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Times New Roman', Times, serif;
-	font-size: large;
+	font-family: 'Ketchum', sans-serif;
+	font-size: 1.1rem;
+	font-weight: lighter;
 }
 
 body {

@@ -23,7 +23,6 @@
             transition: background-color 0.3s ease;
             font-size: 1rem;
             font-weight: 600;
-            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
 
             &:hover {
                 background-color: #45a049;
@@ -104,8 +103,6 @@
                     position: relative;
 
                     input {
-                        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
-
                         @media screen and (max-width: 550px) {
                             width: 12rem;
                         }
@@ -202,8 +199,7 @@
                     li {
                         text-align: center;
                         background-color: #ff9999;
-                        color: white;
-                        font-weight: bold;
+                        font-weight: 100;
                         margin: 0.5rem 0;
                         padding: 1rem;
                         border-radius: 5px;
@@ -270,8 +266,7 @@
                         padding: 1rem;
                         border-radius: 5px;
                         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                        color: white;
-                        font-weight: bold;
+                        font-weight: 100;
                     }
 
                     &:hover .pokemonName {

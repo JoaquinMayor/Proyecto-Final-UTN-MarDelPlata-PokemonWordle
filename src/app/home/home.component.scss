@@ -20,7 +20,7 @@ $background-color_2: #8f8e8e;
             display: flex;
             justify-content: center;
             background-color: $background-color_1;
-            padding: 3rem;
+            padding: 4rem 2rem;
             margin: 2rem;
             width: 15rem;
             border-radius: 5%;
@@ -28,7 +28,6 @@ $background-color_2: #8f8e8e;
             text-decoration: none;
             color: $color_1;
             transition: all ease 1.6s;
-            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
 
             &:hover {
                 transform: scale(1.1);

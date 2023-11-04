@@ -17,12 +17,11 @@ export class PokedexComponent {
     this.renderTable('1');
   }
 
-  pikachuVoice(pokemon:Pokemon){
-    if(pokemon.getName =="Pikachu"){
-      const audioPlayer= new Audio("../../assets/pikachu.m4a");
+  pikachuVoice(pokemon: Pokemon) {
+    if (pokemon.getName == "Pikachu") {
+      const audioPlayer = new Audio("../../assets/pikachu.m4a");
       audioPlayer.play();
     }
-   
   }
 
   async renderTable(generation: string) {

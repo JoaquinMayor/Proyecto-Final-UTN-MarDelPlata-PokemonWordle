@@ -23,13 +23,13 @@ $colorSubContenedor: #F0FFFF;
             flex-direction: column;
             margin: 1.5rem;
             border-radius: 5%;
+            padding: 3rem;
 
             h3 {
                 border-bottom: 2px solid #ff0e0e;
                 width: 100%;
                 max-width: 30vw;
                 margin-left: 1rem;
-                font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
 
             p {
@@ -37,7 +37,6 @@ $colorSubContenedor: #F0FFFF;
                 margin: 0.5rem;
                 padding: 0.5rem;
                 max-width: 50vw;
-                font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             }
         }
 
@@ -83,7 +82,6 @@ $colorSubContenedor: #F0FFFF;
                 li {
                     border-radius: 10%;
                     padding: 0.5rem 1.5rem;
-                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
                 }
             }
         }
@@ -100,7 +98,7 @@ $colorSubContenedor: #F0FFFF;
             li {
                 p {
                     width: fit-content;
-                    font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
+
                 }
             }
 

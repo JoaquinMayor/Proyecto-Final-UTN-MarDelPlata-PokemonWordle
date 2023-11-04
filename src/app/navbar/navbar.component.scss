@@ -12,15 +12,13 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     height: 4.75rem;
     background-color: $background-color_1;
     padding: 0 1.25rem;
-    font-weight: 600;
 
     h1 {
         flex-grow: 1;
         text-align: center;
         margin-left: 14rem;
-        font-size: 1.8rem;
-        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
         user-select: none;
+        font-size: xxx-large;
 
         img {
             position: relative;
@@ -44,7 +42,6 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             color: $color_2;
             text-decoration: none;
             cursor: pointer;
-            font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
             transition: all 0.5s ease;
 
             &:hover {
@@ -135,7 +132,6 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     a {
         color: $color_2;
         text-decoration: none;
-        font-family: 'Pokemon Hollow', 'Pokemon Solid', sans-serif;
     }
 
     .active {
