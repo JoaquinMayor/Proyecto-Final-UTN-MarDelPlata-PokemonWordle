@@ -1,6 +1,6 @@
 <section [ngClass]="{'modalRegiones': getRouter()=='/wordleFacil' || getRouter()=='/wordleDificil' ||getRouter()=='/imageGame'}">
   <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)">
-    <option value="0">Generacion a aleatoria</option>
+    <option value="0">Generacion aleatoria</option>
     <option value="1">1° Generación</option>
     <option value="2">2° Generación</option>
     <option value="3">3° Generación</option>
