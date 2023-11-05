@@ -1,4 +1,3 @@
-
 export class Usuario {
     private id: string;
     private name: string;
@@ -83,7 +82,7 @@ export class Usuario {
         return this.maxScoreHard;
     }
 
-    setId(id:string){
+    setId(id: string) {
         this.id = id;
     }
 

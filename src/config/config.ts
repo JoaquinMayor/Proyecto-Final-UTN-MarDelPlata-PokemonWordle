@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { Usuario } from "src/app/models/user.model";
-import { doc, getFirestore, setDoc, getDoc, collection, getDocs } from "firebase/firestore";
+import { doc, getFirestore, setDoc, collection, getDocs } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -64,7 +64,6 @@ export async function getUsers() {
         user.setMaxScoreEasy(element.maxScoreEasy);
         user.setMaxScorehard(element.maxScoreHard);
         user.setMaxScoreImage(element.maxScoreImage);
-
 
         users.push(user);
     })

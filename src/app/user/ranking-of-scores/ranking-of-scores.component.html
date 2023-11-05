@@ -1,0 +1,20 @@
+<section class="containerTotalRanking">
+    <section class="containerButtons">
+        <button (click)="changeTable(1)">Ranking Facil</button>
+        <button (click)="changeTable(2)">Ranking Dificil</button>
+        <button (click)="changeTable(3)">Ranking Imagenes</button>
+    </section>
+    <section class="containerRanking">
+        <div class="containerRanking__title">
+            <h2 class="containerRanking__title--text">Ranking de Puntajes</h2>
+        </div>
+        <div class="containerRanking__list">
+            <ol class="containerRanking__list--list">
+                <li *ngFor="let user of ranking, let i = index">
+                    <span class="containerRanking__list--name">{{user.getName}}</span>
+                    <span class="containerRanking__list--score">{{scores[i]}}</span>
+                </li>
+            </ol>
+        </div>
+    </section>
+</section>

@@ -6,7 +6,7 @@ import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
-import{setUser, getUsers} from "../../../config/config"
+import { setUser, getUsers } from "../../../config/config"
 import { CryptoService } from 'src/app/services/crypto.service';
 
 @Component({
@@ -19,12 +19,10 @@ export class UserCreateComponent {
   selectedPhoto: string = "";
   view: boolean = false;
 
-  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router:Router, private cryptoService:CryptoService) {
-    
+  constructor(private photoService: ImageService, private userService: UsuariosServices, private jsonpokemon: PokemonApiServices, private router: Router, private cryptoService: CryptoService) {
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
-  
 
   show(event: any) {
     event.preventDefault();
@@ -37,13 +35,11 @@ export class UserCreateComponent {
 
   async addUser(form: NgForm) {
     this.userService.users = await getUsers();
-    console.log(this.userService.users);
     const name: string = form.value.name;
     const password: string = form.value.password;
     if (this.userService.validateName(name) == false) {
       if (!this.userService.validatePassword(password)) {
         const crypt = await this.cryptoService.generarHashPassword(password);
-        console.log("entre al password")
         let user = new Usuario(crypto.randomUUID(), name, crypt, this.selectedPhoto);
         this.userService.chargeUsuario(user);
         this.router.navigate(["/home"]);
@@ -53,7 +49,6 @@ export class UserCreateComponent {
     } else {
       alert("Nombre de usuario existente");
     }
-    
   }
 
 

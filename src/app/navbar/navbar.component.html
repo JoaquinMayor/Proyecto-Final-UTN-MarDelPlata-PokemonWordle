@@ -8,9 +8,11 @@
         <section class="navbar_menuSinLog" *ngIf="user.getId==='0'; else log">
             <a [routerLink]="['user/create']">Crear Cuenta</a>
             <a [routerLink]="['user/logging']">Loguearse</a>
+            <a class="ranking" [routerLink]="['ranking']">Puntajes</a>
         </section>
         <ng-template #log>
             <section class="navbar__menu">
+                <a class="ranking" [routerLink]="['ranking']">Puntajes</a>
                 <div class="menuVistaUsuario" (click)="toggleDropdown()">
                     <p>{{user.getName}}</p>
                     <img [src]="user.getPhoto" alt="Imagen de Usuario">

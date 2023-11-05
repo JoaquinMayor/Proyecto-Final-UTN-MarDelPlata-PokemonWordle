@@ -28,7 +28,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         }
     }
 
-    @media screen and (max-width: 668px) {
+    @media screen and (max-width: 825px) {
         margin-left: 0;
     }
 
@@ -36,7 +36,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 2.5rem;
+        gap: 2rem;
 
         a {
             color: $color_2;
@@ -55,6 +55,10 @@ $background-color_4: rgba(255, 255, 255, 0.836);
     }
 
     .navbar__menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
         .menuVistaUsuario {
             display: flex;
             flex-direction: row;
@@ -109,12 +113,14 @@ $background-color_4: rgba(255, 255, 255, 0.836);
                 }
             }
 
-            @media screen and (max-width: 668px) {
+            @media screen and (max-width: 825px) {
                 position: static;
             }
         }
 
-        @media screen and (max-width: 668px) {
+        @media screen and (max-width: 825px) {
+            display: flex;
+            flex-direction: column;
             position: static;
             max-height: initial;
             visibility: visible;
@@ -139,7 +145,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         visibility: visible !important;
     }
 
-    @media screen and (max-width: 668px) {
+    @media screen and (max-width: 825px) {
         flex-direction: column;
         height: auto;
 
@@ -148,9 +154,17 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             margin-bottom: 1rem;
         }
 
+        .back{
+            margin-top: 1rem;
+        }
+
         .navbar_menuSinLog {
             flex-direction: column;
             gap: 1.5rem;
+        }
+
+        .ranking{
+            margin-bottom: 1rem;
         }
     }
 }

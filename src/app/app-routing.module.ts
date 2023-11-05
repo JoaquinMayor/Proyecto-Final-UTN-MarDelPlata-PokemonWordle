@@ -1,4 +1,4 @@
-import { NgModule, createComponent } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EasyWordleComponent } from './easy-wordle/easy-wordle.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
@@ -9,17 +9,19 @@ import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
 import { UserSystemComponent } from './user/user-system/user-system.component';
 import { HardWordleComponent } from './hard-wordle/hard-wordle.component';
 import { ImageWordleComponent } from './game/image-wordle/image-wordle.component';
+import { RankingOfScoresComponent } from './user/ranking-of-scores/ranking-of-scores.component';
 
 const routes: Routes = [
   { path: 'wordleDificil', component: HardWordleComponent },
   { path: 'wordleFacil', component: EasyWordleComponent },
   { path: 'home', component: HomeComponent },
   { path: 'pokedex', component: PokedexComponent },
-  { path: 'pokedex/pokemon/:id', component: UniquePokemonComponent},
+  { path: 'pokedex/pokemon/:id', component: UniquePokemonComponent },
   { path: 'user/create', component: UserCreateComponent },
   { path: 'user/logging', component: LogginUserComponent },
   { path: 'user/modify/:id', component: UserSystemComponent },
-  {path:'imageGame', component:ImageWordleComponent},
+  { path: 'imageGame', component: ImageWordleComponent },
+  { path: 'ranking', component: RankingOfScoresComponent },
   {
     path: '**',
     redirectTo: 'home'

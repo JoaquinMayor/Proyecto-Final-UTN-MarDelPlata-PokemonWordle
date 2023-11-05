@@ -22,6 +22,7 @@ import { GenerationComponent } from './game/generation/generation.component';
 import { HelpsComponent } from './game/helps/helps.component';
 import { WordGameComponent } from './game/word-game/word-game.component';
 import { HtmlElementService } from './services/htmlElement.service';
+import { RankingOfScoresComponent } from './user/ranking-of-scores/ranking-of-scores.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HtmlElementService } from './services/htmlElement.service';
     GenerationComponent,
     HelpsComponent,
     WordGameComponent,
+    RankingOfScoresComponent,
   ],
   imports: [
     BrowserModule,
