@@ -23,7 +23,6 @@ export class ImageService {
         "thundurus.png",
         "chimchar.png",
         "infernape.png"
-
     ];
 
     getImageUrl(imageName: string): string {

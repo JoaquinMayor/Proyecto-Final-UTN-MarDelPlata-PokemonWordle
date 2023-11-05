@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonApiServices } from '../services/pokemonApi.service';
 

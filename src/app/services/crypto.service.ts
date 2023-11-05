@@ -1,8 +1,5 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Usuario } from "../models/user.model";
 import * as bcrypt from 'bcryptjs';
-
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +12,7 @@ export class CryptoService{
         const hash = await bcrypt.hash(password, salt);
         return hash;
       }
-      
+
       async compararPassword(password: string, hash: string): Promise<boolean> {
         const match = await bcrypt.compare(password, hash);
         console.log(match);

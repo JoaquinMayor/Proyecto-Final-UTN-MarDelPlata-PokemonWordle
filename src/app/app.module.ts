@@ -16,7 +16,7 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { FormsModule } from '@angular/forms';
 import { ImageService } from './services/image.service';
 import { PokemonApiServices } from './services/pokemonApi.service';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LogginUserComponent } from './user/loggin-user/loggin-user.component';
 import { GenerationComponent } from './game/generation/generation.component';
 import { HelpsComponent } from './game/helps/helps.component';
@@ -49,7 +49,7 @@ import { RankingOfScoresComponent } from './user/ranking-of-scores/ranking-of-sc
     FormsModule,
     HttpClientModule
   ],
-  providers: [ImageService,PokemonApiServices,HtmlElementService],
+  providers: [ImageService, PokemonApiServices, HtmlElementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

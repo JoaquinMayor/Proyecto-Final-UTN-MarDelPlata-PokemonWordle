@@ -18,7 +18,7 @@ export class UserSystemComponent {
   viewPassword: boolean = false;
   photos: string[] = [];
 
-  constructor(private userService: UsuariosServices, private photoService: ImageService, private crytoService:CryptoService) {
+  constructor(private userService: UsuariosServices, private photoService: ImageService, private crytoService: CryptoService) {
     this.photos = this.photoService.getAllImageUrls();
   }
 
@@ -41,50 +41,42 @@ export class UserSystemComponent {
     if (this.userService.user.getName != "") {
       flag = true;
     }
-
     return flag;
   }
 
   showName() {
-    if(this.viewName===false){
+    if (this.viewName === false) {
       this.viewName = true;
-    }else{
+    } else {
       this.viewName = false;
     }
-    
   }
 
   showPassword() {
-
-    if(this.viewPassword == false){
+    if (this.viewPassword == false) {
       this.viewPassword = true;
-    }else{
+    } else {
       this.viewPassword = false;
     }
-    
   }
 
   changeName() {
-    if(this.userService.findUser(this.name)===false){
-      
+    if (this.userService.findUser(this.name) === false) {
       this.user.setName(this.name);
       this.userService.editUser(this.user);
-    }else{
+    } else {
       alert("Nombre ya en uso");
     }
-    
   }
 
   async changePassword() {
-    if(!this.userService.validatePassword(this.password)){
+    if (!this.userService.validatePassword(this.password)) {
       const hash = await this.crytoService.generarHashPassword(this.password);
-
       this.user.setPassword(hash);
       this.userService.editUser(this.user);
-    }else{
+    } else {
       alert("Contraseña muy corta");
     }
-    
   }
 
   ifLogging() {

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { PokemonApiServices } from '../services/pokemonApi.service';
 import { UsuariosServices } from '../services/users.service';
-import { Pokemon } from '../models/pokemon.model';
 
 @Component({
   selector: 'app-easy-wordle',
@@ -12,7 +10,7 @@ export class EasyWordleComponent {
   generation: string = "";
   show: boolean = false;
 
-  constructor(private userService: UsuariosServices, private pokemonApiServices: PokemonApiServices) { }
+  constructor(private userService: UsuariosServices) { }
 
   generationSelected(generation: any) {
     this.generation = generation;

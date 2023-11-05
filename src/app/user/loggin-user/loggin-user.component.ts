@@ -3,9 +3,6 @@ import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { CryptoService } from 'src/app/services/crypto.service';
-import { getUsers } from 'src/config/config';
-
 
 @Component({
   selector: 'app-loggin-user',
@@ -13,13 +10,10 @@ import { getUsers } from 'src/config/config';
   styleUrls: ['./loggin-user.component.scss']
 })
 export class LogginUserComponent implements OnInit {
-  
   log: boolean = false;
 
-  constructor(private userService: UsuariosServices, private router: Router, private cryptoService:CryptoService) { }
+  constructor(private userService: UsuariosServices, private router: Router) { }
   ngOnInit(): void {
-   
-    
     this.ifLogging()
   }
 
@@ -27,18 +21,16 @@ export class LogginUserComponent implements OnInit {
     return this.userService.user;
   }
 
-  async logging(form:NgForm) {
-    
-    let error:number = 0
-    const name:string =  form.value.name;
-    const password:string = form.value.password;
-    console.log(this.userService.users);
-    error = await this.userService.logging(name,password);
-    if(error==1){
+  async logging(form: NgForm) {
+    let error: number = 0
+    const name: string = form.value.name;
+    const password: string = form.value.password;
+    error = await this.userService.logging(name, password);
+    if (error == 1) {
       alert("Nombre de usuario Incorrecto");
-    }else if(error == 2){
+    } else if (error == 2) {
       alert("Contraseña Incorrecta");
-    }else{
+    } else {
       this.router.navigate(["/home"]);
     }
   }

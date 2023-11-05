@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Stats } from 'src/app/models/stats.model';
-import { HtmlElementService } from 'src/app/services/htmlElement.service';
 import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 import { UsuariosServices } from 'src/app/services/users.service';
 
@@ -38,7 +37,7 @@ export class WordGameComponent implements OnInit {
   acceptButtonPressed: boolean = false;
   showLoader: boolean = false;
 
-  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private htmlService: HtmlElementService, private router: Router) { }
+  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices, private router: Router) { }
   ngOnInit(): void {
     if (this.router.url == "/wordleFacil") {
       this.showHelps = true;

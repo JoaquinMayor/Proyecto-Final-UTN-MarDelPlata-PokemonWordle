@@ -50,7 +50,7 @@ export class UniquePokemonComponent {
   }
 
   changeImageSrc() {
-    if (this.pokemon.getGeneration != 'generation-ix') {
+    if (this.pokemon.getBackSprite != null) {
       if (this.pokemonImageSrc === this.pokemon.getFrontSprite) {
         this.pokemonImageSrc = this.pokemon.getBackSprite;
       } else {

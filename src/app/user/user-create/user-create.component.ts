@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ImageService } from '../../services/image.service';
 import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { PokemonApiServices } from '../../services/pokemonApi.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as bcrypt from 'bcryptjs';
-import { setUser, getUsers } from "../../../config/config"
+import { getUsers } from "../../../config/config"
 import { CryptoService } from 'src/app/services/crypto.service';
 
 @Component({

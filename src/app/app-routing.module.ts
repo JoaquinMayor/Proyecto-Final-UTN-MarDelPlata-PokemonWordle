@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EasyWordleComponent } from './easy-wordle/easy-wordle.component';
 import { PokedexComponent } from './pokedex/pokedex.component';

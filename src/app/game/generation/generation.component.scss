@@ -4,16 +4,16 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.781) 0%, white 45%, rgba(0, 0, 0, 0.719) 45%, black 55%, rgba(255, 0, 0, 0.753) 55%);
-    width: clamp(15rem, 40vw, 25rem);
-    height: clamp(15rem, 40vw, 25rem);
+    background-image: radial-gradient(circle,rgb(255 255 255) 0%,white 45%,rgb(0, 0, 0) 45%,black 55%,rgb(255, 0, 0) 55%);
+    width: clamp(15rem,40vw,25rem);
+    height: clamp(15rem,40vw,25rem);
     border-radius: 50%;
 
     select {
         width: 50%;
         padding: 0.3rem;
         font-size: 0.9rem;
-        border: 1px solid #ccc;
+        border: 0.2rem solid #000000;
         border-radius: 4px;
         background-color: #fff;
         color: #333;

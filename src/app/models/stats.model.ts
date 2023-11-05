@@ -1,4 +1,4 @@
-export class Stats{
+export class Stats {
     private name: string;
     private hp: number;
     private atk: number;
@@ -11,7 +11,7 @@ export class Stats{
     private stat1: string;
     private stat2: string;
 
-    constructor(name: string, hp: number, atk: number, specialAtk: number, speed: number, defense: number, specialDef: number, weight: number, height: number, stat1: string, stat2:string){
+    constructor(name: string, hp: number, atk: number, specialAtk: number, speed: number, defense: number, specialDef: number, weight: number, height: number, stat1: string, stat2: string) {
         this.name = name;
         this.hp = hp;
         this.atk = atk;
@@ -68,47 +68,47 @@ export class Stats{
         return this.stat2;
     }
 
-    setName(name: string){
+    setName(name: string) {
         this.name = name;
     }
 
-    setHp(hp: number){
+    setHp(hp: number) {
         this.hp = hp;
     }
 
-    setAtk(atk: number){
+    setAtk(atk: number) {
         this.atk = atk;
     }
 
-    setSpecialAtk(specialAtk: number){
+    setSpecialAtk(specialAtk: number) {
         this.specialAtk = specialAtk;
     }
 
-    setSpeed(speed: number){
+    setSpeed(speed: number) {
         this.speed = speed;
     }
 
-    setDefense(defense: number){
+    setDefense(defense: number) {
         this.defense = defense;
     }
 
-    setSpecialDef(specialDef: number){
+    setSpecialDef(specialDef: number) {
         this.specialDef = specialDef;
     }
 
-    setWeight(weight: number){
+    setWeight(weight: number) {
         this.weight = weight;
     }
 
-    setHeight(height: number){
+    setHeight(height: number) {
         this.height = height;
     }
 
-    setType1(stat1: string){
+    setType1(stat1: string) {
         this.stat1 = stat1;
     }
 
-    setType2(stat2: string){
+    setType2(stat2: string) {
         this.stat2 = stat2;
     }
 }

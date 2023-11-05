@@ -35,16 +35,20 @@ export class HelpsComponent {
   compareHeight() {
     if (this.pokemon.getHeigth > this.stat.getHeigth) {
       return './assets/flechaHaciaArriba.png';
-    } else {
+    } else if (this.pokemon.getHeigth < this.stat.getHeigth) {
       return './assets/flechaHaciaAbajo.png';
+    } else {
+      return './assets/igual.png';
     }
   }
 
   compareWeight() {
     if (this.pokemon.getWeigth > this.stat.getWeigth) {
       return './assets/flechaHaciaArriba.png';
-    } else {
+    } else if (this.pokemon.getWeigth < this.stat.getWeigth) {
       return './assets/flechaHaciaAbajo.png';
+    } else {
+      return './assets/igual.png';
     }
   }
 

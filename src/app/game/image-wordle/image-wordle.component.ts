@@ -60,7 +60,7 @@ export class ImageWordleComponent {
     }
   }
 
-   generationSelected(generation: any) {
+  generationSelected(generation: any) {
     this.generation = generation;
     this.renderTable();
   }
@@ -105,17 +105,15 @@ export class ImageWordleComponent {
     if (this.guessPokemon == undefined) {
       this.showVictory = true;
     }
-    console.log(this.guessPokemon);
   }
 
   async showGame() {
-
-    if(this.generation =="0"){
-      let aleatorio = Math.floor(Math.random()*9)+1
+    if (this.generation == "0") {
+      let aleatorio = Math.floor(Math.random() * 9) + 1
       this.generation = aleatorio.toString();
-    } 
-     await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
-     
+    }
+    await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
+
     this.showButton = true;
     this.words.splice(0, this.words.length);
     setTimeout(() => {
@@ -135,7 +133,7 @@ export class ImageWordleComponent {
     this.generateRandomNumber();
     this.randomPokemon();
     this.showButton = false;
-    if (this.guessPokemon.getGeneration != 'generation-ix') {
+    if (this.guessPokemon.getBackSprite != null) {
       if (frontBack == 1) {
         this.imgPokemon = this.guessPokemon.getBackSprite;
       } else {

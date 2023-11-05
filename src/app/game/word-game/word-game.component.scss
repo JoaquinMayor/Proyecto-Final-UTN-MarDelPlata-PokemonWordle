@@ -222,6 +222,13 @@ $background-color_4: orange;
                 border-radius: 20%;
                 border: 0.125rem solid black;
                 font-size: 1.5rem;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+                    transform: scale(1.1);
+                }
             }
         }
 

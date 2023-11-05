@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UsuariosServices } from '../services/users.service';
-import { PokemonApiServices } from '../services/pokemonApi.service';
 
 @Component({
   selector: 'app-hard-wordle',
@@ -11,7 +10,7 @@ export class HardWordleComponent {
   generation: string = "";
   show: boolean = false;
 
-  constructor(private userService: UsuariosServices, private pokemonApiServices: PokemonApiServices) { }
+  constructor(private userService: UsuariosServices) { }
 
   generationSelected(generation: any) {
     this.generation = generation;
