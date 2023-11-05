@@ -97,7 +97,6 @@ export class WordGameComponent implements OnInit {
         this.bestScore();
         this.goodFinish = true;
       }
-
       if (this.lives == 0) {
         this.bestScore();
         this.badFinish = true;
@@ -163,20 +162,26 @@ export class WordGameComponent implements OnInit {
   }
 
   generationSelected(generation: any) {
-    this.generation = generation;
+    if (generation === "0") {
+      this.generatedRandomGeneration();
+    } else {
+      this.generation = generation;
+      this.renderTable();
+    }
+  }
+
+  generatedRandomGeneration() {
+    let aleatorio = Math.floor(Math.random() * 9) + 1
+    this.generation = aleatorio.toString();
     this.renderTable();
   }
 
   async showGame() {
-
-    
-    if(this.generation =="0"){
-      let aleatorio = Math.floor(Math.random()*9)+1
+    if (this.generation == "0") {
+      let aleatorio = Math.floor(Math.random() * 9) + 1
       this.generation = aleatorio.toString();
-    } 
-     await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
-     
-    
+    }
+    await this.pokemonApiServices.listaSpeciesPokemon(this.generation);
     this.showButton = true; // Mostrar la imagen de carga
     this.words.splice(0, this.words.length);
     this.pokeUsados.splice(0, this.pokeUsados.length);
@@ -253,7 +258,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 5);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 5);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -266,7 +271,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 10);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 10);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -279,7 +284,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 15);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 15);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -292,7 +297,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 20);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 20);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -305,7 +310,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 25);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 25);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -318,7 +323,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 30);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 30);
           this.userService.editUser(this.userService.user);
         }
         break;
@@ -331,7 +336,7 @@ export class WordGameComponent implements OnInit {
         } else {
           this.userService.user.setHardScore(this.userService.user.getHardScore + 1);
           this.userService.user.setTryHard(this.userService.user.getTryHard + 1);
-          this.userService.user.setHardScore(this.userService.user.getMaxScoreHard + 35);
+          this.userService.user.setMaxScorehard(this.userService.user.getMaxScoreHard + 35);
           this.userService.editUser(this.userService.user);
         }
         break;

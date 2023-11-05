@@ -169,14 +169,11 @@ export class ImageWordleComponent {
       } else if (this.guessPokemon.getName.toLowerCase() != this.namePokemon.toLowerCase() && this.lives != 0) {
         this.lives--;
         this.words.push(this.namePokemon);
-      } else if (this.lives == 0) {
-        this.showFinish = true;
-        this.words.splice(0, this.words.length);
-        this.guessedList.splice(0, this.guessedList.length);
       }
 
       if (this.lives == 0) {
         this.showFinish = true;
+        this.userService.user.setTryImage(this.userService.user.getTryImage + 1);
       }
 
       this.nombreInput.nativeElement.value = '';

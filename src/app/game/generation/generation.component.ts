@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 
 @Component({
   selector: 'app-generation',
@@ -10,14 +9,17 @@ import { PokemonApiServices } from 'src/app/services/pokemonApi.service';
 export class GenerationComponent {
   @Output() generationSelected = new EventEmitter<String>();
   generation: string = "0";
-  constructor(private apiService: PokemonApiServices, private router: Router) { }
+  constructor(private router: Router) { }
 
-  async choiceGeneration(event: any) {
-    this.generation = event.target.value;
-    
+  ngOnInit() {
+    this.generation = "0";
     this.generationSelected.emit(this.generation);
   }
 
+  async choiceGeneration(event: any) {
+    this.generation = event.target.value;
+    this.generationSelected.emit(this.generation);
+  }
 
   getRouter() {
     return this.router.url;
