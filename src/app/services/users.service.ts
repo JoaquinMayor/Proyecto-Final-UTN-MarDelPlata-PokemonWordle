@@ -105,7 +105,7 @@ export class UsuariosServices {
     }
 
     ifLogging() {
-        if (this.user.getId != "0") {
+        if (this.user.getId == "0") {
             this.router.navigate(["/home"]);
         }
     }
