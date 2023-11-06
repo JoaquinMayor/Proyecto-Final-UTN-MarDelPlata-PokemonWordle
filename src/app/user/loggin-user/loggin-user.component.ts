@@ -14,7 +14,7 @@ export class LogginUserComponent implements OnInit {
 
   constructor(private userService: UsuariosServices, private router: Router) { }
   ngOnInit(): void {
-    this.ifLogging()
+    
   }
 
   get user(): Usuario {
@@ -34,7 +34,5 @@ export class LogginUserComponent implements OnInit {
       this.router.navigate(["/home"]);
     }
   }
-  ifLogging() {
-    this.userService.ifLogging();
-  }
+ 
 }
