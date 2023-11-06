@@ -7,25 +7,42 @@ $background-color_4: rgba(255, 255, 255, 0.836);
 .nav {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 4.75rem;
     background-color: $background-color_1;
     padding: 0 1.25rem;
 
     h1 {
-        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+        flex-grow: 2.5;
         text-align: center;
-        margin-left: 14rem;
         user-select: none;
         font-size: xxx-large;
 
         img {
             position: relative;
             width: 6.125rem;
-            top: 0.6rem;
             pointer-events: none;
         }
+    }
+
+    .logoConBack {
+        flex-grow: 2.35;
+    }
+
+    .logoSinBack {
+        flex-grow: 2.5;
+    }
+
+    .logoConLogging {
+        flex-grow: 1.7;
+    }
+
+    .logoConLoggingYBack {
+        flex-grow: 1.6;
     }
 
     @media screen and (max-width: 825px) {
@@ -37,6 +54,8 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         flex-direction: row;
         align-items: center;
         gap: 2rem;
+        flex-grow: 1;
+        justify-content: flex-end;
 
         a {
             color: $color_2;
@@ -58,6 +77,8 @@ $background-color_4: rgba(255, 255, 255, 0.836);
         display: flex;
         align-items: center;
         gap: 2rem;
+        flex-grow: 1;
+        justify-content: flex-end;
 
         .menuVistaUsuario {
             display: flex;
@@ -151,10 +172,10 @@ $background-color_4: rgba(255, 255, 255, 0.836);
 
         h1 {
             margin-left: 0;
-            margin-bottom: 1rem;
+            margin: 1rem;
         }
 
-        .back{
+        .back {
             margin-top: 1rem;
         }
 
@@ -163,7 +184,7 @@ $background-color_4: rgba(255, 255, 255, 0.836);
             gap: 1.5rem;
         }
 
-        .ranking{
+        .ranking {
             margin-bottom: 1rem;
         }
     }
