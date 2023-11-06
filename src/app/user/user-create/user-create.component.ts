@@ -46,7 +46,7 @@ export class UserCreateComponent {
         alert("Contraseña muy corta");
       }
     } else {
-      alert("Nombre de usuario existente");
+      alert("Nombre muy corto o nombre de usuario existente");
     }
   }
 

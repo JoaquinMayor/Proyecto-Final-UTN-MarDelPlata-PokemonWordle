@@ -64,7 +64,7 @@ export class UsuariosServices {
         let flag = false;
         if (this.users.length > 0) {
             for (let user of this.users) {
-                if (name == user.getName || name == "") {
+                if (name == user.getName || name == "" && name.length<5) {
                     flag = true;
                 }
             }
