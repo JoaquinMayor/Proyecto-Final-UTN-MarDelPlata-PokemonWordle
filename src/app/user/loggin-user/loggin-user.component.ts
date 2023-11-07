@@ -3,19 +3,18 @@ import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { getUsers } from 'src/config/config';
 
 @Component({
   selector: 'app-loggin-user',
   templateUrl: './loggin-user.component.html',
   styleUrls: ['./loggin-user.component.scss']
 })
-export class LogginUserComponent implements OnInit {
+export class LogginUserComponent {
   log: boolean = false;
 
   constructor(private userService: UsuariosServices, private router: Router) { }
-  ngOnInit(): void {
-    
-  }
+ 
 
   get user(): Usuario {
     return this.userService.user;

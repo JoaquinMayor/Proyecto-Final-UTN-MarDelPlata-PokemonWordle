@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../services/image.service';
 import { UsuariosServices } from '../../services/users.service';
 import { Usuario } from '../../models/user.model';
@@ -22,6 +22,7 @@ export class UserCreateComponent {
     this.photos = this.photoService.getAllImageUrls();
     this.selectedPhoto = this.photoService.getImageUrl("pefil-base.png");
   }
+ 
 
   show(event: any) {
     event.preventDefault();
@@ -33,7 +34,7 @@ export class UserCreateComponent {
   }
 
   async addUser(form: NgForm) {
-    this.userService.users = await getUsers();
+    
     const name: string = form.value.name;
     const password: string = form.value.password;
     if (this.userService.validateName(name) == false) {

@@ -156,9 +156,7 @@ export class WordGameComponent implements OnInit {
     return
   }
 
-  ifLogging() {
-    this.userService.ifLogging();
-  }
+
 
   generationSelected(generation: any) {
     if (generation === "0") {

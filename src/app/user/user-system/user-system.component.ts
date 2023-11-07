@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuariosServices } from '../../services/users.service';
 import { ImageService } from '../../services/image.service';
 import { Usuario } from '../../models/user.model';
 import { CryptoService } from 'src/app/services/crypto.service';
+import { getUsers } from 'src/config/config';
 
 @Component({
   selector: 'app-user-system',
   templateUrl: './user-system.component.html',
   styleUrls: ['./user-system.component.scss']
 })
-export class UserSystemComponent {
+export class UserSystemComponent{
 
   name: string = "";
   password: string = "";
@@ -25,6 +26,7 @@ export class UserSystemComponent {
   get user(): Usuario {
     return this.userService.user;
   }
+
 
   showPhoto() {
     this.viewPhoto = !this.viewPhoto;
@@ -79,7 +81,4 @@ export class UserSystemComponent {
     }
   }
 
-  ifLogging() {
-    this.userService.ifLogging();
-  }
 }

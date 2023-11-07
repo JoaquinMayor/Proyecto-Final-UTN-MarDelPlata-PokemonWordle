@@ -25,11 +25,47 @@ export class PokemonApiServices {
     }
 
     getSinglePokemon() {
+       let pokemons = localStorage.getItem("pokemons");
+       let position = localStorage.getItem("position")
+       if(pokemons!= null && position != null){
+        let json = JSON.parse(pokemons);
+        let aux = json[parseInt(position)]
+
+        let pokemon = new Pokemon(aux.id, 
+            aux.name, 
+            aux.generation, 
+            aux.frontSprite, 
+            aux.frontSprite, 
+            aux.eggGroup, 
+            aux.description, 
+            aux.type1, 
+            aux.type2, 
+            aux.atk, 
+            aux.specialAtk, 
+            aux.speed, 
+            aux.defense, 
+            aux.specialDef, 
+            aux.hp, 
+            aux.heigth,
+            aux.weight);
+            return pokemon;
+       }
+       
+        
         return this.pokemon;
     }
 
     setSinglePokemon(pokemon: Pokemon) {
         this.pokemon = pokemon;
+        let flag = false;
+        for(let i = 0; i<this.pokemonArray.length && flag == false;i++){
+            if(this.pokemonArray[i].getName == this.pokemon.getName){
+                flag = true;
+                localStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
+                localStorage.setItem("position", i.toString());
+            }
+        }
+        
     }
 
     generationPokemonApi(generation: string) { //Junta todo el dato de la generacion
@@ -40,13 +76,15 @@ export class PokemonApiServices {
     obtenerListaPokemonApi(generation: string): Promise<any> { //obtiene el dato de la generacion en formato json
         return new Promise<any>((resolve, reject) => {
             this.generationPokemonApi(generation).subscribe(
-                res => {
+               {
+                next: (res) => {
                     this.pokemonSpecies = res;
                     resolve(undefined); // Resolvemos la promesa sin ningún valor adicional
                 },
-                error => {
+                error: (error) => {
                     reject(error); // Rechazamos la promesa con el error recibido
                 }
+               } 
             );
         });
     }

@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonApiServices } from '../services/pokemonApi.service';
+import { UsuariosServices } from '../services/users.service';
+import { getUsers } from 'src/config/config';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss']
 })
-export class PokedexComponent {
+export class PokedexComponent implements OnInit{
   pokemonList: Pokemon[] = [];
   filteredList: Pokemon[] = [];
 
-  constructor(private pokemonApiServices: PokemonApiServices) { }
+  constructor(private pokemonApiServices: PokemonApiServices, private userService:UsuariosServices) { }
 
   ngOnInit() {
+    getUsers().then((users)=>{
+      this.userService.users = users;
+      this.userService.validateLogin();
+    });
+    
     this.renderTable('1');
   }
 

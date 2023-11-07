@@ -13,14 +13,16 @@ export class RankingOfScoresComponent implements OnInit {
   scores: number[] = [];
 
   constructor(private userService: UsuariosServices) { }
-  ngOnInit(): void {
-    getUsers().then(users => {
+  ngOnInit(): void { 
+
+    getUsers().then((users)=>{
       this.userService.users = users;
+      this.userService.validateLogin();
       this.ranking = this.userService.users.sort((a, b) => b.getMaxScoreEasy - a.getMaxScoreEasy);
       for (const user of this.ranking) {
-        this.scores.push(user.getMaxScoreEasy);
+       this.scores.push(user.getMaxScoreEasy);
       }
-    })
+    });
   }
 
   changeTable(opcion: number) {

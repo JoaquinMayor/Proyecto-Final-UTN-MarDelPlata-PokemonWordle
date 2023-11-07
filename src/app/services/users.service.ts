@@ -89,6 +89,8 @@ export class UsuariosServices {
                 if (await this.cryptoService.compararPassword(password, this.users[i].getPassword)) {
                     this.user = this.users[i];
                     value = 0;
+                    localStorage.setItem("token", this.user.getId);
+                    localStorage.setItem("log", "true");
                     flag = true;
                 } else {
                     value = 2;
@@ -102,11 +104,21 @@ export class UsuariosServices {
 
     logout() {
         this.user = new Usuario("0", "", "", "");
+        localStorage.setItem("token","0");
+        localStorage.setItem("log", "false");
     }
 
-    ifLogging() {
-        if (this.user.getId == "0") {
-            this.router.navigate(["/home"]);
+    validateLogin(){
+        let token = localStorage.getItem("token");
+        let log = localStorage.getItem("log");
+        
+        let flag = false;
+        for(let i = 0; i<this.users.length && flag == false; i++){
+            if(this.users[i].getId == token && log == "true"){
+                this.user = this.users[i];
+                flag = true;
+            }
         }
     }
+  
 }
