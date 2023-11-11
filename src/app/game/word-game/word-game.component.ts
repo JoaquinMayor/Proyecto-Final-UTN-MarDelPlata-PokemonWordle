@@ -16,7 +16,7 @@ export class WordGameComponent implements OnInit {
   showButton: boolean = false;
   showHelps: boolean = false;
   idSelected: number = 0;
-  guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
+  guessPokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);//Para comparar con el pokemon que puso el usuario, es el pokemon que salio aleatorio
 
   namePokemon: string = "";//nombre del pokemon ingresado por el usuario
   index: number = 0;

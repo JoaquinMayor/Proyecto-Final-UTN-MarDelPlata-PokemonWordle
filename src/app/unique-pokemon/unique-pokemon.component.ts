@@ -9,8 +9,8 @@ import { UsuariosServices } from '../services/users.service';
   templateUrl: './unique-pokemon.component.html',
   styleUrls: ['./unique-pokemon.component.scss']
 })
-export class UniquePokemonComponent implements OnInit{
-  pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+export class UniquePokemonComponent implements OnInit {
+  pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
   pokemonTypes: string[] = [
     'normal',
     'fire',
@@ -31,21 +31,54 @@ export class UniquePokemonComponent implements OnInit{
     'steel',
     'fairy',
   ];
-  pokemonImageSrc: string = '';
+  pokemonFrontImageSrc: string = '';
+  pokemonBackImageSrc: string = '';
+  isClicked = false;
+  isHovered = false;
 
-  constructor(private pokemonApiServices: PokemonApiServices, private userService:UsuariosServices) { }
+  constructor(private pokemonApiServices: PokemonApiServices, private userService: UsuariosServices) { }
 
   ngOnInit() {
-    
-    getUsers().then((users)=>{
+    getUsers().then((users) => {
       this.userService.users = users;
       this.userService.validateLogin();
     });
 
     this.pokemon = this.pokemonApiServices.getSinglePokemon();
-      this.pokemonImageSrc = this.pokemon.getFrontSprite;
-    
-    
+    this.pokemonFrontImageSrc = this.pokemon.getFrontSprite;
+    this.pokemonBackImageSrc = this.pokemon.getBackSprite;
+  }
+
+  toggleClick() {
+    this.isClicked = !this.isClicked;
+    if (this.pokemon.getBackSprite != null) {
+      if (this.isClicked) {
+        this.pokemonFrontImageSrc = this.pokemon.getFrontShiny;
+        this.pokemonBackImageSrc = this.pokemon.getBackShiny;
+      } else {
+        this.pokemonFrontImageSrc = this.pokemon.getFrontSprite;
+        this.pokemonBackImageSrc = this.pokemon.getBackSprite;
+      }
+    } else {
+      this.pokemonFrontImageSrc = this.pokemon.getFrontSprite;
+      this.pokemonBackImageSrc = this.pokemon.getFrontSprite;
+    }
+  }
+
+  toggleHover() {
+    this.isHovered = !this.isHovered;
+    if (this.pokemon.getBackSprite != null) {
+      if (this.isHovered) {
+        this.pokemonFrontImageSrc = this.pokemon.getFrontShiny;
+        this.pokemonBackImageSrc = this.pokemon.getBackShiny;
+      } else {
+        this.pokemonFrontImageSrc = this.pokemon.getFrontSprite;
+        this.pokemonBackImageSrc = this.pokemon.getBackSprite;
+      }
+    } else {
+      this.pokemonFrontImageSrc = this.pokemon.getFrontSprite;
+      this.pokemonBackImageSrc = this.pokemon.getFrontSprite;
+    }
   }
 
   isPokemonType(type: string): string {
@@ -57,15 +90,5 @@ export class UniquePokemonComponent implements OnInit{
       }
     }
     return backColor;
-  }
-
-  changeImageSrc() {
-    if (this.pokemon.getBackSprite != null) {
-      if (this.pokemonImageSrc === this.pokemon.getFrontSprite) {
-        this.pokemonImageSrc = this.pokemon.getBackSprite;
-      } else {
-        this.pokemonImageSrc = this.pokemon.getFrontSprite;
-      }
-    }
   }
 }

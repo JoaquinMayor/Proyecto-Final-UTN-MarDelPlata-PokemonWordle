@@ -4,6 +4,8 @@ export class Pokemon {
     private generation: string;
     private frontSprite: string;
     private backSprite: string;
+    private front_shiny: string;
+    private back_shiny: string;
     private eggGroup: string;
     private description: string;
     private type1: string;
@@ -17,12 +19,14 @@ export class Pokemon {
     private heigth: number;
     private weight: number;
 
-    constructor(id: number, name: string, generation: string, frontSprite: string, backSprite: string, eggGroup: string, description: string, type1: string, type2: string, atk: number, specialAtk: number, speed: number, defense: number, specialDef: number, hp: number, heigth: number, weigth: number) {
+    constructor(id: number, name: string, generation: string, frontSprite: string, backSprite: string, front_shiny: string, back_shiny: string, eggGroup: string, description: string, type1: string, type2: string, atk: number, specialAtk: number, speed: number, defense: number, specialDef: number, hp: number, heigth: number, weigth: number) {
         this.id = id;
         this.name = name;
         this.generation = generation;
         this.frontSprite = frontSprite;
         this.backSprite = backSprite;
+        this.front_shiny = front_shiny;
+        this.back_shiny = back_shiny;
         this.eggGroup = eggGroup;
         this.description = description;
         this.type1 = type1;
@@ -87,6 +91,14 @@ export class Pokemon {
 
     get getBackSprite() {
         return this.backSprite;
+    }
+
+    get getFrontShiny() {
+        return this.front_shiny;
+    }
+
+    get getBackShiny() {
+        return this.back_shiny;
     }
 
     get getEggGroup() {

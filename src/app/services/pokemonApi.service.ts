@@ -10,7 +10,7 @@ export class PokemonApiServices {
     pokemonSpeciesURLList: any[] = [];
     pokemonArray: Pokemon[] = [];
     jsonPokemons: any[] = [];
-    pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+    pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
     stats: Stats[] = [];
 
     constructor(private httpClient: HttpClient) { }
@@ -25,47 +25,46 @@ export class PokemonApiServices {
     }
 
     getSinglePokemon() {
-       let pokemons = localStorage.getItem("pokemons");
-       let position = localStorage.getItem("position")
-       if(pokemons!= null && position != null){
-        let json = JSON.parse(pokemons);
-        let aux = json[parseInt(position)]
+        let pokemons = localStorage.getItem("pokemons");
+        let position = localStorage.getItem("position")
+        if (pokemons != null && position != null) {
+            let json = JSON.parse(pokemons);
+            let aux = json[parseInt(position)]
 
-        let pokemon = new Pokemon(aux.id, 
-            aux.name, 
-            aux.generation, 
-            aux.frontSprite, 
-            aux.frontSprite, 
-            aux.eggGroup, 
-            aux.description, 
-            aux.type1, 
-            aux.type2, 
-            aux.atk, 
-            aux.specialAtk, 
-            aux.speed, 
-            aux.defense, 
-            aux.specialDef, 
-            aux.hp, 
-            aux.heigth,
-            aux.weight);
+            let pokemon = new Pokemon(aux.id,
+                aux.name,
+                aux.generation,
+                aux.frontSprite,
+                aux.backSprite,
+                aux.front_shiny,
+                aux.back_shiny,
+                aux.eggGroup,
+                aux.description,
+                aux.type1,
+                aux.type2,
+                aux.atk,
+                aux.specialAtk,
+                aux.speed,
+                aux.defense,
+                aux.specialDef,
+                aux.hp,
+                aux.heigth,
+                aux.weight);
             return pokemon;
-       }
-       
-        
+        }
         return this.pokemon;
     }
 
     setSinglePokemon(pokemon: Pokemon) {
         this.pokemon = pokemon;
         let flag = false;
-        for(let i = 0; i<this.pokemonArray.length && flag == false;i++){
-            if(this.pokemonArray[i].getName == this.pokemon.getName){
+        for (let i = 0; i < this.pokemonArray.length && flag == false; i++) {
+            if (this.pokemonArray[i].getName == this.pokemon.getName) {
                 flag = true;
                 localStorage.setItem("pokemons", JSON.stringify(this.pokemonArray));
                 localStorage.setItem("position", i.toString());
             }
         }
-        
     }
 
     generationPokemonApi(generation: string) { //Junta todo el dato de la generacion
@@ -76,15 +75,15 @@ export class PokemonApiServices {
     obtenerListaPokemonApi(generation: string): Promise<any> { //obtiene el dato de la generacion en formato json
         return new Promise<any>((resolve, reject) => {
             this.generationPokemonApi(generation).subscribe(
-               {
-                next: (res) => {
-                    this.pokemonSpecies = res;
-                    resolve(undefined); // Resolvemos la promesa sin ningún valor adicional
-                },
-                error: (error) => {
-                    reject(error); // Rechazamos la promesa con el error recibido
+                {
+                    next: (res) => {
+                        this.pokemonSpecies = res;
+                        resolve(undefined); // Resolvemos la promesa sin ningún valor adicional
+                    },
+                    error: (error) => {
+                        reject(error); // Rechazamos la promesa con el error recibido
+                    }
                 }
-               } 
             );
         });
     }
@@ -163,41 +162,73 @@ export class PokemonApiServices {
         if (jsonPoke.types.length == 2) {
             type2 = jsonPoke.types[1].type.name;
         }
-        for (let i = 0; i < jsonPokemon.flavor_text_entries.length && flag == false; i++) {
-            if (jsonPokemon.flavor_text_entries[i].language.name == "es") {
+
+        for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
+            if (jsonPokemon.flavor_text_entries[i].language.name === "es") {
                 description = jsonPokemon.flavor_text_entries[i].flavor_text;
                 flag = true;
             }
         }
-        if (flag == false) {
-            for (let i = 0; i < jsonPokemon.flavor_text_entries.length && flag == false; i++) {
-                if (jsonPokemon.flavor_text_entries[i].language.name == "en") {
+
+        if (!flag) {
+            for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
+                if (jsonPokemon.flavor_text_entries[i].language.name === "en") {
                     description = jsonPokemon.flavor_text_entries[i].flavor_text;
                     flag = true;
                 }
             }
         }
 
-        const existingPokemon = this.pokemonArray.find(pokemon => pokemon.getId === jsonPokemon.id);
+        const existingPokemon = this.pokemonArray.find((pokemon) => pokemon.getId === jsonPokemon.id);
         if (!existingPokemon) {
-            this.pokemonArray.push(new Pokemon(jsonPokemon.id,
-                jsonPokemon.names[6].name,
-                jsonPokemon.generation.name,
-                jsonPoke.sprites.front_default,
-                jsonPoke.sprites.back_default,
-                jsonPokemon.egg_groups[0].name,
-                description,
-                jsonPoke.types[0].type.name,
-                type2,
-                jsonPoke.stats[1].base_stat,
-                jsonPoke.stats[3].base_stat,
-                jsonPoke.stats[5].base_stat,
-                jsonPoke.stats[2].base_stat,
-                jsonPoke.stats[4].base_stat,
-                jsonPoke.stats[0].base_stat,
-                jsonPoke.height,
-                jsonPoke.weight));
+            const spanishName = this.getSpanishName(jsonPokemon);
+            this.pokemonArray.push(
+                new Pokemon(
+                    jsonPokemon.id,
+                    spanishName,
+                    jsonPokemon.generation.name,
+                    jsonPoke.sprites.front_default,
+                    jsonPoke.sprites.back_default,
+                    jsonPoke.sprites.front_shiny,
+                    jsonPoke.sprites.back_shiny,
+                    jsonPokemon.egg_groups[0].name,
+                    description,
+                    jsonPoke.types[0].type.name,
+                    type2,
+                    jsonPoke.stats[1].base_stat,
+                    jsonPoke.stats[3].base_stat,
+                    jsonPoke.stats[5].base_stat,
+                    jsonPoke.stats[2].base_stat,
+                    jsonPoke.stats[4].base_stat,
+                    jsonPoke.stats[0].base_stat,
+                    jsonPoke.height,
+                    jsonPoke.weight
+                )
+            );
         }
-        this.pokemonArray.sort((a, b) => a.getId - b.getId); //Se ordenar por ID
+        this.pokemonArray.sort((a, b) => a.getId - b.getId); // Se ordena por ID
+    }
+
+    getSpanishName(jsonPokemon: any): string {
+        let spanishName = '';
+        let flag = false;
+
+        for (let i = 0; i < jsonPokemon.names.length && !flag; i++) {
+            if (jsonPokemon.names[i].language.name === 'es') {
+                spanishName = jsonPokemon.names[i].name;
+                flag = true;
+            }
+        }
+
+        if (!flag) {
+            for (let i = 0; i < jsonPokemon.names.length && !flag; i++) {
+                if (jsonPokemon.names[i].language.name === 'en') {
+                    spanishName = jsonPokemon.names[i].name;
+                    flag = true;
+                }
+            }
+        }
+
+        return spanishName;
     }
 }

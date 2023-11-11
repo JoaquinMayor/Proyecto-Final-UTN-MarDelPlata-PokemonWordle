@@ -9,7 +9,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class HelpsComponent {
   @Input() stat: Stats = new Stats("", 0, 0, 0, 0, 0, 0, 0, 0, "", "");
-  @Input() pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
+  @Input() pokemon: Pokemon = new Pokemon(0, "", "", "", "", "", "", "", "", "", "", 0, 0, 0, 0, 0, 0, 0, 0);
   colors: string[] = ['rojo', 'verde'];
   color: string = '';
   bestStat: string = "";
