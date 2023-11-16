@@ -6,4 +6,87 @@ footer {
     background-color: #8f8e8e;
     font-weight: 600;
     text-align: center;
+
+    .wrapper {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 250px;
+
+        .icon {
+            position: relative;
+            background: #cfcfcf;
+            border-radius: 50%;
+            padding: 15px;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            &:hover .tooltip {
+                top: -45px;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            &:hover span,
+            &:hover .tooltip {
+                text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+            }
+
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+            background: #ffffff;
+            color: #ffffff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            &::before {
+                position: absolute;
+                content: "";
+                height: 8px;
+                width: 8px;
+                background: #ffffff;
+                bottom: -3px;
+                left: 50%;
+                transform: translate(-50%) rotate(45deg);
+                transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+        }
+
+        .linkedin:hover,
+        .linkedin:hover .tooltip,
+        .linkedin:hover .tooltip::before {
+            background: #5a73e2;
+            color: #ffffff;
+        }
+
+        .github:hover,
+        .github:hover .tooltip,
+        .github:hover .tooltip::before {
+            background: #333333;
+            color: #ffffff;
+        }
+    }
 }

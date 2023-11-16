@@ -157,26 +157,10 @@ export class PokemonApiServices {
     createArrayPokemon(jsonPokemon: any, jsonPoke: any) {
         this.stats.splice(0, this.stats.length);
         let type2 = "none";
-        let description = "";
+        let description = this.getDescription(jsonPokemon, "es");
         let flag: boolean = false;
         if (jsonPoke.types.length == 2) {
             type2 = jsonPoke.types[1].type.name;
-        }
-
-        for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
-            if (jsonPokemon.flavor_text_entries[i].language.name === "es") {
-                description = jsonPokemon.flavor_text_entries[i].flavor_text;
-                flag = true;
-            }
-        }
-
-        if (!flag) {
-            for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
-                if (jsonPokemon.flavor_text_entries[i].language.name === "en") {
-                    description = jsonPokemon.flavor_text_entries[i].flavor_text;
-                    flag = true;
-                }
-            }
         }
 
         const existingPokemon = this.pokemonArray.find((pokemon) => pokemon.getId === jsonPokemon.id);
@@ -209,12 +193,35 @@ export class PokemonApiServices {
         this.pokemonArray.sort((a, b) => a.getId - b.getId); // Se ordena por ID
     }
 
+    getDescription(jsonPokemon: any, language: string): string {
+        let description = "";
+        let flag = false;
+
+        for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
+            if (jsonPokemon.flavor_text_entries[i].language.name === language) {
+                description = jsonPokemon.flavor_text_entries[i].flavor_text;
+                flag = true;
+            }
+        }
+
+        if (!flag) {
+            for (let i = 0; i < jsonPokemon.flavor_text_entries.length && !flag; i++) {
+                if (jsonPokemon.flavor_text_entries[i].language.name === "en") {
+                    description = jsonPokemon.flavor_text_entries[i].flavor_text;
+                    flag = true;
+                }
+            }
+        }
+
+        return description;
+    }
+
     getSpanishName(jsonPokemon: any): string {
-        let spanishName = '';
+        let spanishName = "";
         let flag = false;
 
         for (let i = 0; i < jsonPokemon.names.length && !flag; i++) {
-            if (jsonPokemon.names[i].language.name === 'es') {
+            if (jsonPokemon.names[i].language.name === "es") {
                 spanishName = jsonPokemon.names[i].name;
                 flag = true;
             }
@@ -222,7 +229,7 @@ export class PokemonApiServices {
 
         if (!flag) {
             for (let i = 0; i < jsonPokemon.names.length && !flag; i++) {
-                if (jsonPokemon.names[i].language.name === 'en') {
+                if (jsonPokemon.names[i].language.name === "en") {
                     spanishName = jsonPokemon.names[i].name;
                     flag = true;
                 }
