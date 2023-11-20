@@ -11,7 +11,7 @@
     <section class="containerTodoWordle">
         <section class="containerDataWordle">
             <section class="life">
-                <p class="cantLife">{{lives}}</p>
+                <p class="cantLife" title="{{lives}}">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="Vidas" title="Vidas">
             </section>
             <img class="signoAyuda" src="../../../assets/ayuda.png" (click)="showTableHelp = true" *ngIf="showHelps" alt="Ayuda" title="Ayuda">
@@ -36,7 +36,7 @@
         <section class="containerWorleFacil">
             <section id="container" name="container" class="subContainer">
                 <ul class="contenedorPalabraCompleta">
-                    <li *ngFor="let letter of guessPokemon.getName.split('')" class="contenedorLetra" title="{{letter}}"></li>
+                    <li *ngFor="let letter of guessPokemon.getName.split('')" class="contenedorLetra"></li>
                 </ul>
                 <ul *ngFor="let word of words.slice(0, limit), let u = index" class="contenedorPalabraCompleta"
                     [ngClass]="resetValidation()">

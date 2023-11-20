@@ -2,17 +2,29 @@
     <form #f="ngForm" (ngSubmit)="f.form.valid && addUser(f)">
         <fieldset>
             <legend title="Creacion de Usuario">Creación de Usuario</legend>
-            <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" placeholder="Ingrese su Nombre de Usuario" title="Ingrese su Nombre" ngModel required>
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" id="password" placeholder="Ingrese su Contraseña" title="Ingrese su Contraseña" ngModel required>
-
+            <div class="form-group">
+                <label for="name">
+                    <i class="fas fa-user"></i>
+                    Nombre de usuario:
+                </label>
+                <input type="text" name="name" class="name" id="name" placeholder="Ingrese su nombre de usuario"
+                    title="Ingrese su nombre" required ngModel>
+            </div>
+            <div class="form-group">
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                    Contraseña:
+                </label>
+                <input type="password" name="password" id="password" placeholder="Ingrese su Contraseña"
+                    title="Ingrese su Contraseña" ngModel required>
+            </div>
             <div class="desplegable">
                 <h3>Seleccione una foto de Perfil:</h3>
                 <button (click)="show($event)" class="btn" alt="Opciones" title="Opciones">Opciones</button>
                 <div *ngIf="view == true" class="galeriaFotos">
                     <div *ngFor="let photo of photos">
-                        <img [src]="photo" alt="Foto Perfil" title="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+                        <img [src]="photo" alt="Foto Perfil" title="Foto Perfil" (click)="onPhotoSelected(photo)"
+                            class="border-animation">
                     </div>
                 </div>
             </div>
