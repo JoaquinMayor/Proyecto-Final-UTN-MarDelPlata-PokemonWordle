@@ -7,17 +7,14 @@ import { UsuariosServices } from '../services/users.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
-  constructor(private userService :UsuariosServices){}
+  constructor(private userService: UsuariosServices) { }
 
   ngOnInit(): void {
-    
-    getUsers().then((users)=>{
+    getUsers().then((users) => {
       this.userService.users = users;
       this.userService.validateLogin();
     });
-
-    
   }
 }
