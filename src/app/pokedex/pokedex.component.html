@@ -3,13 +3,13 @@
     <label for="nombre">Buscar Pokémon:</label>
     <input #nombreInput type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre"
       (input)="filterPokemons(nombreInput.value)" autocomplete="off">
-    <app-generation (generationSelected)="choiceGeneration($event)"></app-generation>
+    <app-generation (generationSelected)="choiceGeneration($event)" title="Generacion"></app-generation>
   </form>
   <ul id="lista" class="lista">
     <li *ngFor="let pokemon of filteredList" class="pokemon">
-      <a [routerLink]="['pokemon', pokemon.getId]" (click)="selectedPokemon(pokemon); pikachuVoice(pokemon)">
-        <span class="nombre">{{ pokemon.getName }}</span>
-        <img [src]="pokemon.getFrontSprite" alt="Pokemon" />
+      <a [routerLink]="['pokemon', pokemon.getId]" (click)="selectedPokemon(pokemon); pikachuVoice(pokemon)" title="{{pokemon.getName}}">
+        <span class="nombre" title="{{pokemon.getName}}">{{ pokemon.getName }}</span>
+        <img [src]="pokemon.getFrontSprite" alt="{{pokemon.getName}}" title="{{pokemon.getName}}" />
       </a>
     </li>
   </ul>

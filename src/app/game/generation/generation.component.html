@@ -1,14 +1,14 @@
 <section [ngClass]="{'modalRegiones': getRouter()=='/wordleFacil' || getRouter()=='/wordleDificil' ||getRouter()=='/imageGame'}">
-  <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)">
-    <option value="0">Generacion aleatoria</option>
-    <option value="1">1° Generación</option>
-    <option value="2">2° Generación</option>
-    <option value="3">3° Generación</option>
-    <option value="4">4° Generación</option>
-    <option value="5">5° Generación</option>
-    <option value="6">6° Generación</option>
-    <option value="7">7° Generación</option>
-    <option value="8">8° Generación</option>
-    <option value="9">9° Generación</option>
+  <select name="generation" [(ngModel)]="generation" (change)="choiceGeneration($event)" title="Generacion">
+    <option value="0" title="Generacion aleatoria">Generacion aleatoria</option>
+    <option value="1" title="1° Generación">1° Generación</option>
+    <option value="2" title="2° Generación">2° Generación</option>
+    <option value="3" title="3° Generación">3° Generación</option>
+    <option value="4" title="4° Generación">4° Generación</option>
+    <option value="5" title="5° Generación">5° Generación</option>
+    <option value="6" title="6° Generación">6° Generación</option>
+    <option value="7" title="7° Generación">7° Generación</option>
+    <option value="8" title="8° Generación">8° Generación</option>
+    <option value="9" title="9° Generación">9° Generación</option>
   </select>
 </section>

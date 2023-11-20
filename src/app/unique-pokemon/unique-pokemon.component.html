@@ -21,7 +21,7 @@
         <div id="imagen-tipo">
             <img id="foto" [src]="isClicked ? pokemonBackImageSrc : pokemonFrontImageSrc"
                 [ngClass]="isPokemonType(pokemon.getType1)" (click)="toggleClick()" (mouseover)="toggleHover()"
-                (mouseout)="toggleHover()">
+                (mouseout)="toggleHover()" alt="{{pokemon.getName}}" title="{{pokemon.getName}}">
             <ul id="lista-tipo">
                 <li [ngClass]="isPokemonType(pokemon.getType1)">{{pokemon.getType1}}</li>
                 <li *ngIf="pokemon.getType2 !== 'none'" [ngClass]="isPokemonType(pokemon.getType2)">{{pokemon.getType2}}
