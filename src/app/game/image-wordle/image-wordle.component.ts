@@ -181,6 +181,7 @@ export class ImageWordleComponent {
 
   finishGame() {
     this.userService.user.setMaxScoreImage(this.userService.user.getMaxScoreImage + this.imageScore);
+    this.userService.editUser(this.userService.user);
     this.show = false;
     this.showFinish = false;
   }
