@@ -4,37 +4,37 @@
         <section class="containerPrincipalModifyUserNamePassword">
             <section class="containerModifyUserNamexPassword">
                 <h2>Nombre: {{user.getName}}</h2>
-                <button (click)="showName()"></button>
+                <button (click)="showName()" title="Cambiar Nombre"></button>
             </section>
 
             <section *ngIf="viewName" class="containerNamexpassword">
-                <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre">
-                <button (click)="changeName()">Cambiar</button>
+                <input type="text" [(ngModel)]="name" placeholder="Nuevo Nombre" title="Nuevo Nombre">
+                <button (click)="changeName()" title="Cambiar Nombre">Cambiar</button>
             </section>
 
             <section class="containerModifyUserNamexPassword">
                 <h2>Contraseña:</h2>
-                <button (click)="showPassword()"></button>
+                <button (click)="showPassword()" title="Cambiar Contraseña"></button>
             </section>
 
             <section *ngIf="viewPassword" class="containerNamexpassword">
-                <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña">
-                <button (click)="changePassword()">Cambiar</button>
+                <input type="password" [(ngModel)]="password" placeholder="Nueva Contraseña" title="Nueva Contraseña">
+                <button (click)="changePassword()" title="Cambiar Contraseña">Cambiar</button>
             </section>
         </section>
 
         <section class="desplegable">
-            <img [src]="user.getPhoto" alt="Foto de Perfil" class="fotoSeleccionada">
-            <button (click)="showPhoto()" class="btn">Opciones</button>
+            <img [src]="user.getPhoto" alt="Foto de Perfil" title="Foto de Perfil" class="fotoSeleccionada">
+            <button (click)="showPhoto()" class="btn" alt="Opciones" title="Opciones">Opciones</button>
             <div *ngIf="viewPhoto == true" class="galeriaFotos">
                 <div *ngFor="let photo of photos">
-                    <img [src]="photo" alt="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
+                    <img [src]="photo" alt="Foto Perfil" title="Foto Perfil" (click)="onPhotoSelected(photo)" class="border-animation">
                 </div>
             </div>
         </section>
     </section>
 
-    <section class="containerScore">
+    <section class="containerScore" title="Score">
         <div class="wordleFacil">
             <h2>Wordle Fácil:</h2>
         </div>

@@ -1,48 +1,48 @@
 <section class="mainWordle">
     <section class="containerPrincipal" *ngIf="show === false; else game">
         <app-generation (generationSelected)="generationSelected($event)"></app-generation>
-        <button (click)="showGame()">Aceptar</button>
+        <button (click)="showGame()" title="Aceptar">Aceptar</button>
     </section>
 
     <div class="overlay" *ngIf=" showButton">
-        <img src="../../../assets/logoPoke.jpg" alt="Cargando">
+        <img src="../../../assets/logoPoke.jpg" alt="Cargando" title="Cargando">
     </div>
 
     <ng-template #game>
         <section class="containerTodoWordle">
             <section class="containerDataWordle">
                 <section class="life">
-                    <p class="numlife">{{lives}}</p>
-                    <img src="../../../assets/heart.gif" alt="vidas">
+                    <p class="numlife" title="{{lives}}">{{lives}}</p>
+                    <img src="../../../assets/heart.gif" alt="Vidas" title="Vidas">
                 </section>
                 <div class="containerPokemon">
-                    <img [src]="imgPokemon" alt="Pokemon" class="imgPokemonGuess">
+                    <img [src]="imgPokemon" alt="Pokemon" title="Pokemon" class="imgPokemonGuess">
                 </div>
                 <section class="containerInputBtn">
                     <section class="containerInputList">
                         <input #nombreInput type="text" [(ngModel)]="namePokemon"
                             (input)="filterPokemons(nombreInput.value)"
                             (keydown.enter)="searchPokemon(); pikachuVoice()"
-                            placeholder="Ingresa el nombre del pokemon">
+                            placeholder="Ingresa el nombre del pokemon" title="Ingresa el nombre del pokemon">
                         <ul id="lista" class="lista" *ngIf="nombreInput.value != ''">
-                            <li *ngFor="let pokemon of filteredList" class="pokemon"
+                            <li *ngFor="let pokemon of filteredList" class="pokemon" title="{{pokemon.getName}}"
                                 (click)="selectPokemon(pokemon.getName)">
                                 <span class="nombre">{{ pokemon.getName
                                     }}</span>
                             </li>
                         </ul>
                     </section>
-                    <button #adivinarBtn (click)="searchPokemon(); pikachuVoice()">Adivinar</button>
+                    <button #adivinarBtn (click)="searchPokemon(); pikachuVoice()" title="Adivinar">Adivinar</button>
                 </section>
                 <section class="errorWords">
                     <ul>
-                        <li *ngFor="let word of words">{{ word }}</li>
+                        <li *ngFor="let word of words" title="{{word}}">{{ word }}</li>
                     </ul>
                 </section>
             </section>
             <section class="correctWords">
                 <ul>
-                    <li *ngFor="let pokemon of guessedList">
+                    <li *ngFor="let pokemon of guessedList" title="{{pokemon.getName}}">
                         <img [src]="pokemon.getFrontSprite" alt="Pokemon" (click)="addBounceEffect($event.target)">
                         <p [ngClass]="isPokemonType(pokemon.getType1)" class="pokemonName">{{ pokemon.getName }}</p>
                     </li>
@@ -50,15 +50,15 @@
             </section>
         </section>
         <div class="overlay" *ngIf="showFinish == true">
-            <div class="containerFinish">
+            <div class="containerFinish" title="Perdiste">
                 <p>Usted a perdido, el pokemon era {{this.guessPokemon.getName}}</p>
-                <button (click)="finishGame()">Aceptar</button>
+                <button (click)="finishGame()" title="Aceptar">Aceptar</button>
             </div>
         </div>
         <div class="overlay" *ngIf="showVictory == true">
-            <div class="containerFinish">
+            <div class="containerFinish" title="Ganaste">
                 <p>Usted a Adivinado Todos los Pokemon de Esta Generación Felicidades</p>
-                <button (click)="finishGame()">Aceptar</button>
+                <button (click)="finishGame()" title="Aceptar">Aceptar</button>
             </div>
         </div>
     </ng-template>
