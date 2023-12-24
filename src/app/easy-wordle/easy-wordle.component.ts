@@ -7,13 +7,13 @@ import { getUsers } from 'src/config/config';
   templateUrl: './easy-wordle.component.html',
   styleUrls: ['./easy-wordle.component.scss']
 })
-export class EasyWordleComponent implements OnInit{
+export class EasyWordleComponent implements OnInit {
   generation: string = "";
   show: boolean = false;
 
   constructor(private userService: UsuariosServices) { }
   ngOnInit(): void {
-    getUsers().then((users)=>{
+    getUsers().then((users) => {
       this.userService.users = users;
       this.userService.validateLogin();
     });
@@ -26,6 +26,4 @@ export class EasyWordleComponent implements OnInit{
   showGame() {
     this.show = true;
   }
-
- 
 }

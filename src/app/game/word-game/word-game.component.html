@@ -14,7 +14,8 @@
                 <p class="cantLife" title="{{lives}}">{{lives}}</p>
                 <img src="../../../assets/heart.gif" alt="Vidas" title="Vidas">
             </section>
-            <img class="signoAyuda" src="../../../assets/ayuda.png" (click)="showTableHelp = true" *ngIf="showHelps" alt="Ayuda" title="Ayuda">
+            <img class="signoAyuda" src="../../../assets/ayuda.png" (click)="showTableHelp = true" *ngIf="showHelps"
+                alt="Ayuda" title="Ayuda">
             <section class="containerInputBtn">
                 <section class="containerInputList" *ngIf="badFinish== false && goodFinish==false">
                     <input #nombreInput type="text" id="pokemon" name="pokemon"

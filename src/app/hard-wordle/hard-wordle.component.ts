@@ -7,14 +7,14 @@ import { getUsers } from 'src/config/config';
   templateUrl: './hard-wordle.component.html',
   styleUrls: ['./hard-wordle.component.scss']
 })
-export class HardWordleComponent implements OnInit{
+export class HardWordleComponent implements OnInit {
   generation: string = "";
   show: boolean = false;
 
   constructor(private userService: UsuariosServices) { }
 
   ngOnInit(): void {
-    getUsers().then((users)=>{
+    getUsers().then((users) => {
       this.userService.users = users;
       this.userService.validateLogin();
     });
@@ -27,5 +27,4 @@ export class HardWordleComponent implements OnInit{
   showGame() {
     this.show = true;
   }
-
 }

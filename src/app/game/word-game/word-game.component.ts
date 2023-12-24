@@ -242,7 +242,7 @@ export class WordGameComponent implements OnInit {
           this.userService.user.setTryEasy(this.userService.user.getEasyScore + 1);
           this.userService.editUser(this.userService.user);
         } else {
-          this.userService.user.setTryHard(this.userService.user.getHardScore);
+          this.userService.user.setTryHard(this.userService.user.getHardScore + 1);
           this.userService.editUser(this.userService.user);
         }
         break;
